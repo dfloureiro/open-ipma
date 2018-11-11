@@ -6,7 +6,7 @@ import com.dfl.domainipma.repository.IpmaRepository
 class GetForecastsForCityUseCase(private val ipmaRepository: IpmaRepository) {
 
     suspend fun buildUseCase(params: Params): List<Forecast> {
-        return ipmaRepository.getForecasts(params.cityId)
+        return ipmaRepository.getForecastsForCity(params.cityId)
     }
 
     data class Params(val cityId: Int)

@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.container, HomeFragment.newInstance())
+                .replace(android.R.id.content, HomeFragment.newInstance())
                 .commit()
         }
     }

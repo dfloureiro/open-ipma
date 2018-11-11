@@ -3,11 +3,11 @@ package com.dfl.dataipma.model
 import com.squareup.moshi.Json
 
 
-data class ForecastsDto(
+data class ForecastsCityDto(
     @Json(name = "country")
     val country: String,
     @Json(name = "data")
-    val `data`: List<ForecastDto>,
+    val data: List<ForecastCityDto>,
     @Json(name = "dataUpdate")
     val dataUpdate: String,
     @Json(name = "globalIdLocal")
@@ -16,7 +16,7 @@ data class ForecastsDto(
     val owner: String
 )
 
-data class ForecastDto(
+data class ForecastCityDto(
     @Json(name = "classWindSpeed")
     val classWindSpeed: Int,
     @Json(name = "forecastDate")

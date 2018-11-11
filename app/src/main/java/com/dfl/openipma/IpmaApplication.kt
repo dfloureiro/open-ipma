@@ -6,8 +6,4 @@ import com.dfl.openipma.di.Injector
 class IpmaApplication : Application() {
 
     val injector = Injector()
-
-    override fun onCreate() {
-        super.onCreate()
-    }
 }

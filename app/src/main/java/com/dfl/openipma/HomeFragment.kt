@@ -4,15 +4,10 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.dfl.domainipma.model.City
-import com.dfl.domainipma.model.Forecast
-import com.dfl.openipma.di.DaggerApplicationComponent
-import com.dfl.openipma.di.IpmaModule
-import com.dfl.openipma.di.NetworkModule
+import kotlinx.android.synthetic.main.home_fragment.*
 import javax.inject.Inject
 
 class HomeFragment : BaseFragment() {
@@ -29,6 +24,9 @@ class HomeFragment : BaseFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProviders.of(this, viewModeFactory).get(HomeViewModel::class.java)
+        when {
+            viewModel.homeViewState.value == null -> viewModel.loadData()
+        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -37,12 +35,21 @@ class HomeFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel.forecasts.observe(viewLifecycleOwner,
-            Observer<List<Forecast>> { it?.get(0)?.date }
-        )
-        viewModel.cities.observe(viewLifecycleOwner,
-            Observer<List<City>> { it?.get(0)?.name }
-        )
+        viewModel.homeViewState.observe(viewLifecycleOwner, Observer<HomeViewModel.HomeViewState> {
+            when {
+                it != null -> {
+                    when {
+                        it.loading -> home_progress_bar.visibility = View.VISIBLE
+                        else -> home_progress_bar.visibility = View.GONE
+                    }
+
+                    when {
+                        it.error -> home_error_text_view.visibility = View.VISIBLE
+                        else -> home_error_text_view.visibility = View.GONE
+                    }
+                }
+            }
+        })
     }
 
     companion object {
