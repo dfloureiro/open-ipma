@@ -5,33 +5,30 @@ import com.dfl.domainipma.model.City
 import com.dfl.domainipma.model.Day
 import com.dfl.domainipma.model.Forecast
 import com.dfl.domainipma.usecase.GetCitiesUseCase
-import com.dfl.domainipma.usecase.GetForecastsForCityUseCase
 import com.dfl.domainipma.usecase.GetForecastsForDayUseCase
 import kotlinx.coroutines.launch
 import java.lang.Exception
 import javax.inject.Inject
 
 class HomeViewModel @Inject constructor(
-        private val getForecastsForCityUseCase: GetForecastsForCityUseCase,
-        private val getForecastsForDayUseCase: GetForecastsForDayUseCase,
-        private val getCitiesUseCase: GetCitiesUseCase
+    private val getForecastsForDayUseCase: GetForecastsForDayUseCase,
+    private val getCitiesUseCase: GetCitiesUseCase,
+    private val forecastUiModelCreator: ForecastUiModelCreator
 ) : BaseViewModel() {
 
     val homeViewState = MutableLiveData<HomeViewState>()
 
     fun loadData() {
         scope.launch {
-            //TODO mapping into UImodels
             try {
-                homeViewState.value = HomeViewState(forecastsCity = loadForecastsForCity(), forecastsDay = loadForecastsForDay(), cities = loadCities())
+                val forecasts = loadForecastsForDay()
+                val cities = loadCities()
+                val forecastUiModels = forecastUiModelCreator.create(forecasts, cities)
+                homeViewState.value = HomeViewState(forecastUiModels = forecastUiModels)
             } catch (e: Exception) {
                 homeViewState.value = HomeViewState(error = true)
             }
         }
-    }
-
-    private suspend fun loadForecastsForCity(): List<Forecast> {
-        return getForecastsForCityUseCase.buildUseCase(GetForecastsForCityUseCase.Params(1110600))
     }
 
     private suspend fun loadForecastsForDay(): List<Forecast> {
@@ -42,9 +39,9 @@ class HomeViewModel @Inject constructor(
         return getCitiesUseCase.buildUseCase()
     }
 
-    data class HomeViewState(val loading: Boolean = false,
-                             val error: Boolean = false,
-                             val forecastsCity: List<Forecast> = listOf(),
-                             val forecastsDay: List<Forecast> = listOf(),
-                             val cities: List<City> = listOf())
+    data class HomeViewState(
+        val loading: Boolean = false,
+        val error: Boolean = false,
+        val forecastUiModels: List<ForecastUiModel> = listOf()
+    )
 }

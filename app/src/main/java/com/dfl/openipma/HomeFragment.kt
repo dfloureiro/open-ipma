@@ -14,6 +14,8 @@ class HomeFragment : BaseFragment() {
 
     @Inject
     lateinit var viewModeFactory: ViewModelFactory
+    internal val homeForecastAdapter: HomeForecastsAdapter = HomeForecastsAdapter()
+
     private lateinit var viewModel: HomeViewModel
 
     override fun onAttach(context: Context?) {
@@ -33,8 +35,11 @@ class HomeFragment : BaseFragment() {
         return inflater.inflate(R.layout.home_fragment, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        home_recycler_view.apply {
+            adapter = homeForecastAdapter
+        }
         viewModel.homeViewState.observe(viewLifecycleOwner, Observer<HomeViewModel.HomeViewState> {
             when {
                 it != null -> {
@@ -47,6 +52,7 @@ class HomeFragment : BaseFragment() {
                         it.error -> home_error_text_view.visibility = View.VISIBLE
                         else -> home_error_text_view.visibility = View.GONE
                     }
+                    homeForecastAdapter.add(it.forecastUiModels)
                 }
             }
         })

@@ -11,6 +11,11 @@ class ForecastsDayDtoToForecastsListMapper {
     }
 
     private fun forecastDtoToForecast(forecastDayDto: ForecastDayDto): Forecast {
-        return Forecast(forecastDayDto.latitude)
+        return Forecast(
+            forecastDayDto.globalIdLocal,
+            forecastDayDto.tMin,
+            forecastDayDto.tMax,
+            forecastDayDto.precipitaProb
+        )
     }
 }

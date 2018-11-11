@@ -11,7 +11,7 @@ class ForecastsCityDtoToForecastsListMapper {
     }
 
     private fun forecastDtoToForecast(forecastCityDto: ForecastCityDto): Forecast {
-        return Forecast(forecastCityDto.forecastDate)
+        return Forecast(forecastCityDto.idWeatherType, forecastCityDto.tMin, forecastCityDto.tMax, forecastCityDto.precipitaProb)
     }
 }
 

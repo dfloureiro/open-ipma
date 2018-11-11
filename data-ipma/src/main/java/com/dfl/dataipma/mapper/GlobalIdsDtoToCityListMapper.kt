@@ -11,6 +11,6 @@ class GlobalIdsDtoToCityListMapper {
     }
 
     private fun globalIdToCity(globalIdDto: GlobalIdDto): City {
-        return City(globalIdDto.local)
+        return City(globalIdDto.globalIdLocal, globalIdDto.local)
     }
 }
