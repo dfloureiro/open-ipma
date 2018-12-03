@@ -20,7 +20,12 @@ class HomeForecastsAdapter(private val homeFragment: HomeFragment) : RecyclerVie
     override fun onBindViewHolder(p0: HomeForecastViewHolder, p1: Int) {
         forecasts[p1].also { forecastUiModel ->
             //todo interface instead of fragment
-            p0.setViewHolderOnClickListener(View.OnClickListener { homeFragment.loadForecastsForCity(forecastUiModel.cityId) })
+            p0.setViewHolderOnClickListener(View.OnClickListener {
+                homeFragment.loadForecastsForCity(
+                    forecastUiModel.cityId,
+                    forecastUiModel.cityName
+                )
+            })
             p0.setCityName(forecastUiModel.cityName)
             p0.setMaxTemperature(forecastUiModel.maxTemperature)
             p0.setMinTemperature(forecastUiModel.minTemperature)

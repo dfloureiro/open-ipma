@@ -58,8 +58,8 @@ class HomeFragment : BaseFragment() {
         })
     }
 
-    fun loadForecastsForCity(cityId: Int) {
-        (activity as MainActivity).replaceFragment(CityForecastsFragment.newInstance(cityId))
+    fun loadForecastsForCity(cityId: Int, cityName: String) {
+        (activity as MainActivity).replaceFragment(CityForecastsFragment.newInstance(cityId, cityName))
     }
 
     companion object {
