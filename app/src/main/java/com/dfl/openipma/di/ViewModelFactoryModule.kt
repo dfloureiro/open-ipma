@@ -2,6 +2,7 @@ package com.dfl.openipma.di
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
+import com.dfl.openipma.CityForecastsViewModel
 import com.dfl.openipma.HomeViewModel
 import com.dfl.openipma.ViewModelFactory
 import dagger.Binds
@@ -21,7 +22,12 @@ abstract class ViewModelFactoryModule {
     @Binds
     @IntoMap
     @ViewModelKey(HomeViewModel::class)
-    abstract fun bindMyViewModel(myViewModel: HomeViewModel): ViewModel
+    abstract fun bindHomeViewModel(myViewModel: HomeViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(CityForecastsViewModel::class)
+    abstract fun bindCityForecastsViewModel(myViewModel: CityForecastsViewModel): ViewModel
 }
 
 @Target(AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER, AnnotationTarget.PROPERTY_SETTER)

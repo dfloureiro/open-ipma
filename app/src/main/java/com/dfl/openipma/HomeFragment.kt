@@ -14,7 +14,7 @@ class HomeFragment : BaseFragment() {
 
     @Inject
     lateinit var viewModeFactory: ViewModelFactory
-    internal val homeForecastAdapter: HomeForecastsAdapter = HomeForecastsAdapter()
+    internal val homeForecastAdapter: HomeForecastsAdapter = HomeForecastsAdapter(this)
 
     private lateinit var viewModel: HomeViewModel
 
@@ -56,6 +56,10 @@ class HomeFragment : BaseFragment() {
                 }
             }
         })
+    }
+
+    fun loadForecastsForCity(cityId: Int) {
+        (activity as MainActivity).replaceFragment(CityForecastsFragment.newInstance(cityId))
     }
 
     companion object {

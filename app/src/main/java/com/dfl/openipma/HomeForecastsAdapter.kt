@@ -2,9 +2,10 @@ package com.dfl.openipma
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 
-class HomeForecastsAdapter : RecyclerView.Adapter<HomeForecastViewHolder>() {
+class HomeForecastsAdapter(private val homeFragment: HomeFragment) : RecyclerView.Adapter<HomeForecastViewHolder>() {
 
     private val forecasts = mutableListOf<ForecastUiModel>()
 
@@ -17,11 +18,13 @@ class HomeForecastsAdapter : RecyclerView.Adapter<HomeForecastViewHolder>() {
     }
 
     override fun onBindViewHolder(p0: HomeForecastViewHolder, p1: Int) {
-        forecasts[p1].also {
-            p0.setCityName(it.cityName)
-            p0.setMaxTemperature(it.maxTemperature)
-            p0.setMinTemperature(it.minTemperature)
-            p0.setPrecipitation(it.precipitationProbability)
+        forecasts[p1].also { forecastUiModel ->
+            //todo interface instead of fragment
+            p0.setViewHolderOnClickListener(View.OnClickListener { homeFragment.loadForecastsForCity(forecastUiModel.cityId) })
+            p0.setCityName(forecastUiModel.cityName)
+            p0.setMaxTemperature(forecastUiModel.maxTemperature)
+            p0.setMinTemperature(forecastUiModel.minTemperature)
+            p0.setPrecipitation(forecastUiModel.precipitationProbability)
         }
     }
 

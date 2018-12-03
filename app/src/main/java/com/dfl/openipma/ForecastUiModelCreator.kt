@@ -16,6 +16,7 @@ class ForecastUiModelCreator @Inject constructor() {
             when {
                 city != null -> forecastUiModels.add(
                     ForecastUiModel(
+                        city.id,
                         city.name,
                         forecast.minTemp,
                         forecast.maxTemp,

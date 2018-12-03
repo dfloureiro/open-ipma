@@ -6,6 +6,10 @@ import android.widget.TextView
 
 class HomeForecastViewHolder(private val viewHolderView: View) : RecyclerView.ViewHolder(viewHolderView) {
 
+    fun setViewHolderOnClickListener(onClickListener: View.OnClickListener) {
+        viewHolderView.setOnClickListener(onClickListener)
+    }
+
     fun setCityName(name: String) {
         viewHolderView.findViewById<TextView>(R.id.home_card_city_name).text = name
     }
