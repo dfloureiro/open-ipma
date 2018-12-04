@@ -6,6 +6,7 @@ import com.dfl.dataipma.mapper.ForecastsCityDtoToForecastsListMapper
 import com.dfl.dataipma.mapper.ForecastsDayDtoToForecastsListMapper
 import com.dfl.dataipma.mapper.GlobalIdsDtoToCityListMapper
 import com.dfl.domainipma.model.City
+import com.dfl.domainipma.model.CityForecast
 import com.dfl.domainipma.model.Forecast
 import com.dfl.domainipma.repository.IpmaRepository
 
@@ -17,7 +18,7 @@ class IpmaRepositoryImpl(
     private val globalIdsDtoToCityListMapper: GlobalIdsDtoToCityListMapper
 ) : IpmaRepository {
 
-    override suspend fun getForecastsForCity(cityId: Int): List<Forecast> {
+    override suspend fun getForecastsForCity(cityId: Int): List<CityForecast> {
         return forecastsCityDtoToForecastsListMapper.map(forecastsDataSource.getForecastsForCity(cityId).await())
     }
 

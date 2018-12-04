@@ -26,13 +26,13 @@ class CityForecastsFragment : BaseFragment() {
         super.onCreate(savedInstanceState)
 
         val cityId = arguments?.getInt(CITY_ID_BUNDLE_KEY)
-        val cityName = arguments?.getString(CITY_NAME_BUNDLE_KEY)
+        //val cityName = arguments?.getString(CITY_NAME_BUNDLE_KEY)
 
-        if (cityId != null && cityName != null) {
+        if (cityId != null) {
             viewModel = ViewModelProviders.of(this, viewModeFactory).get(CityForecastsViewModel::class.java)
             when {
                 viewModel.cityForecastsState.value == null -> {
-                    viewModel.loadData(cityId, cityName)
+                    viewModel.loadData(cityId)
                 }
             }
         } else {

@@ -1,14 +1,15 @@
 package com.dfl.openipma
 
+import com.dfl.domainipma.model.WindDirection
 import java.util.*
 
 data class CityForecastUiModel(
-    val cityName: String,
     val date: GregorianCalendar,
-    val dateLastUpdate: GregorianCalendar,
     val weatherType: Int,
-    val minimalTemperature: Int,
-    val maximumTemperature: Int,
-    val windClass: Int,
-    val precipitationProbability: Int
+    val minimalTemperature: Double,
+    val maximumTemperature: Double,
+    val windDirection: WindDirection,
+    val idWeatherType: Int,
+    val windSpeedClass: Int,
+    val precipitationProbability: Double
 )
