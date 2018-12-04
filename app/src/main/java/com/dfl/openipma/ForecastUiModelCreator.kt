@@ -20,7 +20,8 @@ class ForecastUiModelCreator @Inject constructor() {
                         city.name,
                         forecast.minTemp,
                         forecast.maxTemp,
-                        forecast.precipitation
+                        forecast.precipitation,
+                        forecast.windDirection.rotation
                     )
                 )
                 else -> Log.e("ups", "the city id ${forecast.cityId} does not exist in cities")

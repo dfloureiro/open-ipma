@@ -24,10 +24,7 @@ class CityForecastsFragment : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         val cityId = arguments?.getInt(CITY_ID_BUNDLE_KEY)
-        //val cityName = arguments?.getString(CITY_NAME_BUNDLE_KEY)
-
         if (cityId != null) {
             viewModel = ViewModelProviders.of(this, viewModeFactory).get(CityForecastsViewModel::class.java)
             when {
@@ -50,6 +47,7 @@ class CityForecastsFragment : BaseFragment() {
         viewModel.cityForecastsState.observe(viewLifecycleOwner, Observer<CityForecastsViewModel.CityForecastsState> {
             when {
                 it != null -> {
+                    city_name_text_view.text = arguments?.getString(CITY_NAME_BUNDLE_KEY)
                     when {
                         it.loading -> city_progress_bar.visibility = View.VISIBLE
                         else -> city_progress_bar.visibility = View.GONE
@@ -65,8 +63,8 @@ class CityForecastsFragment : BaseFragment() {
     }
 
     companion object {
-        const val CITY_ID_BUNDLE_KEY = "CITY_ID_BUNDLE_KEY"
-        const val CITY_NAME_BUNDLE_KEY = "CITY_NAME_BUNDLE_KEY"
+        private const val CITY_ID_BUNDLE_KEY = "CITY_ID_BUNDLE_KEY"
+        private const val CITY_NAME_BUNDLE_KEY = "CITY_NAME_BUNDLE_KEY"
 
         fun newInstance(cityId: Int, cityName: String): CityForecastsFragment {
             val fragment = CityForecastsFragment()

@@ -2,6 +2,7 @@ package com.dfl.openipma
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 
 class HomeForecastViewHolder(private val viewHolderView: View) : RecyclerView.ViewHolder(viewHolderView) {
@@ -27,5 +28,9 @@ class HomeForecastViewHolder(private val viewHolderView: View) : RecyclerView.Vi
     fun setPrecipitation(precipitation: String) {
         val text = "$precipitation%"
         viewHolderView.findViewById<TextView>(R.id.home_card_precipitation).text = text
+    }
+
+    fun setWindRotation(rotation: Float) {
+        viewHolderView.findViewById<ImageView>(R.id.home_card_weather_icon).rotation = rotation
     }
 }
