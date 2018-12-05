@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/data-ipma/data-ipma.iml" filepath="$PROJECT_DIR$/data-ipma/data-ipma.iml" />
       <module fileurl="file://$PROJECT_DIR$/domain-ipma/domain-ipma.iml" filepath="$PROJECT_DIR$/domain-ipma/domain-ipma.iml" />
+      <module fileurl="file://$PROJECT_DIR$/open-ipma.iml" filepath="$PROJECT_DIR$/open-ipma.iml" />
     </modules>
   </component>
 </project>

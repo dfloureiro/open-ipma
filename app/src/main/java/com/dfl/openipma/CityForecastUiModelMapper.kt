@@ -21,7 +21,6 @@ class CityForecastUiModelMapper @Inject constructor() {
                     it.minimalTemperature,
                     it.maximumTemperature,
                     it.windDirection,
-                    it.idWeatherType,
                     it.classWindSpeed,
                     it.precipitationProbability
                 )

@@ -9,7 +9,6 @@ data class CityForecastUiModel(
     val minimalTemperature: Double,
     val maximumTemperature: Double,
     val windDirection: WindDirection,
-    val idWeatherType: Int,
     val windSpeedClass: Int,
     val precipitationProbability: Double
 )
