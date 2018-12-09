@@ -1,5 +1,7 @@
 package com.dfl.openipma
 
+import android.support.v4.content.ContextCompat
+import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ImageView
@@ -32,5 +34,14 @@ class HomeForecastViewHolder(private val viewHolderView: View) : RecyclerView.Vi
 
     fun setWindRotation(rotation: Float) {
         viewHolderView.findViewById<ImageView>(R.id.home_card_weather_icon).rotation = rotation
+    }
+
+    fun setIcon(resourceId: Int) {
+        viewHolderView.findViewById<ImageView>(R.id.home_card_weather_icon).setImageResource(resourceId)
+    }
+
+    fun setBackgroundColor(colorId: Int) {
+        ContextCompat.getColor(viewHolderView.context, colorId)
+            .also { (viewHolderView as CardView).setCardBackgroundColor(it) }
     }
 }

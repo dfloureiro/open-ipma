@@ -30,7 +30,9 @@ class HomeForecastsAdapter(private val homeFragment: HomeFragment) : RecyclerVie
             p0.setMaxTemperature(forecastUiModel.maxTemperature)
             p0.setMinTemperature(forecastUiModel.minTemperature)
             p0.setPrecipitation(forecastUiModel.precipitationProbability)
-            p0.setWindRotation(forecastUiModel.windRotation)
+            //p0.setWindRotation(forecastUiModel.windRotation)
+            p0.setIcon(forecastUiModel.weatherTypeResourceId)
+            p0.setBackgroundColor(forecastUiModel.cardBackgroundColor)
         }
     }
 

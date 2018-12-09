@@ -8,9 +8,10 @@
         android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:backgroundTint="@color/colorPrimaryDark"
+        tools:backgroundTint="@color/sunny"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
+        app:cardPreventCornerOverlap="true"
         card_view:cardCornerRadius="5dp">
 
     <android.support.constraint.ConstraintLayout

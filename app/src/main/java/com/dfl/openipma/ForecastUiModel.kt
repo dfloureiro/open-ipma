@@ -6,5 +6,7 @@ data class ForecastUiModel(
     val minTemperature: String,
     val maxTemperature: String,
     val precipitationProbability: String,
-    val windRotation: Float
+    val windRotation: Float,
+    val weatherTypeResourceId: Int,
+    val cardBackgroundColor: Int
 )

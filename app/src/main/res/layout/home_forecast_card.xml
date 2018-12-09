@@ -7,11 +7,11 @@
         android:id="@+id/home_card_view"
         android:layout_gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:backgroundTint="@color/colorPrimaryDark"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        card_view:cardCornerRadius="5dp">
+        android:layout_height="125dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        card_view:cardCornerRadius="5dp"
+        tools:backgroundTint="@color/sunny">
 
     <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -22,14 +22,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.95"/>
+                app:layout_constraintGuide_percent="0.9"/>
 
         <android.support.constraint.Guideline
                 android:id="@+id/home_card_vertical_left_guideline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.05"/>
+                app:layout_constraintGuide_percent="0.1"/>
 
         <android.support.constraint.Guideline
                 android:id="@+id/home_card_horizontal_top_guideline"
@@ -49,34 +49,38 @@
                 android:id="@+id/home_card_city_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
+                android:textSize="18sp"
+                android:textColor="@android:color/white"
                 app:layout_constraintLeft_toLeftOf="@+id/home_card_vertical_left_guideline"
                 app:layout_constraintTop_toBottomOf="@+id/home_card_horizontal_top_guideline"
                 tools:text="Lisboa"/>
 
+        <TextView
+                android:id="@+id/home_card_weather_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/secondary_text"
+                app:layout_constraintLeft_toLeftOf="@+id/home_card_vertical_left_guideline"
+                app:layout_constraintTop_toBottomOf="@+id/home_card_city_name"
+                tools:text="Sunny"/>
+
         <ImageView
                 android:id="@+id/home_card_weather_icon"
-                android:src="@mipmap/ic_launcher"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 app:layout_constraintRight_toLeftOf="@id/home_card_vertical_right_guideline"
                 app:layout_constraintTop_toBottomOf="@+id/home_card_horizontal_top_guideline"
                 app:layout_constraintRight_toRightOf="parent"
+                tools:src="@drawable/ic_cloudy"
                 tools:ignore="ContentDescription"/>
-
-        <TextView
-                android:id="@+id/home_card_precipitation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintRight_toLeftOf="@+id/home_card_weather_icon"
-                app:layout_constraintBottom_toTopOf="@id/home_card_horizontal_bottom_guideline"
-                tools:text="45%"/>
 
         <TextView
                 android:id="@+id/home_card_max_temp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="30sp"
+                android:textSize="28sp"
+                android:textColor="@android:color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@id/home_card_vertical_left_guideline"
                 app:layout_constraintBottom_toTopOf="@id/home_card_horizontal_bottom_guideline"
@@ -86,11 +90,32 @@
                 android:id="@+id/home_card_min_temp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="30sp"
+                android:textSize="28sp"
+                android:textColor="@color/secondary_text"
+                android:layout_marginStart="12dp"
                 app:layout_constraintLeft_toRightOf="@id/home_card_max_temp"
                 app:layout_constraintBottom_toTopOf="@id/home_card_horizontal_bottom_guideline"
                 tools:text="17º"/>
 
+        <TextView
+                android:id="@+id/home_card_precipitation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                app:layout_constraintRight_toRightOf="@+id/home_card_weather_icon"
+                app:layout_constraintTop_toTopOf="@id/home_card_min_temp"
+                app:layout_constraintBottom_toTopOf="@id/home_card_horizontal_bottom_guideline"
+                tools:text="45%"/>
+
+        <ImageView
+                android:id="@+id/home_umbrella_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_umbrella"
+                android:contentDescription="raining percentage"
+                app:layout_constraintTop_toTopOf="@id/home_card_min_temp"
+                app:layout_constraintBottom_toTopOf="@id/home_card_horizontal_bottom_guideline"
+                app:layout_constraintEnd_toStartOf="@+id/home_card_precipitation"/>
 
     </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>

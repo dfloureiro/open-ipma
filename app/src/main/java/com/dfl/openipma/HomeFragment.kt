@@ -52,7 +52,9 @@ class HomeFragment : BaseFragment() {
                         it.error -> home_error_text_view.visibility = View.VISIBLE
                         else -> home_error_text_view.visibility = View.GONE
                     }
-                    homeForecastAdapter.add(it.forecastUiModels)
+                    if (homeForecastAdapter.itemCount == 0) {
+                        homeForecastAdapter.add(it.forecastUiModels)
+                    }
                 }
             }
         })

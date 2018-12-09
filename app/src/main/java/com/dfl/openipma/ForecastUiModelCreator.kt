@@ -7,7 +7,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class ForecastUiModelCreator @Inject constructor() {
+class ForecastUiModelCreator @Inject constructor() : BaseUiModelMapper() {
 
     fun create(forecasts: List<Forecast>, cities: List<City>): List<ForecastUiModel> {
         val forecastUiModels = mutableListOf<ForecastUiModel>()
@@ -20,8 +20,10 @@ class ForecastUiModelCreator @Inject constructor() {
                         city.name,
                         forecast.minTemp,
                         forecast.maxTemp,
-                        forecast.precipitation,
-                        forecast.windDirection.rotation
+                        forecast.precipitation.substringBefore("."),
+                        forecast.windDirection.rotation,
+                        getIcon(forecast.weatherType),
+                        getBackgroundColor(forecast.weatherType)
                     )
                 )
                 else -> Log.e("ups", "the city id ${forecast.cityId} does not exist in cities")

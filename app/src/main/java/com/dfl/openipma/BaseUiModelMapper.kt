@@ -1,8 +1,8 @@
 package com.dfl.openipma
 
-class WeatherTypeIconMapper {
+open class BaseUiModelMapper {
 
-    fun getIcon(id: Int): Int {
+    internal fun getIcon(id: Int): Int {
         return when (id) {
             1 -> R.drawable.ic_sunny                //Clear sky
             2 -> R.drawable.ic_partlycloudy         //Partly cloudy
@@ -30,8 +30,41 @@ class WeatherTypeIconMapper {
             24 -> R.drawable.ic_cloudy              //Convective clouds
             25 -> R.drawable.ic_cloudy              //Partly cloudy
             26 -> R.drawable.ic_fog                 //Fog
-            27 -> R.drawable.ic_cloudy              //Cloudyk
+            27 -> R.drawable.ic_cloudy              //Cloudy
             else -> R.drawable.ic_unknown_weather   //Unknown
+        }
+    }
+
+    internal fun getBackgroundColor(id: Int): Int {
+        return when (id) {
+            1 -> R.color.sunny      //Clear sky
+            2 -> R.color.cloudy     //Partly cloudy
+            3 -> R.color.cloudy     //Sunny intervals
+            4 -> R.color.cloudy     //Cloudy
+            5 -> R.color.cloudy     //Cloudy (High cloud)
+            6 -> R.color.rainy      //Showers
+            7 -> R.color.rainy      //Light showers
+            8 -> R.color.rainy      //Heavy showers
+            9 -> R.color.rainy      //Rain
+            10 -> R.color.rainy     //Light rain
+            11 -> R.color.rainy     //Heavy rain
+            12 -> R.color.rainy     //Intermittent rain
+            13 -> R.color.rainy     //Intermittent light rain
+            14 -> R.color.rainy     //Intermittent heavy rain
+            15 -> R.color.rainy     //Drizzle
+            16 -> R.color.cloudy    //Mist
+            17 -> R.color.cloudy    //Fog
+            18 -> R.color.snowy     //Snow
+            19 -> R.color.rainy     //Thunderstorms
+            20 -> R.color.rainy     //Showers and thunderstorms
+            21 -> R.color.snowy     //Hail
+            22 -> R.color.snowy     //Frost
+            23 -> R.color.rainy     //Rain and thunderstorms
+            24 -> R.color.cloudy    //Convective clouds
+            25 -> R.color.cloudy    //Partly cloudy
+            26 -> R.color.cloudy    //Fog
+            27 -> R.color.cloudy    //Cloudy
+            else -> R.color.cloudy  //Unknown
         }
     }
 }

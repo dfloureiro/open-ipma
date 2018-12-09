@@ -17,7 +17,8 @@ class ForecastsDayDtoToForecastsListMapper {
             forecastDayDto.tMin,
             forecastDayDto.tMax,
             forecastDayDto.precipitaProb,
-            WindDirection.valueOf(forecastDayDto.predWindDir)
+            WindDirection.valueOf(forecastDayDto.predWindDir),
+            forecastDayDto.idWeatherType
         )
     }
 }
