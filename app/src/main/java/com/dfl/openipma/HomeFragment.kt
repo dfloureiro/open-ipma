@@ -14,7 +14,7 @@ class HomeFragment : BaseFragment() {
 
     @Inject
     lateinit var viewModeFactory: ViewModelFactory
-    internal val homeForecastAdapter: HomeForecastsAdapter = HomeForecastsAdapter(this)
+    private val homeForecastAdapter: HomeForecastsAdapter = HomeForecastsAdapter(this)
 
     private lateinit var viewModel: HomeViewModel
 
