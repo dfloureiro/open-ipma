@@ -4,13 +4,11 @@ import com.dfl.dataipma.IpmaClient
 import com.dfl.dataipma.IpmaRepositoryImpl
 import com.dfl.dataipma.datasource.ForecastsDataSource
 import com.dfl.dataipma.datasource.GlobalIdsDataSource
-import com.dfl.dataipma.mapper.ForecastsCityDtoToForecastsListMapper
-import com.dfl.dataipma.mapper.ForecastsDayDtoToForecastsListMapper
-import com.dfl.dataipma.mapper.GlobalIdsDtoToCityListMapper
+import com.dfl.dataipma.datasource.WeatherTypesDataSource
+import com.dfl.dataipma.datasource.WindSpeedsDataSource
+import com.dfl.dataipma.mapper.*
 import com.dfl.domainipma.repository.IpmaRepository
-import com.dfl.domainipma.usecase.GetCitiesUseCase
-import com.dfl.domainipma.usecase.GetForecastsForCityUseCase
-import com.dfl.domainipma.usecase.GetForecastsForDayUseCase
+import com.dfl.domainipma.usecase.*
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import dagger.Module
 import dagger.Provides
@@ -49,14 +47,22 @@ class IpmaModule {
         forecastsCityDtoToForecastsListMapper: ForecastsCityDtoToForecastsListMapper,
         forecastsDayDtoToForecastsListMapper: ForecastsDayDtoToForecastsListMapper,
         globalIdsDataSource: GlobalIdsDataSource,
-        cityListMapper: GlobalIdsDtoToCityListMapper
+        globalIdsDtoToCityListMapper: GlobalIdsDtoToCityListMapper,
+        weatherTypesDataSource: WeatherTypesDataSource,
+        weatherTypeDtoToWeatherTypeListMapper: WeatherTypeDtoToWeatherTypeListMapper,
+        windSpeedsDataSource: WindSpeedsDataSource,
+        windSpeedsDtoToWindSpeedsListMapper: WindSpeedsDtoToWindSpeedsListMapper
     ): IpmaRepository {
         return IpmaRepositoryImpl(
             forecastsDataSource,
             forecastsCityDtoToForecastsListMapper,
             forecastsDayDtoToForecastsListMapper,
             globalIdsDataSource,
-            cityListMapper
+            globalIdsDtoToCityListMapper,
+            weatherTypesDataSource,
+            weatherTypeDtoToWeatherTypeListMapper,
+            windSpeedsDataSource,
+            windSpeedsDtoToWindSpeedsListMapper
         )
     }
 
@@ -70,6 +76,19 @@ class IpmaModule {
     @Provides
     fun globalIdsDataSource(ipmaClient: IpmaClient): GlobalIdsDataSource {
         return GlobalIdsDataSource(ipmaClient)
+    }
+
+
+    @Singleton
+    @Provides
+    fun weatherTypesDataSource(ipmaClient: IpmaClient): WeatherTypesDataSource {
+        return WeatherTypesDataSource(ipmaClient)
+    }
+
+    @Singleton
+    @Provides
+    fun windSpeedsDataSource(ipmaClient: IpmaClient): WindSpeedsDataSource {
+        return WindSpeedsDataSource(ipmaClient)
     }
 
     @Singleton
@@ -86,6 +105,18 @@ class IpmaModule {
 
     @Singleton
     @Provides
+    fun weatherTypeDtoToWeatherTypeListMapper(): WeatherTypeDtoToWeatherTypeListMapper {
+        return WeatherTypeDtoToWeatherTypeListMapper()
+    }
+
+    @Singleton
+    @Provides
+    fun windSpeedsDtoToWindSpeedsListMapper(): WindSpeedsDtoToWindSpeedsListMapper {
+        return WindSpeedsDtoToWindSpeedsListMapper()
+    }
+
+    @Singleton
+    @Provides
     fun globalIdsDtoToCityListMapper(): GlobalIdsDtoToCityListMapper {
         return GlobalIdsDtoToCityListMapper()
     }
@@ -94,6 +125,18 @@ class IpmaModule {
     @Provides
     fun getForecastsForCityUseCase(ipmaRepository: IpmaRepository): GetForecastsForCityUseCase {
         return GetForecastsForCityUseCase(ipmaRepository)
+    }
+
+    @Singleton
+    @Provides
+    fun getWeatherTypesUseCase(ipmaRepository: IpmaRepository): GetWeatherTypesUseCase {
+        return GetWeatherTypesUseCase(ipmaRepository)
+    }
+
+    @Singleton
+    @Provides
+    fun getWindSpeedsUseCase(ipmaRepository: IpmaRepository): GetWindSpeedsUseCase {
+        return GetWindSpeedsUseCase(ipmaRepository)
     }
 
     @Singleton

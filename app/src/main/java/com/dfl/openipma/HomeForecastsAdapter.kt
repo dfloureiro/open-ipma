@@ -31,6 +31,8 @@ class HomeForecastsAdapter(private val homeFragment: HomeFragment) : RecyclerVie
             p0.setMinTemperature(forecastUiModel.minTemperature)
             p0.setPrecipitation(forecastUiModel.precipitationProbability)
             //p0.setWindRotation(forecastUiModel.windRotation)
+            p0.setWeatherDescription(forecastUiModel.weatherDescription)
+            p0.setWindSpeedDescription(forecastUiModel.windSpeedDescription)
             p0.setIcon(forecastUiModel.weatherTypeResourceId)
             p0.setBackgroundColor(forecastUiModel.cardBackgroundColor)
         }

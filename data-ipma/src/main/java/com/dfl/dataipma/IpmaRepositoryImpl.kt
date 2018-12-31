@@ -2,12 +2,10 @@ package com.dfl.dataipma
 
 import com.dfl.dataipma.datasource.ForecastsDataSource
 import com.dfl.dataipma.datasource.GlobalIdsDataSource
-import com.dfl.dataipma.mapper.ForecastsCityDtoToForecastsListMapper
-import com.dfl.dataipma.mapper.ForecastsDayDtoToForecastsListMapper
-import com.dfl.dataipma.mapper.GlobalIdsDtoToCityListMapper
-import com.dfl.domainipma.model.City
-import com.dfl.domainipma.model.CityForecast
-import com.dfl.domainipma.model.Forecast
+import com.dfl.dataipma.datasource.WeatherTypesDataSource
+import com.dfl.dataipma.datasource.WindSpeedsDataSource
+import com.dfl.dataipma.mapper.*
+import com.dfl.domainipma.model.*
 import com.dfl.domainipma.repository.IpmaRepository
 
 class IpmaRepositoryImpl(
@@ -15,7 +13,11 @@ class IpmaRepositoryImpl(
     private val forecastsCityDtoToForecastsListMapper: ForecastsCityDtoToForecastsListMapper,
     private val forecastsDayDtoToForecastsListMapper: ForecastsDayDtoToForecastsListMapper,
     private val globalIdsDataSource: GlobalIdsDataSource,
-    private val globalIdsDtoToCityListMapper: GlobalIdsDtoToCityListMapper
+    private val globalIdsDtoToCityListMapper: GlobalIdsDtoToCityListMapper,
+    private val weatherTypesDataSource: WeatherTypesDataSource,
+    private val weatherTypeDtoToWeatherTypeListMapper: WeatherTypeDtoToWeatherTypeListMapper,
+    private val windSpeedsDataSource: WindSpeedsDataSource,
+    private val windSpeedsDtoToWindSpeedsListMapper: WindSpeedsDtoToWindSpeedsListMapper
 ) : IpmaRepository {
 
     override suspend fun getForecastsForCity(cityId: Int): List<CityForecast> {
@@ -28,5 +30,13 @@ class IpmaRepositoryImpl(
 
     override suspend fun getCities(): List<City> {
         return globalIdsDtoToCityListMapper.map(globalIdsDataSource.getGlobalIds().await())
+    }
+
+    override suspend fun getWeatherTypes(): List<WeatherType> {
+        return weatherTypeDtoToWeatherTypeListMapper.map(weatherTypesDataSource.getWeatherTypes().await())
+    }
+
+    override suspend fun getWindSpeeds(): List<WindSpeed> {
+        return windSpeedsDtoToWindSpeedsListMapper.map(windSpeedsDataSource.getWindSpeeds().await())
     }
 }

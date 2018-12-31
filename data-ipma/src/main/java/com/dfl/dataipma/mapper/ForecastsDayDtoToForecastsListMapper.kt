@@ -18,6 +18,7 @@ class ForecastsDayDtoToForecastsListMapper {
             forecastDayDto.tMax,
             forecastDayDto.precipitaProb,
             WindDirection.valueOf(forecastDayDto.predWindDir),
+            forecastDayDto.classWindSpeed,
             forecastDayDto.idWeatherType
         )
     }

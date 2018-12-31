@@ -6,5 +6,6 @@ data class Forecast(
     val maxTemp: String,
     val precipitation: String,
     val windDirection: WindDirection,
-    val weatherType : Int
+    val windSpeed: Int,
+    val weatherType: Int
 )

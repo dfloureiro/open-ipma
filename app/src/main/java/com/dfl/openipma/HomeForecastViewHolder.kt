@@ -36,6 +36,14 @@ class HomeForecastViewHolder(private val viewHolderView: View) : RecyclerView.Vi
         viewHolderView.findViewById<ImageView>(R.id.home_card_weather_icon).rotation = rotation
     }
 
+    fun setWeatherDescription(description: String) {
+        viewHolderView.findViewById<TextView>(R.id.home_card_weather_description).text = description
+    }
+
+    fun setWindSpeedDescription(description: String) {
+        viewHolderView.findViewById<TextView>(R.id.home_card_wind).text = description
+    }
+
     fun setIcon(resourceId: Int) {
         viewHolderView.findViewById<ImageView>(R.id.home_card_weather_icon).setImageResource(resourceId)
     }
