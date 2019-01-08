@@ -2,12 +2,18 @@ package com.dfl.openipma
 
 import android.arch.lifecycle.MutableLiveData
 import com.dfl.domainipma.model.CityForecast
+import com.dfl.domainipma.model.WeatherType
+import com.dfl.domainipma.model.WindSpeed
 import com.dfl.domainipma.usecase.GetForecastsForCityUseCase
+import com.dfl.domainipma.usecase.GetWeatherTypesUseCase
+import com.dfl.domainipma.usecase.GetWindSpeedsUseCase
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class CityForecastsViewModel @Inject constructor(
     private val getForecastsForCityUseCase: GetForecastsForCityUseCase,
+    private val getWindSpeedsUseCase: GetWindSpeedsUseCase,
+    private val getWeatherTypesUseCase: GetWeatherTypesUseCase,
     private val cityForecastsUiModelMapper: CityForecastUiModelMapper
 ) :
     BaseViewModel() {
@@ -17,7 +23,10 @@ class CityForecastsViewModel @Inject constructor(
     fun loadData(cityId: Int) {
         scope.launch {
             try {
-                val uiModels = cityForecastsUiModelMapper.map(loadCityForecasts(cityId))
+                val cityForecasts = loadCityForecasts(cityId)
+                val windSpeeds = loadWindSpeeds()
+                val weatherTypes = loadWeatherTypes()
+                val uiModels = cityForecastsUiModelMapper.map(cityId, cityForecasts, windSpeeds, weatherTypes)
                 cityForecastsState.value = CityForecastsState(forecastUiModels = uiModels)
             } catch (e: Exception) {
                 cityForecastsState.value = CityForecastsState(error = true)
@@ -27,6 +36,14 @@ class CityForecastsViewModel @Inject constructor(
 
     private suspend fun loadCityForecasts(cityId: Int): List<CityForecast> {
         return getForecastsForCityUseCase.buildUseCase(GetForecastsForCityUseCase.Params(cityId))
+    }
+
+    private suspend fun loadWindSpeeds(): List<WindSpeed> {
+        return getWindSpeedsUseCase.buildUseCase()
+    }
+
+    private suspend fun loadWeatherTypes(): List<WeatherType> {
+        return getWeatherTypesUseCase.buildUseCase()
     }
 
     data class CityForecastsState(

@@ -14,16 +14,13 @@ class ForecastsCityDtoToForecastsListMapper {
 
     private fun forecastDtoToForecast(dataUpdate: String, forecastCityDto: ForecastCityDto): CityForecast {
         return CityForecast(
-            dataUpdate,
-            forecastCityDto.precipitaProb.toDouble(),
-            forecastCityDto.tMin.toDouble(),
-            forecastCityDto.tMax.toDouble(),
+            forecastCityDto.tMin,
+            forecastCityDto.tMax,
+            forecastCityDto.precipitaProb,
             WindDirection.valueOf(forecastCityDto.predWindDir),
             forecastCityDto.idWeatherType,
             forecastCityDto.classWindSpeed,
             forecastCityDto.forecastDate
         )
     }
-
-    private fun String.toDouble(): Double = java.lang.Double.parseDouble(this)
 }

@@ -1,12 +1,11 @@
 package com.dfl.domainipma.model
 
 data class CityForecast(
-    val dataUpdate: String,
-    val precipitationProbability: Double,
-    val minimalTemperature: Double,
-    val maximumTemperature: Double,
+    val minTemp: String,
+    val maxTemp: String,
+    val precipitation: String,
     val windDirection: WindDirection,
-    val idWeatherType: Int,
-    val classWindSpeed: Int,
+    val windSpeed: Int,
+    val weatherType: Int,
     val forecastDate: String
 )
