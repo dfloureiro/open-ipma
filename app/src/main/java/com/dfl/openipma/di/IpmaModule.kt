@@ -21,7 +21,7 @@ import javax.inject.Singleton
 class IpmaModule {
 
     companion object {
-        const val baseUrl = "http://api.ipma.pt/"
+        const val baseUrl = "https://api.ipma.pt/"
     }
 
     @Singleton
