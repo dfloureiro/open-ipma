@@ -5,7 +5,12 @@ import com.dfl.domainipma.repository.IpmaRepository
 
 class GetWindSpeedsUseCase(private val ipmaRepository: IpmaRepository) {
 
+    private var windSpeeds: List<WindSpeed> = listOf()
+
     suspend fun buildUseCase(): List<WindSpeed> {
-        return ipmaRepository.getWindSpeeds()
+        if (windSpeeds.isEmpty()) {
+            windSpeeds = ipmaRepository.getWindSpeeds()
+        }
+        return windSpeeds
     }
 }

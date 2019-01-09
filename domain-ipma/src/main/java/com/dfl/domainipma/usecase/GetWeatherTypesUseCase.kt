@@ -5,7 +5,12 @@ import com.dfl.domainipma.repository.IpmaRepository
 
 class GetWeatherTypesUseCase(private val ipmaRepository: IpmaRepository) {
 
+    private var weatherTypes: List<WeatherType> = listOf()
+
     suspend fun buildUseCase(): List<WeatherType> {
-        return ipmaRepository.getWeatherTypes()
+        if (weatherTypes.isEmpty()) {
+            weatherTypes = ipmaRepository.getWeatherTypes()
+        }
+        return weatherTypes
     }
 }

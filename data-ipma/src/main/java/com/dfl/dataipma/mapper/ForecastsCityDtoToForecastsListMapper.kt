@@ -18,8 +18,8 @@ class ForecastsCityDtoToForecastsListMapper {
             forecastCityDto.tMax,
             forecastCityDto.precipitaProb,
             WindDirection.valueOf(forecastCityDto.predWindDir),
-            forecastCityDto.idWeatherType,
             forecastCityDto.classWindSpeed,
+            forecastCityDto.idWeatherType,
             forecastCityDto.forecastDate
         )
     }

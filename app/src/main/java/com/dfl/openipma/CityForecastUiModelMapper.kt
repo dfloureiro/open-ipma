@@ -2,13 +2,14 @@ package com.dfl.openipma
 
 import android.util.Log
 import com.dfl.domainipma.model.CityForecast
-import com.dfl.domainipma.model.Forecast
 import com.dfl.domainipma.model.WeatherType
 import com.dfl.domainipma.model.WindSpeed
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class CityForecastUiModelMapper @Inject constructor() : BaseUiModelMapper() {
 
     private val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.forLanguageTag("pt"))
