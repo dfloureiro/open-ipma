@@ -14,6 +14,7 @@ class CityForecastsFragment : BaseFragment() {
 
     @Inject
     lateinit var viewModeFactory: ViewModelFactory
+    private val cityForecastAdapter: CityForecastsAdapter = CityForecastsAdapter()
 
     private lateinit var viewModel: CityForecastsViewModel
 
@@ -44,6 +45,9 @@ class CityForecastsFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        city_recycler_view.apply {
+            adapter = cityForecastAdapter
+        }
         viewModel.cityForecastsState.observe(viewLifecycleOwner, Observer<CityForecastsViewModel.CityForecastsState> {
             when {
                 it != null -> {
@@ -56,6 +60,9 @@ class CityForecastsFragment : BaseFragment() {
                     when {
                         it.error -> city_error_text_view.visibility = View.VISIBLE
                         else -> city_error_text_view.visibility = View.GONE
+                    }
+                    if (cityForecastAdapter.itemCount == 0) {
+                        cityForecastAdapter.add(it.forecastUiModels)
                     }
                 }
             }
