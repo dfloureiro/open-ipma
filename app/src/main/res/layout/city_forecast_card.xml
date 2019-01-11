@@ -165,6 +165,7 @@
                 android:id="@+id/city_temp_status_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="temperature status"
                 app:layout_constraintLeft_toLeftOf="@id/city_card_temp_status"
                 app:layout_constraintRight_toRightOf="@+id/city_card_temp_status"
                 app:layout_constraintBottom_toTopOf="@+id/city_card_temp_status"

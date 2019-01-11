@@ -24,6 +24,9 @@
         <activity
                 android:name=".AboutActivity">
         </activity>
+        <activity
+                android:name=".CityForecastsActivity">
+        </activity>
     </application>
 
 </manifest>

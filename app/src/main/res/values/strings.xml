@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">Open IPMA</string>
+    <string name="app_name" translatable="false">Open IPMA</string>
+    <string name="home_toolbar_title">Places</string>
+    <string name="about_toolbar_title">About</string>
 </resources>
