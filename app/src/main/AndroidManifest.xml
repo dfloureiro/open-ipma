@@ -17,16 +17,35 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data
+                        android:scheme="https"
+                        android:host="www.ipma.pt"
+                        />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data
+                        android:scheme="http"
+                        android:host="www.ipma.pt"
+                        />
+            </intent-filter>
         </activity>
-        <activity
-                android:name=".AboutActivity">
-        </activity>
-        <activity
-                android:name=".CityForecastsActivity">
-        </activity>
+
+        <activity android:name=".AboutActivity"/>
+
+        <activity android:name=".CityForecastsActivity"/>
     </application>
 
 </manifest>
