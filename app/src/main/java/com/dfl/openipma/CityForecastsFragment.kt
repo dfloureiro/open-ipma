@@ -4,9 +4,13 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
+import android.support.v7.widget.CardView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import kotlinx.android.synthetic.main.city_forecasts_fragment.*
 import javax.inject.Inject
 
@@ -60,12 +64,33 @@ class CityForecastsFragment : BaseFragment() {
                         it.error -> city_error_text_view.visibility = View.VISIBLE
                         else -> city_error_text_view.visibility = View.GONE
                     }
+
+                    it.todayUiModel?.apply { setTodayUiModel(view, this) }
+
                     if (cityForecastAdapter.itemCount == 0) {
                         cityForecastAdapter.add(it.forecastUiModels)
                     }
                 }
             }
         })
+    }
+
+    private fun setTodayUiModel(view: View, uiModel: CityForecastUiModel) {
+        //TODO change the strings to the baseMapper
+        val backgroundColor = ContextCompat.getColor(view.context, uiModel.cardBackgroundColor)
+        view.findViewById<CardView>(R.id.city_today).setCardBackgroundColor(backgroundColor)
+        view.findViewById<ImageView>(R.id.city_card_weather_icon).setImageResource(uiModel.weatherTypeResourceId)
+        view.findViewById<TextView>(R.id.city_card_weather_description).text = uiModel.weatherDescription
+        val minTemp = "${uiModel.minTemperature}º"
+        view.findViewById<TextView>(R.id.city_card_min_temp).text = minTemp
+        val maxTemp = "${uiModel.maxTemperature}º"
+        view.findViewById<TextView>(R.id.city_card_max_temp).text = maxTemp
+        val precipitation = "${uiModel.precipitationProbability}%"
+        view.findViewById<TextView>(R.id.city_card_precipitation).text = precipitation
+        view.findViewById<TextView>(R.id.city_card_wind).text = uiModel.windSpeedDescription
+        view.findViewById<TextView>(R.id.city_card_wind_direction).text = "${uiModel.windRotation}"
+        view.findViewById<ImageView>(R.id.city_card_wind_icon).rotation = uiModel.windRotation
+        view.findViewById<CardView>(R.id.city_today).visibility = View.VISIBLE
     }
 
     companion object {

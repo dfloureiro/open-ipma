@@ -1,5 +1,6 @@
 package com.dfl.openipma
 
+import android.text.format.DateUtils
 import android.util.Log
 import com.dfl.domainipma.model.CityForecast
 import com.dfl.domainipma.model.WeatherType
@@ -15,7 +16,6 @@ class CityForecastUiModelMapper @Inject constructor() : BaseUiModelMapper() {
     private val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.forLanguageTag("pt"))
 
     fun map(
-        cityId: Int,
         forecasts: List<CityForecast>,
         windSpeeds: List<WindSpeed>,
         weathersType: List<WeatherType>
@@ -24,27 +24,28 @@ class CityForecastUiModelMapper @Inject constructor() : BaseUiModelMapper() {
         forecasts.forEach { forecast ->
             val forecastDate = GregorianCalendar()
             forecastDate.time = simpleDateFormat.parse(forecast.forecastDate)
-            val weatherDescription = weathersType.find { it.weatherTypeId == forecast.weatherType }?.weatherTypeDescription
-            val windSpeedDescription = windSpeeds.find { it.windSpeedId == forecast.windSpeed }?.windSpeedDescription
-            when {
-                weatherDescription != null && windSpeedDescription != null -> {
-                    cityForecastsUiModels.add(
-                        CityForecastUiModel(
-                            forecastDate,
-                            forecast.minTemp,
-                            forecast.maxTemp,
-                            forecast.precipitation.substringBefore("."),
-                            windSpeedDescription,
-                            forecast.windDirection.rotation,
-                            weatherDescription,
-                            getIcon(forecast.weatherType),
-                            getBackgroundColor(forecast.weatherType)
-                        )
-                    )
-                }
-                else -> Log.e("ups", "the city id $cityId does not have a valid forecast on date $forecastDate")
-            }
+            val weatherDescription =
+                weathersType.find { it.weatherTypeId == forecast.weatherType }?.weatherTypeDescription ?: "Unknown"
+            val windSpeedDescription =
+                windSpeeds.find { it.windSpeedId == forecast.windSpeed }?.windSpeedDescription ?: "Unknown"
+            cityForecastsUiModels.add(
+                CityForecastUiModel(
+                    forecastDate,
+                    forecast.minTemp,
+                    forecast.maxTemp,
+                    forecast.precipitation.substringBefore("."),
+                    windSpeedDescription,
+                    forecast.windDirection.rotation,
+                    weatherDescription,
+                    getIcon(forecast.weatherType),
+                    getBackgroundColor(forecast.weatherType)
+                )
+            )
         }
         return cityForecastsUiModels
+    }
+
+    fun todayUiModel(cityForecastUiModelList: List<CityForecastUiModel>): CityForecastUiModel? {
+        return cityForecastUiModelList.find { DateUtils.isToday(it.date.timeInMillis) }
     }
 }

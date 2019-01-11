@@ -20,10 +20,12 @@ class ForecastUiModelCreator @Inject constructor() : BaseUiModelMapper() {
         val forecastUiModels = mutableListOf<ForecastUiModel>()
         forecasts.forEach { forecast ->
             val city = cities.find { it.id == forecast.cityId }
-            val weatherDescription = weathersType.find { it.weatherTypeId == forecast.weatherType }?.weatherTypeDescription
-            val windSpeedDescription = windSpeeds.find { it.windSpeedId == forecast.windSpeed }?.windSpeedDescription
+            val weatherDescription =
+                weathersType.find { it.weatherTypeId == forecast.weatherType }?.weatherTypeDescription ?: "Unknown"
+            val windSpeedDescription =
+                windSpeeds.find { it.windSpeedId == forecast.windSpeed }?.windSpeedDescription ?: "Unknown"
             when {
-                city != null && weatherDescription != null && windSpeedDescription != null ->
+                city != null ->
                     forecastUiModels.add(
                         ForecastUiModel(
                             city.id,

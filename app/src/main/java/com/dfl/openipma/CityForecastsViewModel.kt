@@ -26,8 +26,17 @@ class CityForecastsViewModel @Inject constructor(
                 val cityForecasts = loadCityForecasts(cityId)
                 val windSpeeds = loadWindSpeeds()
                 val weatherTypes = loadWeatherTypes()
-                val uiModels = cityForecastsUiModelMapper.map(cityId, cityForecasts, windSpeeds, weatherTypes)
-                cityForecastsState.value = CityForecastsState(forecastUiModels = uiModels)
+                val uiModels = cityForecastsUiModelMapper.map(cityForecasts, windSpeeds, weatherTypes)
+                val todayUiModel = cityForecastsUiModelMapper.todayUiModel(uiModels)
+                if (todayUiModel != null) {
+                    cityForecastsState.value =
+                            CityForecastsState(
+                                todayUiModel = todayUiModel,
+                                forecastUiModels = uiModels.toMutableList().also { it.remove(todayUiModel) }
+                            )
+                } else {
+                    throw IllegalArgumentException("Could not find valid today's forecast for cityId $cityId")
+                }
             } catch (e: Exception) {
                 cityForecastsState.value = CityForecastsState(error = true)
             }
@@ -49,6 +58,7 @@ class CityForecastsViewModel @Inject constructor(
     data class CityForecastsState(
         val loading: Boolean = false,
         val error: Boolean = false,
+        val todayUiModel: CityForecastUiModel? = null,
         val forecastUiModels: List<CityForecastUiModel> = listOf()
     )
 }
