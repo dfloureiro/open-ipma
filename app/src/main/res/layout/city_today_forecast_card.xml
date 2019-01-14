@@ -157,7 +157,7 @@
                 tools:text="NE"/>
 
         <ImageView
-                android:id="@+id/city_card_wind_icon"
+                android:id="@+id/city_card_wind_direction_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_navigation"
