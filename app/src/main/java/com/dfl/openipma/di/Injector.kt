@@ -2,17 +2,22 @@ package com.dfl.openipma.di
 
 import com.dfl.openipma.CityForecastsFragment
 import com.dfl.openipma.HomeFragment
+import com.dfl.openipma.IpmaApplication
 
 class Injector {
 
     private lateinit var applicationComponent: ApplicationComponent
 
-    fun inject(homeFragment: HomeFragment) {
+    fun inject(ipmaApplication: IpmaApplication) {
         applicationComponent = DaggerApplicationComponent.builder()
             .networkModule(NetworkModule())
             .ipmaModule(IpmaModule())
+            .locationModule(LocationModule(ipmaApplication))
             .build()
-            .also { it.inject(homeFragment) }
+    }
+
+    fun inject(homeFragment: HomeFragment) {
+        applicationComponent.inject(homeFragment)
     }
 
     fun inject(cityForecastsFragment: CityForecastsFragment) {

@@ -1,6 +1,7 @@
 package com.dfl.openipma
 
 import android.arch.lifecycle.MutableLiveData
+import android.location.Location
 import com.dfl.domainipma.model.*
 import com.dfl.domainipma.usecase.GetCitiesUseCase
 import com.dfl.domainipma.usecase.GetForecastsForDayUseCase
@@ -19,7 +20,7 @@ class HomeViewModel @Inject constructor(
 
     val homeViewState = MutableLiveData<HomeViewState>()
 
-    fun loadData() {
+    fun loadData(currentLocation: Location?) {
         scope.launch {
             try {
                 val forecasts = loadForecastsForDay()

@@ -1,14 +1,19 @@
 package com.dfl.openipma
 
+import android.Manifest
+import android.annotation.SuppressLint
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.android.gms.location.FusedLocationProviderClient
 import kotlinx.android.synthetic.main.home_fragment.*
 import javax.inject.Inject
 
@@ -16,6 +21,8 @@ class HomeFragment : BaseFragment() {
 
     @Inject
     lateinit var viewModeFactory: ViewModelFactory
+    @Inject
+    lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private val homeForecastAdapter: HomeForecastsAdapter = HomeForecastsAdapter(this)
 
     private lateinit var viewModel: HomeViewModel
@@ -30,7 +37,7 @@ class HomeFragment : BaseFragment() {
         (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.home_toolbar_title)
         viewModel = ViewModelProviders.of(this, viewModeFactory).get(HomeViewModel::class.java)
         when {
-            viewModel.homeViewState.value == null -> viewModel.loadData()
+            viewModel.homeViewState.value == null -> loadDataWithCurrentLocation()
         }
     }
 
@@ -63,6 +70,14 @@ class HomeFragment : BaseFragment() {
         })
     }
 
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == ACCESS_COARSE_LOCATION_ID && grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            loadDataWithCurrentLocation()
+        }
+    }
+
+
     fun loadForecastsForCity(cityId: Int, cityName: String) {
         val intent = Intent(activity, CityForecastsActivity::class.java)
         intent.putExtra(CityForecastsActivity.CITY_ID_BUNDLE_KEY, cityId)
@@ -70,7 +85,29 @@ class HomeFragment : BaseFragment() {
         (activity as MainActivity).startActivity(intent)
     }
 
+    private fun requestLocationPermission() {
+        requestPermissions(arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION), ACCESS_COARSE_LOCATION_ID)
+    }
+
+    private fun hasLocationPermission(): Boolean {
+        return ContextCompat.checkSelfPermission(
+            requireContext(),
+            Manifest.permission.ACCESS_COARSE_LOCATION
+        ) == PackageManager.PERMISSION_GRANTED
+    }
+
+    @SuppressLint("MissingPermission")
+    private fun loadDataWithCurrentLocation() {
+        if (hasLocationPermission()) {
+            fusedLocationProviderClient.lastLocation.addOnCompleteListener { viewModel.loadData(it.result) }
+        } else {
+            viewModel.loadData(null)
+        }
+    }
+
     companion object {
+        private const val ACCESS_COARSE_LOCATION_ID = 1
+
         fun newInstance(): HomeFragment {
             return HomeFragment()
         }
