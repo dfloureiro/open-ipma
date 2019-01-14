@@ -5,7 +5,6 @@
     <string name="about_toolbar_title">About</string>
 
     <string name="today_description">Today</string>
-    <string name="unknown_description">Unknown</string>
 
     <string name="weather_image_description">weather icon</string>
     <string name="precipitation_image_description">precipitation percentage</string>
