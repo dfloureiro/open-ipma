@@ -1,7 +1,6 @@
 package com.dfl.openipma
 
 import android.text.format.DateUtils
-import android.util.Log
 import com.dfl.domainipma.model.CityForecast
 import com.dfl.domainipma.model.WeatherType
 import com.dfl.domainipma.model.WindSpeed
@@ -25,9 +24,11 @@ class CityForecastUiModelMapper @Inject constructor() : BaseUiModelMapper() {
             val forecastDate = GregorianCalendar()
             forecastDate.time = simpleDateFormat.parse(forecast.forecastDate)
             val weatherDescription =
-                weathersType.find { it.weatherTypeId == forecast.weatherType }?.weatherTypeDescription ?: "Unknown"
+                weathersType.find { it.weatherTypeId == forecast.weatherType }?.weatherTypeDescription
+                    ?: defaultUnknownDescription
             val windSpeedDescription =
-                windSpeeds.find { it.windSpeedId == forecast.windSpeed }?.windSpeedDescription ?: "Unknown"
+                windSpeeds.find { it.windSpeedId == forecast.windSpeed }?.windSpeedDescription
+                    ?: defaultUnknownDescription
             cityForecastsUiModels.add(
                 CityForecastUiModel(
                     forecastDate,

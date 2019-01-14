@@ -84,11 +84,11 @@
                 android:id="@+id/home_card_weather_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
+                android:contentDescription="@string/weather_image_description"
                 app:layout_constraintRight_toLeftOf="@id/home_card_vertical_right_guideline"
                 app:layout_constraintTop_toBottomOf="@+id/home_card_horizontal_top_guideline"
                 app:layout_constraintRight_toRightOf="parent"
-                tools:src="@drawable/ic_cloudy"
-                tools:ignore="ContentDescription"/>
+                tools:src="@drawable/ic_cloudy"/>
 
         <TextView
                 android:id="@+id/home_card_max_temp"
@@ -129,7 +129,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_umbrella"
-                android:contentDescription="raining percentage"
+                android:contentDescription="@string/precipitation_image_description"
                 app:layout_constraintTop_toTopOf="@id/home_card_min_temp"
                 app:layout_constraintBottom_toTopOf="@id/home_card_horizontal_bottom_guideline"
                 app:layout_constraintEnd_toStartOf="@+id/home_card_precipitation"/>
@@ -139,7 +139,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_windy"
-                android:contentDescription="wind strength"
+                android:contentDescription="@string/wind_strength_image_description"
                 app:layout_constraintTop_toTopOf="@id/home_card_min_temp"
                 app:layout_constraintBottom_toTopOf="@id/home_card_horizontal_bottom_guideline"
                 app:layout_constraintStart_toEndOf="@+id/home_card_vertical_center_guideline"/>

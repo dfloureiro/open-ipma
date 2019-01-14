@@ -27,7 +27,7 @@ class HomeViewModel @Inject constructor(
                 val windSpeeds = loadWindSpeeds()
                 val weatherTypes = loadWeatherTypes()
                 val cities = loadCities()
-                val forecastUiModels = forecastUiModelCreator.create(forecasts, windSpeeds, weatherTypes, cities)
+                val forecastUiModels = forecastUiModelCreator.create(forecasts, windSpeeds, weatherTypes, cities, currentLocation)
                 homeViewState.value = HomeViewState(forecastUiModels = forecastUiModels)
             } catch (e: Exception) {
                 homeViewState.value = HomeViewState(error = true)

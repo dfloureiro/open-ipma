@@ -1,6 +1,10 @@
 package com.dfl.openipma
 
+import android.content.res.Resources
+
 open class BaseUiModelMapper {
+
+    internal val defaultUnknownDescription = Resources.getSystem().getString(R.string.unknown_description)
 
     internal fun getIcon(id: Int): Int {
         return when (id) {

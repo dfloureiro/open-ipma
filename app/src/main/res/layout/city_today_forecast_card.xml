@@ -57,17 +57,17 @@
                 android:id="@+id/city_card_weather_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
+                android:contentDescription="@string/weather_image_description"
                 app:layout_constraintLeft_toRightOf="@id/city_card_vertical_left_guideline"
                 app:layout_constraintTop_toBottomOf="@+id/city_card_horizontal_top_guideline"
-                tools:src="@drawable/ic_cloudy"
-                tools:ignore="ContentDescription"/>
+                tools:src="@drawable/ic_cloudy"/>
 
         <TextView
                 android:id="@+id/city_card_day_of_week"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
-                android:text="Today"
+                android:text="@string/today_description"
                 android:textColor="@android:color/white"
                 app:layout_constraintLeft_toRightOf="@+id/city_card_weather_icon"
                 app:layout_constraintTop_toTopOf="@+id/city_card_weather_icon"/>
@@ -120,7 +120,7 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_umbrella"
                 android:layout_marginTop="20dp"
-                android:contentDescription="raining percentage"
+                android:contentDescription="@string/precipitation_image_description"
                 app:layout_constraintTop_toBottomOf="@+id/city_horizontal_card_center_barrier"
                 app:layout_constraintLeft_toLeftOf="@id/city_card_precipitation"
                 app:layout_constraintRight_toRightOf="@+id/city_card_precipitation"
@@ -141,7 +141,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_windy"
-                android:contentDescription="wind strength"
+                android:contentDescription="@string/wind_strength_image_description"
                 app:layout_constraintLeft_toLeftOf="@id/city_card_wind"
                 app:layout_constraintRight_toRightOf="@+id/city_card_wind"
                 app:layout_constraintBottom_toTopOf="@+id/city_card_wind"/>
@@ -161,7 +161,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_navigation"
-                android:contentDescription="temperature status"
+                android:contentDescription="@string/wind_direction_image_description"
                 app:layout_constraintLeft_toLeftOf="@id/city_card_wind_direction"
                 app:layout_constraintRight_toRightOf="@+id/city_card_wind_direction"
                 app:layout_constraintBottom_toTopOf="@+id/city_card_wind_direction"/>
