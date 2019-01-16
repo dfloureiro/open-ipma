@@ -4,6 +4,9 @@
     <string name="settings_toolbar_title">Definições</string>
     <string name="about_toolbar_title">Sobre</string>
 
+    <string name="on_boarding_skip_button">Saltar</string>
+    <string name="on_boarding_finish_button">Terminar</string>
+
     <string name="today_description">Hoje</string>
 
     <string name="weather_image_description">icon do tempo</string>

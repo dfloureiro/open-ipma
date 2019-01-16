@@ -4,6 +4,9 @@
     <string name="settings_toolbar_title">Settings</string>
     <string name="about_toolbar_title">About</string>
 
+    <string name="on_boarding_skip_button">Skip</string>
+    <string name="on_boarding_finish_button">Finish</string>
+
     <string name="today_description">Today</string>
 
     <string name="weather_image_description">weather icon</string>
