@@ -4,6 +4,8 @@
     <string name="settings_toolbar_title">Definições</string>
     <string name="about_toolbar_title">Sobre</string>
 
+    <string name="on_boarding_location_description">Permitir que a aplicação aceda à sua localização atual por forma a fornecer melhores previsões do tempo</string>
+    <string name="on_boarding_location_button">Permitir acesso à localização</string>
     <string name="on_boarding_skip_button">Saltar</string>
     <string name="on_boarding_finish_button">Terminar</string>
 

@@ -31,14 +31,14 @@
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:paddingStart="@dimen/activity_horizontal_margin">
 
-        <Button
+        <android.support.design.button.MaterialButton
                 android:id="@+id/intro_button_skip"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start|center"
-                android:text="@string/on_boarding_skip_button"
-                android:textColor="@android:color/white"/>
+                android:backgroundTint="@android:color/transparent"
+                android:text="@string/on_boarding_skip_button"/>
 
         <LinearLayout
                 android:layout_width="wrap_content"
@@ -69,14 +69,14 @@
 
         </LinearLayout>
 
-        <Button
+        <android.support.design.button.MaterialButton
                 android:id="@+id/intro_button_finish"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end|center"
                 android:text="@string/on_boarding_finish_button"
-                android:textColor="@android:color/white"
+                android:backgroundTint="@android:color/transparent"
                 android:visibility="gone"
                 tools:visibility="visible"/>
 

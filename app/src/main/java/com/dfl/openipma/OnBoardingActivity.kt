@@ -71,9 +71,12 @@ class OnBoardingActivity : AppCompatActivity() {
 
         intro_button_skip.setOnClickListener(goToMainActivity)
         intro_button_finish.setOnClickListener(goToMainActivity)
-        intro_button_next.setOnClickListener { container.currentItem = container.currentItem + 1 }
+        intro_button_next.setOnClickListener { goToNextPage() }
     }
 
+    fun goToNextPage() {
+        container.currentItem = container.currentItem + 1
+    }
 
     private fun startMainActivity() {
         startActivity(Intent(this, MainActivity::class.java))
@@ -94,7 +97,7 @@ class OnBoardingActivity : AppCompatActivity() {
     inner class SectionsPagerAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager) {
 
         override fun getItem(position: Int): Fragment {
-            return OnBoardingLocationFragment.newInstance(position + 1)
+            return OnBoardingLocationFragment.newInstance()
         }
 
         override fun getCount(): Int {

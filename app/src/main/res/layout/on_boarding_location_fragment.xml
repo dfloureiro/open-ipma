@@ -5,21 +5,53 @@
                                              android:id="@+id/constraintLayout"
                                              android:layout_width="match_parent"
                                              android:layout_height="match_parent"
-                                             tools:context=".OnBoardingActivity$PlaceholderFragment">
+                                             android:background="@color/colorPrimary"
+                                             tools:context=".OnBoardingActivity">
 
-    <TextView
-            android:id="@+id/section_label"
+    <android.support.constraint.Guideline
+            android:id="@+id/on_boarding_location_left_guideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:layout_constraintTop_creator="1"
-            android:layout_marginStart="@dimen/activity_horizontal_margin"
-            android:layout_marginEnd="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:textColor="@android:color/white"
-            tools:text="1"
-            tools:layout_constraintLeft_creator="1"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/constraintLayout"/>
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.1"/>
+
+    <android.support.constraint.Guideline
+            android:id="@+id/on_boarding_location_right_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.9"/>
+
+    <ImageView
+            android:id="@+id/on_boarding_location_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_map_marker"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+            android:id="@+id/on_boarding_location_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="@string/on_boarding_location_description"
+            app:layout_constraintStart_toEndOf="@+id/on_boarding_location_left_guideline"
+            app:layout_constraintEnd_toStartOf="@+id/on_boarding_location_right_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/on_boarding_location_icon"/>
+
+    <android.support.design.button.MaterialButton
+            android:id="@+id/on_boarding_allow_location_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/on_boarding_location_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/on_boarding_location_description"
+            app:cornerRadius="20dp"/>
 
 </android.support.constraint.ConstraintLayout>

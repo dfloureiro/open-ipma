@@ -71,23 +71,11 @@ class HomeFragment : BaseFragment() {
         })
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == ACCESS_COARSE_LOCATION_ID && grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            loadDataWithCurrentLocation()
-        }
-    }
-
-
     fun loadForecastsForCity(cityId: Int, cityName: String) {
         val intent = Intent(activity, CityForecastsActivity::class.java)
         intent.putExtra(CityForecastsActivity.CITY_ID_BUNDLE_KEY, cityId)
         intent.putExtra(CityForecastsActivity.CITY_NAME_BUNDLE_KEY, cityName)
         (activity as MainActivity).startActivity(intent)
-    }
-
-    private fun requestLocationPermission() {
-        requestPermissions(arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION), ACCESS_COARSE_LOCATION_ID)
     }
 
     private fun hasLocationPermission(): Boolean {
@@ -107,8 +95,6 @@ class HomeFragment : BaseFragment() {
     }
 
     companion object {
-        private const val ACCESS_COARSE_LOCATION_ID = 1
-
         fun newInstance(): HomeFragment {
             return HomeFragment()
         }

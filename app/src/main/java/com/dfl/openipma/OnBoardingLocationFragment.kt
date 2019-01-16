@@ -1,47 +1,44 @@
 package com.dfl.openipma
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.on_boarding_location_fragment.*
 
-/**
- * A placeholder fragment containing a simple view.
- */
-class OnBoardingLocationFragment : Fragment() {
+class OnBoardingLocationFragment : BaseFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val rootView = inflater.inflate(R.layout.on_boarding_location_fragment, container, false)
-        return rootView
+        return inflater.inflate(R.layout.on_boarding_location_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        section_label.text = arguments?.getInt(ARG_SECTION_NUMBER).toString()
+        on_boarding_allow_location_button.setOnClickListener { requestLocationPermission() }
+    }
+
+    private fun requestLocationPermission() {
+        requestPermissions(arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION), ACCESS_COARSE_LOCATION_ID)
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == ACCESS_COARSE_LOCATION_ID && grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            (activity as OnBoardingActivity).goToNextPage()
+        }
     }
 
     companion object {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private val ARG_SECTION_NUMBER = "section_number"
 
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        fun newInstance(sectionNumber: Int): OnBoardingLocationFragment {
-            val fragment = OnBoardingLocationFragment()
-            val args = Bundle()
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber)
-            fragment.arguments = args
-            return fragment
+        private const val ACCESS_COARSE_LOCATION_ID = 1
+
+        fun newInstance(): OnBoardingLocationFragment {
+            return OnBoardingLocationFragment()
         }
     }
 }

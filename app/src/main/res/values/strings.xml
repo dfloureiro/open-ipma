@@ -4,6 +4,8 @@
     <string name="settings_toolbar_title">Settings</string>
     <string name="about_toolbar_title">About</string>
 
+    <string name="on_boarding_location_description">Allow the application to access your current location in order to provide you better weather forecasts</string>
+    <string name="on_boarding_location_button">Allow access to location</string>
     <string name="on_boarding_skip_button">Skip</string>
     <string name="on_boarding_finish_button">Finish</string>
 
