@@ -7,7 +7,7 @@ import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [ViewModelFactoryModule::class, LocationModule::class, PersistenceModule::class, IpmaUseCasesModule::class])
+@Component(modules = [ViewModelFactoryModule::class, LocationModule::class, PersistenceUseCasesModule::class, IpmaUseCasesModule::class])
 interface ApplicationComponent {
 
     fun fusedLocationProviderClient(): FusedLocationProviderClient

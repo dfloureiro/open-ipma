@@ -10,7 +10,7 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class PersistenceModule(private val context: Context) {
+class PersistenceDataModule(private val context: Context) {
 
     @Singleton
     @Provides
@@ -22,13 +22,6 @@ class PersistenceModule(private val context: Context) {
     @Provides
     fun persistenceRepository(sharedPreferences: SharedPreferences): PersistenceRepository {
         return PersistenceRepositoryImpl(sharedPreferences)
-    }
-
-    //TODO should move this for the onboarding?
-    @Singleton
-    @Provides
-    fun handleFirstLaunchUseCase(persistenceRepository: PersistenceRepository): HandleFirstLaunchUseCase {
-        return HandleFirstLaunchUseCase(persistenceRepository)
     }
 
     companion object {

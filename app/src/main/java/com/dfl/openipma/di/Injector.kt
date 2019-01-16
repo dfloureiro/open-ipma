@@ -14,7 +14,8 @@ class Injector {
             .networkModule(NetworkModule())
             .ipmaDataModule(IpmaDataModule())
             .ipmaUseCasesModule(IpmaUseCasesModule())
-            .persistenceModule(PersistenceModule(ipmaApplication))
+            .persistenceDataModule(PersistenceDataModule(ipmaApplication))
+            .persistenceUseCasesModule(PersistenceUseCasesModule())
             .locationModule(LocationModule(ipmaApplication))
             .build()
     }
