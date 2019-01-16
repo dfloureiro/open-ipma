@@ -23,7 +23,8 @@ class HomeFragment : BaseFragment() {
     lateinit var viewModeFactory: ViewModelFactory
     @Inject
     lateinit var fusedLocationProviderClient: FusedLocationProviderClient
-    private val homeForecastAdapter: HomeForecastsAdapter = HomeForecastsAdapter(this)
+    @Inject
+    lateinit var homeForecastAdapter: HomeForecastsAdapter
 
     private lateinit var viewModel: HomeViewModel
 
@@ -36,8 +37,8 @@ class HomeFragment : BaseFragment() {
         super.onCreate(savedInstanceState)
         (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.home_toolbar_title)
         viewModel = ViewModelProviders.of(this, viewModeFactory).get(HomeViewModel::class.java)
-        when {
-            viewModel.homeViewState.value == null -> loadDataWithCurrentLocation()
+        if (viewModel.homeViewState.value == null) {
+            loadDataWithCurrentLocation()
         }
     }
 

@@ -3,6 +3,7 @@ package com.dfl.openipma.di
 import com.dfl.openipma.CityForecastsFragment
 import com.dfl.openipma.HomeFragment
 import com.dfl.openipma.IpmaApplication
+import com.dfl.openipma.OnBoardingActivity
 
 class Injector {
 
@@ -11,16 +12,33 @@ class Injector {
     fun inject(ipmaApplication: IpmaApplication) {
         applicationComponent = DaggerApplicationComponent.builder()
             .networkModule(NetworkModule())
-            .ipmaModule(IpmaModule())
+            .ipmaDataModule(IpmaDataModule())
+            .ipmaUseCasesModule(IpmaUseCasesModule())
+            .persistenceModule(PersistenceModule(ipmaApplication))
             .locationModule(LocationModule(ipmaApplication))
             .build()
     }
 
     fun inject(homeFragment: HomeFragment) {
-        applicationComponent.inject(homeFragment)
+        DaggerHomeComponent.builder()
+            .applicationComponent(applicationComponent)
+            .homeModule(HomeModule(homeFragment))
+            .build()
+            .inject(homeFragment)
     }
 
     fun inject(cityForecastsFragment: CityForecastsFragment) {
-        applicationComponent.inject(cityForecastsFragment)
+        DaggerCityComponent.builder()
+            .applicationComponent(applicationComponent)
+            .cityModule(CityModule())
+            .build()
+            .inject(cityForecastsFragment)
+    }
+
+    fun inject(onBoardingActivity: OnBoardingActivity) {
+        DaggerOnBoardingComponent.builder()
+            .applicationComponent(applicationComponent)
+            .build()
+            .inject(onBoardingActivity)
     }
 }

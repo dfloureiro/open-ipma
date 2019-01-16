@@ -18,7 +18,8 @@ class CityForecastsFragment : BaseFragment() {
 
     @Inject
     lateinit var viewModeFactory: ViewModelFactory
-    private val cityForecastAdapter: CityForecastsAdapter = CityForecastsAdapter()
+    @Inject
+    lateinit var cityForecastAdapter: CityForecastsAdapter
 
     private lateinit var viewModel: CityForecastsViewModel
 

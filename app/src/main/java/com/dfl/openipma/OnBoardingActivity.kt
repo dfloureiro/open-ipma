@@ -8,7 +8,9 @@ import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import com.bskyb.domainpersistence.usecase.HandleFirstLaunchUseCase
 import kotlinx.android.synthetic.main.on_boarding_activity.*
+import javax.inject.Inject
 
 
 class OnBoardingActivity : AppCompatActivity() {
@@ -22,9 +24,19 @@ class OnBoardingActivity : AppCompatActivity() {
      * [android.support.v4.app.FragmentStatePagerAdapter].
      */
 
-    //TODO inject the sharedPreferences to ensure it only opens on the first launch
+    @Inject
+    lateinit var handleFirstLaunchUseCase: HandleFirstLaunchUseCase
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        (application as IpmaApplication).injector.inject(this)
+
+        if (handleFirstLaunchUseCase.isFirstLaunch().not()) {
+            startMainActivity()
+        }
+
         setContentView(R.layout.on_boarding_activity)
 
         val sectionsPagerAdapter = SectionsPagerAdapter(supportFragmentManager)
@@ -52,8 +64,13 @@ class OnBoardingActivity : AppCompatActivity() {
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
         })
 
-        intro_button_skip.setOnClickListener { startMainActivity() }
-        intro_button_finish.setOnClickListener { startMainActivity() }
+        val goToMainActivity: View.OnClickListener = View.OnClickListener {
+            handleFirstLaunchUseCase.setHasNotFirstLaunch()
+            startMainActivity()
+        }
+
+        intro_button_skip.setOnClickListener(goToMainActivity)
+        intro_button_finish.setOnClickListener(goToMainActivity)
         intro_button_next.setOnClickListener { container.currentItem = container.currentItem + 1 }
     }
 
@@ -65,25 +82,27 @@ class OnBoardingActivity : AppCompatActivity() {
 
     fun updateIndicators(position: Int) {
         val indicators = arrayOf(intro_indicator_0, intro_indicator_1, intro_indicator_2)
-        for (i in 0 until indicators.size) {
-            val indicator = when (i) {
+        for (indicatorPosition in 0 until indicators.size) {
+            val indicator = when (indicatorPosition) {
                 position -> R.drawable.indicator_selected
                 else -> R.drawable.indicator_unselected
             }
-            indicators[i].setBackgroundResource(indicator)
+            indicators[indicatorPosition].setBackgroundResource(indicator)
         }
     }
 
     inner class SectionsPagerAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager) {
-
-        private val numberOfOnBoardingPages = 3
 
         override fun getItem(position: Int): Fragment {
             return OnBoardingLocationFragment.newInstance(position + 1)
         }
 
         override fun getCount(): Int {
-            return numberOfOnBoardingPages
+            return NUMBER_OF_ON_BOARDING_PAGES
         }
+    }
+
+    companion object {
+        private const val NUMBER_OF_ON_BOARDING_PAGES = 3
     }
 }

@@ -50,6 +50,8 @@ dependencies {
 
     implementation project(path: ':domain-ipma')
     implementation project(path: ':data-ipma')
+    implementation project(path: ':domain-persistence')
+    implementation project(path: ':data-persistence')
 
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "com.android.support.test:runner:$test_runner_version"
