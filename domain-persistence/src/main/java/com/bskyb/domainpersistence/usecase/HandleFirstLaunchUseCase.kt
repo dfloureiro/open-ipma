@@ -9,7 +9,7 @@ class HandleFirstLaunchUseCase(private val persistenceRepository: PersistenceRep
     }
 
     fun setHasNotFirstLaunch() {
-        persistenceRepository.putBoolean(FIRST_LAUNCH_KEY, true)
+        persistenceRepository.putBoolean(FIRST_LAUNCH_KEY, false)
     }
 
     companion object {
