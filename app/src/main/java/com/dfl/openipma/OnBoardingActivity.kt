@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.bskyb.domainpersistence.usecase.HandleFirstLaunchUseCase
 import kotlinx.android.synthetic.main.on_boarding_activity.*
+import java.lang.IllegalArgumentException
 import javax.inject.Inject
 
 
@@ -75,7 +76,12 @@ class OnBoardingActivity : AppCompatActivity() {
     }
 
     fun goToNextPage() {
-        container.currentItem = container.currentItem + 1
+        val nextPagePosition = container.currentItem + 1
+        container.currentItem = nextPagePosition
+        if (nextPagePosition == NUMBER_OF_ON_BOARDING_PAGES) {
+            handleFirstLaunchUseCase.setHasNotFirstLaunch()
+            startMainActivity()
+        }
     }
 
     private fun startMainActivity() {
@@ -84,7 +90,7 @@ class OnBoardingActivity : AppCompatActivity() {
     }
 
     fun updateIndicators(position: Int) {
-        val indicators = arrayOf(intro_indicator_0, intro_indicator_1, intro_indicator_2)
+        val indicators = arrayOf(intro_indicator_0, intro_indicator_1)
         for (indicatorPosition in 0 until indicators.size) {
             val indicator = when (indicatorPosition) {
                 position -> R.drawable.indicator_selected
@@ -97,7 +103,13 @@ class OnBoardingActivity : AppCompatActivity() {
     inner class SectionsPagerAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager) {
 
         override fun getItem(position: Int): Fragment {
-            return OnBoardingLocationFragment.newInstance()
+            return when (position) {
+                0 -> OnBoardingWelcomeFragment.newInstance()
+                1 -> OnBoardingLocationFragment.newInstance()
+                else -> {
+                    throw IllegalArgumentException("oOn boarding page $position is not implemented")
+                }
+            }
         }
 
         override fun getCount(): Int {
@@ -106,6 +118,6 @@ class OnBoardingActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val NUMBER_OF_ON_BOARDING_PAGES = 3
+        private const val NUMBER_OF_ON_BOARDING_PAGES = 2
     }
 }

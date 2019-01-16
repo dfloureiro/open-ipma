@@ -60,13 +60,6 @@
                     android:layout_marginEnd="@dimen/activity_horizontal_margin"
                     android:background="@drawable/indicator_unselected"/>
 
-            <ImageView
-                    android:id="@+id/intro_indicator_2"
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                    android:background="@drawable/indicator_unselected"/>
-
         </LinearLayout>
 
         <android.support.design.button.MaterialButton

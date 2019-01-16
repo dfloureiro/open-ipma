@@ -22,38 +22,46 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.9"/>
 
-    <ImageView
-            android:id="@+id/on_boarding_location_icon"
+    <android.support.constraint.Guideline
+            android:id="@+id/on_boarding_location_bottom_guideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_map_marker"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.80"/>
+
+    <ImageView
+            android:id="@+id/on_boarding_welcome_icon"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/ic_launcher_foreground"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
     <TextView
-            android:id="@+id/on_boarding_location_description"
-            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:id="@+id/on_boarding_welcome_description"
+            style="@style/TextAppearance.MaterialComponents.Headline6"
             android:textColor="@android:color/white"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginTop="20dp"
-            android:text="@string/on_boarding_location_description"
+            android:text="@string/on_boarding_welcome_description"
             app:layout_constraintStart_toEndOf="@+id/on_boarding_location_left_guideline"
             app:layout_constraintEnd_toStartOf="@+id/on_boarding_location_right_guideline"
-            app:layout_constraintTop_toBottomOf="@+id/on_boarding_location_icon"/>
+            app:layout_constraintBottom_toTopOf="@+id/on_boarding_location_bottom_guideline"/>
 
-    <android.support.design.button.MaterialButton
-            android:id="@+id/on_boarding_allow_location_button"
-            android:layout_width="wrap_content"
+    <TextView
+            android:id="@+id/on_boarding_welcome_description_secondary"
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/on_boarding_location_button"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/on_boarding_location_description"
-            app:cornerRadius="20dp"/>
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:text="@string/on_boarding_welcome_description_secondary"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toEndOf="@+id/on_boarding_location_left_guideline"
+            app:layout_constraintEnd_toStartOf="@+id/on_boarding_location_right_guideline"
+            app:layout_constraintTop_toBottomOf="@+id/on_boarding_welcome_description"/>
 
 </android.support.constraint.ConstraintLayout>

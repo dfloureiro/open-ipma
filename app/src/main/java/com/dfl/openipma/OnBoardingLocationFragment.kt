@@ -29,6 +29,8 @@ class OnBoardingLocationFragment : BaseFragment() {
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == ACCESS_COARSE_LOCATION_ID && grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            on_boarding_allow_location_button.text = getString(R.string.on_boarding_location_button_disabled)
+            on_boarding_allow_location_button.isEnabled = false
             (activity as OnBoardingActivity).goToNextPage()
         }
     }

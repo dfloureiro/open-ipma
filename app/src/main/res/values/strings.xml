@@ -6,6 +6,9 @@
 
     <string name="on_boarding_location_description">Allow the application to access your current location in order to provide you better weather forecasts</string>
     <string name="on_boarding_location_button">Allow access to location</string>
+    <string name="on_boarding_location_button_disabled">Access to location granted</string>
+    <string name="on_boarding_welcome_description">The most accurate forecasts for Portugal</string>
+    <string name="on_boarding_welcome_description_secondary">Provided by IPMA</string>
     <string name="on_boarding_skip_button">Skip</string>
     <string name="on_boarding_finish_button">Finish</string>
 
