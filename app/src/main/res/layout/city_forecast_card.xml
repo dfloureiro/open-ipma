@@ -166,10 +166,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/temperature_change_level_description"
+                android:src="@drawable/ic_thermometer"
                 app:layout_constraintLeft_toLeftOf="@id/city_card_temp_status"
                 app:layout_constraintRight_toRightOf="@+id/city_card_temp_status"
-                app:layout_constraintBottom_toTopOf="@+id/city_card_temp_status"
-                tools:src="@drawable/ic_chart_line_up"/>
+                app:layout_constraintBottom_toTopOf="@+id/city_card_temp_status"/>
 
     </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>

@@ -13,5 +13,6 @@ data class CityForecastUiModel(
     val weatherDescription: String,
     val weatherTypeResourceId: Int,
     val cardBackgroundColor: Int,
-    val isToday: Boolean
+    val isToday: Boolean,
+    val temperatureStatusStringId: Int
 )

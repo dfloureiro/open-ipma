@@ -1,6 +1,7 @@
 package com.dfl.openipma
 
 import android.content.res.Resources
+import com.dfl.domainipma.model.TemperatureStatus
 
 open class BaseUiModelMapper {
 
@@ -69,6 +70,14 @@ open class BaseUiModelMapper {
             26 -> R.color.cloudy    //Fog
             27 -> R.color.cloudy    //Cloudy
             else -> R.color.cloudy  //Unknown
+        }
+    }
+
+    internal fun getTemperatureStatusDescription(temperatureStatus: TemperatureStatus): Int {
+        return when (temperatureStatus) {
+            TemperatureStatus.INCREASE -> R.string.temperature_rising
+            TemperatureStatus.EQUAL -> R.string.temperature_equal
+            TemperatureStatus.DECREASE -> R.string.temperature_decrease
         }
     }
 }

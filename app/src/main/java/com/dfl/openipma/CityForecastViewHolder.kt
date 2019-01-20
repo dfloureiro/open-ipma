@@ -44,4 +44,9 @@ class CityForecastViewHolder(private val viewHolderView: View) : RecyclerView.Vi
         ContextCompat.getColor(viewHolderView.context, colorId)
             .also { (viewHolderView as CardView).setCardBackgroundColor(it) }
     }
+
+    fun setTemperatureStatusDescription(resourceId: Int) {
+        val description = viewHolderView.context.getString(resourceId)
+        viewHolderView.findViewById<TextView>(R.id.city_card_temp_status).text = description
+    }
 }

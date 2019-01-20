@@ -27,6 +27,7 @@ class CityForecastsAdapter : RecyclerView.Adapter<CityForecastViewHolder>() {
             p0.setWindSpeedDescription(it.windSpeedDescription)
             p0.setIcon(it.weatherTypeResourceId)
             p0.setBackgroundColor(it.cardBackgroundColor)
+            p0.setTemperatureStatusDescription(it.temperatureStatusStringId)
         }
     }
 

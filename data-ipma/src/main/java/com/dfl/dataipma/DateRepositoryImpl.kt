@@ -8,9 +8,13 @@ import java.util.*
 class DateRepositoryImpl : DateRepository {
 
     override fun isToday(date: String): Boolean {
+        return DateUtils.isToday(getTimeInMillis(date))
+    }
+
+    override fun getTimeInMillis(date: String): Long {
         val forecastDate = GregorianCalendar()
         forecastDate.time = simpleDateFormat.parse(date)
-        return DateUtils.isToday(forecastDate.timeInMillis)
+        return forecastDate.timeInMillis
     }
 
     companion object {

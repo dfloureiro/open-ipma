@@ -40,7 +40,8 @@ class CityForecastUiModelMapper @Inject constructor() : BaseUiModelMapper() {
                     weatherDescription,
                     getIcon(forecast.weatherType),
                     getBackgroundColor(forecast.weatherType),
-                    forecast.isToday
+                    forecast.isToday,
+                    getTemperatureStatusDescription(forecast.temperatureStatus)
                 )
             )
         }
