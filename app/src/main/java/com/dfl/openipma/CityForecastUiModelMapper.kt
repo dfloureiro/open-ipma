@@ -37,6 +37,7 @@ class CityForecastUiModelMapper @Inject constructor() : BaseUiModelMapper() {
                     forecast.precipitation.substringBefore("."),
                     windSpeedDescription,
                     forecast.windDirection.rotation,
+                    forecast.windDirection.name,
                     weatherDescription,
                     getIcon(forecast.weatherType),
                     getBackgroundColor(forecast.weatherType)

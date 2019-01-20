@@ -89,7 +89,7 @@ class CityForecastsFragment : BaseFragment() {
         val precipitation = "${uiModel.precipitationProbability}%"
         view.findViewById<TextView>(R.id.city_card_precipitation).text = precipitation
         view.findViewById<TextView>(R.id.city_card_wind).text = uiModel.windSpeedDescription
-        view.findViewById<TextView>(R.id.city_card_wind_direction).text = "${uiModel.windRotation}"
+        view.findViewById<TextView>(R.id.city_card_wind_direction).text = uiModel.windDirection
         view.findViewById<ImageView>(R.id.city_card_wind_direction_icon).rotation = uiModel.windRotation
         view.findViewById<CardView>(R.id.city_today).visibility = View.VISIBLE
     }

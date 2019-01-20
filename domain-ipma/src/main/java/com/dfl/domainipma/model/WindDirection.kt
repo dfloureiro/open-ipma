@@ -1,12 +1,12 @@
 package com.dfl.domainipma.model
 
 enum class WindDirection(val direction: String, val rotation: Float) {
-    N("NORTH", 0f),
-    NE("NORTHEAST", 45f),
-    E("EAST", 90f),
-    SE("SOUTHEAST", 135f),
-    S("SOUTH", 180f),
-    SW("SOUTHWEST", 225f),
-    W("WEST", 270f),
-    NW("NORTHWEST", 315f)
+    S("SOUTH", 0f),
+    SW("SOUTHWEST", 45f),
+    W("WEST", 90f),
+    NW("NORTHWEST", 135f),
+    N("NORTH", 180f),
+    NE("NORTHEAST", 225f),
+    E("EAST", 270f),
+    SE("SOUTHEAST", 315f)
 }

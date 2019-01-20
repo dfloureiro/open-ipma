@@ -160,7 +160,7 @@
                 android:id="@+id/city_card_wind_direction_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_navigation"
+                android:src="@drawable/ic_arrow"
                 android:contentDescription="@string/wind_direction_image_description"
                 app:layout_constraintLeft_toLeftOf="@id/city_card_wind_direction"
                 app:layout_constraintRight_toRightOf="@+id/city_card_wind_direction"
