@@ -52,4 +52,9 @@ class HomeForecastViewHolder(private val viewHolderView: View) : RecyclerView.Vi
         ContextCompat.getColor(viewHolderView.context, colorId)
             .also { (viewHolderView as CardView).setCardBackgroundColor(it) }
     }
+
+    fun setHasCurrentLocation() {
+        viewHolderView.findViewById<ImageView>(R.id.home_card_current_location).rotation = 45f
+        viewHolderView.findViewById<ImageView>(R.id.home_card_current_location).visibility = View.VISIBLE
+    }
 }

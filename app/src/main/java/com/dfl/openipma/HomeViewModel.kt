@@ -3,10 +3,7 @@ package com.dfl.openipma
 import android.arch.lifecycle.MutableLiveData
 import android.location.Location
 import com.dfl.domainipma.model.*
-import com.dfl.domainipma.usecase.GetCitiesUseCase
-import com.dfl.domainipma.usecase.GetForecastsForDayUseCase
-import com.dfl.domainipma.usecase.GetWeatherTypesUseCase
-import com.dfl.domainipma.usecase.GetWindSpeedsUseCase
+import com.dfl.domainipma.usecase.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -15,7 +12,8 @@ class HomeViewModel @Inject constructor(
     private val getWindSpeedsUseCase: GetWindSpeedsUseCase,
     private val getWeatherTypesUseCase: GetWeatherTypesUseCase,
     private val getCitiesUseCase: GetCitiesUseCase,
-    private val forecastUiModelCreator: ForecastUiModelCreator
+    private val getClosestCityUseCase: GetClosestCityUseCase,
+    private val forecastUiModelMapper: ForecastUiModelMapper
 ) : BaseViewModel() {
 
     val homeViewState = MutableLiveData<HomeViewState>()
@@ -23,11 +21,12 @@ class HomeViewModel @Inject constructor(
     fun loadData(currentLocation: Location?) {
         scope.launch {
             try {
-                val forecasts = loadForecastsForDay()
+                val cities = loadCities()
+                val closestCity = getClosestCity(cities, currentLocation)
+                val forecasts = loadForecastsForDay(closestCity)
                 val windSpeeds = loadWindSpeeds()
                 val weatherTypes = loadWeatherTypes()
-                val cities = loadCities()
-                val forecastUiModels = forecastUiModelCreator.create(forecasts, windSpeeds, weatherTypes, cities, currentLocation)
+                val forecastUiModels = forecastUiModelMapper.create(forecasts, windSpeeds, weatherTypes, cities)
                 homeViewState.value = HomeViewState(forecastUiModels = forecastUiModels)
             } catch (e: Exception) {
                 homeViewState.value = HomeViewState(error = true)
@@ -35,8 +34,8 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    private suspend fun loadForecastsForDay(): List<Forecast> {
-        return getForecastsForDayUseCase.buildUseCase(GetForecastsForDayUseCase.Params(Day.TODAY))
+    private suspend fun loadForecastsForDay(closestCity: City?): List<Forecast> {
+        return getForecastsForDayUseCase.buildUseCase(GetForecastsForDayUseCase.Params(Day.TODAY, closestCity))
     }
 
     private suspend fun loadWindSpeeds(): List<WindSpeed> {
@@ -49,6 +48,19 @@ class HomeViewModel @Inject constructor(
 
     private suspend fun loadCities(): List<City> {
         return getCitiesUseCase.buildUseCase()
+    }
+
+    private suspend fun getClosestCity(cities: List<City>, location: Location?): City? {
+        return when {
+            location != null -> getClosestCityUseCase.buildUseCase(
+                GetClosestCityUseCase.Params(
+                    cities,
+                    location.longitude,
+                    location.latitude
+                )
+            )
+            else -> null
+        }
     }
 
     data class HomeViewState(

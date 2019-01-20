@@ -10,5 +10,6 @@ data class ForecastUiModel(
     val windRotation: Float,
     val weatherDescription: String,
     val weatherTypeResourceId: Int,
-    val cardBackgroundColor: Int
+    val cardBackgroundColor: Int,
+    val isClosestCity: Boolean
 )

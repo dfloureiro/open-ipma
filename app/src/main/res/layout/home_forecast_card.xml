@@ -70,6 +70,19 @@
                 app:layout_constraintTop_toBottomOf="@+id/home_card_horizontal_top_guideline"
                 tools:text="Lisboa"/>
 
+        <ImageView
+                android:id="@+id/home_card_current_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_navigation"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:contentDescription="@string/current_location_description"
+                android:visibility="gone"
+                app:layout_constraintStart_toEndOf="@id/home_card_city_name"
+                app:layout_constraintTop_toTopOf="@id/home_card_city_name"
+                app:layout_constraintBottom_toBottomOf="@+id/home_card_city_name"
+                tools:visibility="visible"/>
+
         <TextView
                 android:id="@+id/home_card_weather_description"
                 android:layout_width="wrap_content"

@@ -79,10 +79,14 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun hasLocationPermission(): Boolean {
-        return ContextCompat.checkSelfPermission(
-            requireContext(),
-            Manifest.permission.ACCESS_COARSE_LOCATION
-        ) == PackageManager.PERMISSION_GRANTED
+        val currentContext = context
+        return when {
+            currentContext != null -> return ContextCompat.checkSelfPermission(
+                currentContext,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+            else -> false
+        }
     }
 
     @SuppressLint("MissingPermission")

@@ -2,18 +2,26 @@ package com.dfl.openipma.di
 
 import com.dfl.dataipma.IpmaClient
 import com.dfl.dataipma.IpmaRepositoryImpl
+import com.dfl.dataipma.LocationRepositoryImpl
 import com.dfl.dataipma.datasource.ForecastsDataSource
 import com.dfl.dataipma.datasource.GlobalIdsDataSource
 import com.dfl.dataipma.datasource.WeatherTypesDataSource
 import com.dfl.dataipma.datasource.WindSpeedsDataSource
 import com.dfl.dataipma.mapper.*
 import com.dfl.domainipma.repository.IpmaRepository
+import com.dfl.domainipma.repository.LocationRepository
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
 @Module(includes = [NetworkModule::class])
 class IpmaDataModule {
+
+    @Singleton
+    @Provides
+    fun locationRepository(): LocationRepository {
+        return LocationRepositoryImpl()
+    }
 
     @Singleton
     @Provides

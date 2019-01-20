@@ -7,5 +7,6 @@ data class Forecast(
     val precipitation: String,
     val windDirection: WindDirection,
     val windSpeed: Int,
-    val weatherType: Int
+    val weatherType: Int,
+    val isClosestCity: Boolean = false
 )

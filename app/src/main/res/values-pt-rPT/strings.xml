@@ -19,4 +19,5 @@
     <string name="wind_strength_image_description">força do vento</string>
     <string name="wind_direction_image_description">direção do vento</string>
     <string name="temperature_change_level_description">alteração da temperatura</string>
+    <string name="current_location_description">localização atual</string>
 </resources>

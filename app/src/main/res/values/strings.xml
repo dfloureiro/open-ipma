@@ -19,4 +19,5 @@
     <string name="wind_strength_image_description">wind strength</string>
     <string name="wind_direction_image_description">wind direction</string>
     <string name="temperature_change_level_description">temperature change</string>
+    <string name="current_location_description">current location</string>
 </resources>

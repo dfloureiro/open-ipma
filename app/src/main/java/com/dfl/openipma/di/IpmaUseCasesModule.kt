@@ -1,6 +1,7 @@
 package com.dfl.openipma.di
 
 import com.dfl.domainipma.repository.IpmaRepository
+import com.dfl.domainipma.repository.LocationRepository
 import com.dfl.domainipma.usecase.*
 import dagger.Module
 import dagger.Provides
@@ -37,5 +38,11 @@ class IpmaUseCasesModule {
     @Provides
     fun getCitiesUseCase(ipmaRepository: IpmaRepository): GetCitiesUseCase {
         return GetCitiesUseCase(ipmaRepository)
+    }
+
+    @Singleton
+    @Provides
+    fun getClosestCityUseCase(locationRepository: LocationRepository): GetClosestCityUseCase {
+        return GetClosestCityUseCase(locationRepository)
     }
 }
