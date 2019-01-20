@@ -4,8 +4,9 @@ import com.dfl.dataipma.model.ForecastCityDto
 import com.dfl.dataipma.model.ForecastsCityDto
 import com.dfl.domainipma.model.CityForecast
 import com.dfl.domainipma.model.WindDirection
+import com.dfl.domainipma.repository.DateRepository
 
-class ForecastsCityDtoToForecastsListMapper {
+class ForecastsCityDtoToForecastsListMapper(private val dateRepository: DateRepository) {
 
     fun map(forecastsCityDto: ForecastsCityDto): List<CityForecast> {
         val dataUpdate = forecastsCityDto.dataUpdate
@@ -20,7 +21,8 @@ class ForecastsCityDtoToForecastsListMapper {
             WindDirection.valueOf(forecastCityDto.predWindDir),
             forecastCityDto.classWindSpeed,
             forecastCityDto.idWeatherType,
-            forecastCityDto.forecastDate
+            forecastCityDto.forecastDate,
+            dateRepository.isToday(forecastCityDto.forecastDate)
         )
     }
 }

@@ -1,6 +1,5 @@
 package com.dfl.openipma
 
-import android.text.format.DateUtils
 import com.dfl.domainipma.model.CityForecast
 import com.dfl.domainipma.model.WeatherType
 import com.dfl.domainipma.model.WindSpeed
@@ -40,14 +39,11 @@ class CityForecastUiModelMapper @Inject constructor() : BaseUiModelMapper() {
                     forecast.windDirection.name,
                     weatherDescription,
                     getIcon(forecast.weatherType),
-                    getBackgroundColor(forecast.weatherType)
+                    getBackgroundColor(forecast.weatherType),
+                    forecast.isToday
                 )
             )
         }
         return cityForecastsUiModels
-    }
-
-    fun todayUiModel(cityForecastUiModelList: List<CityForecastUiModel>): CityForecastUiModel? {
-        return cityForecastUiModelList.find { DateUtils.isToday(it.date.timeInMillis) }
     }
 }

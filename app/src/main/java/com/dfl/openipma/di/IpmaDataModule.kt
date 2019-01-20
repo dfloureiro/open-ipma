@@ -1,5 +1,6 @@
 package com.dfl.openipma.di
 
+import com.dfl.dataipma.DateRepositoryImpl
 import com.dfl.dataipma.IpmaClient
 import com.dfl.dataipma.IpmaRepositoryImpl
 import com.dfl.dataipma.LocationRepositoryImpl
@@ -8,6 +9,7 @@ import com.dfl.dataipma.datasource.GlobalIdsDataSource
 import com.dfl.dataipma.datasource.WeatherTypesDataSource
 import com.dfl.dataipma.datasource.WindSpeedsDataSource
 import com.dfl.dataipma.mapper.*
+import com.dfl.domainipma.repository.DateRepository
 import com.dfl.domainipma.repository.IpmaRepository
 import com.dfl.domainipma.repository.LocationRepository
 import dagger.Module
@@ -51,6 +53,12 @@ class IpmaDataModule {
 
     @Singleton
     @Provides
+    fun dateRepository(): DateRepository {
+        return DateRepositoryImpl()
+    }
+
+    @Singleton
+    @Provides
     fun forecastDataSource(ipmaClient: IpmaClient): ForecastsDataSource {
         return ForecastsDataSource(ipmaClient)
     }
@@ -76,8 +84,8 @@ class IpmaDataModule {
 
     @Singleton
     @Provides
-    fun forecastsCityDtoToForecastsListMapper(): ForecastsCityDtoToForecastsListMapper {
-        return ForecastsCityDtoToForecastsListMapper()
+    fun forecastsCityDtoToForecastsListMapper(dateRepository: DateRepository): ForecastsCityDtoToForecastsListMapper {
+        return ForecastsCityDtoToForecastsListMapper(dateRepository)
     }
 
     @Singleton

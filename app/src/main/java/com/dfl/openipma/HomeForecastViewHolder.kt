@@ -53,8 +53,14 @@ class HomeForecastViewHolder(private val viewHolderView: View) : RecyclerView.Vi
             .also { (viewHolderView as CardView).setCardBackgroundColor(it) }
     }
 
-    fun setHasCurrentLocation() {
-        viewHolderView.findViewById<ImageView>(R.id.home_card_current_location).rotation = 45f
-        viewHolderView.findViewById<ImageView>(R.id.home_card_current_location).visibility = View.VISIBLE
+    fun setHasCurrentLocation(isCurrentLocation: Boolean) {
+        if (isCurrentLocation) {
+            viewHolderView.findViewById<ImageView>(R.id.home_card_current_location).rotation = 45f
+        }
+        val visibility = when {
+            isCurrentLocation -> View.VISIBLE
+            else -> View.INVISIBLE
+        }
+        viewHolderView.findViewById<ImageView>(R.id.home_card_current_location).visibility = visibility
     }
 }

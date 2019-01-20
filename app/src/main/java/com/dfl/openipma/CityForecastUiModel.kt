@@ -9,8 +9,9 @@ data class CityForecastUiModel(
     val precipitationProbability: String,
     val windSpeedDescription: String,
     val windRotation: Float,
-    val windDirection : String,
+    val windDirection: String,
     val weatherDescription: String,
     val weatherTypeResourceId: Int,
-    val cardBackgroundColor: Int
+    val cardBackgroundColor: Int,
+    val isToday: Boolean
 )

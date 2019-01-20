@@ -7,5 +7,6 @@ data class CityForecast(
     val windDirection: WindDirection,
     val windSpeed: Int,
     val weatherType: Int,
-    val forecastDate: String
+    val forecastDate: String,
+    val isToday: Boolean
 )

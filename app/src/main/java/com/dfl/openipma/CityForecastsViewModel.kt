@@ -27,7 +27,7 @@ class CityForecastsViewModel @Inject constructor(
                 val windSpeeds = loadWindSpeeds()
                 val weatherTypes = loadWeatherTypes()
                 val uiModels = cityForecastsUiModelMapper.map(cityForecasts, windSpeeds, weatherTypes)
-                val todayUiModel = cityForecastsUiModelMapper.todayUiModel(uiModels)
+                val todayUiModel = uiModels.find { it.isToday }
                 if (todayUiModel != null) {
                     cityForecastsState.value =
                             CityForecastsState(

@@ -35,9 +35,7 @@ class HomeForecastsAdapter(private val homeFragment: HomeFragment) : RecyclerVie
             p0.setWindSpeedDescription(forecastUiModel.windSpeedDescription)
             p0.setIcon(forecastUiModel.weatherTypeResourceId)
             p0.setBackgroundColor(forecastUiModel.cardBackgroundColor)
-            if (forecastUiModel.isClosestCity) {
-                p0.setHasCurrentLocation()
-            }
+            p0.setHasCurrentLocation(forecastUiModel.isClosestCity)
         }
     }
 
