@@ -12,4 +12,20 @@ class PersistenceRepositoryImpl(private val sharedPreferences: SharedPreferences
     override fun getBoolean(key: String, defaultValue: Boolean): Boolean {
         return sharedPreferences.getBoolean(key, defaultValue)
     }
+
+    override fun putString(key: String, value: String) {
+        sharedPreferences.edit().putString(key, value).apply()
+    }
+
+    override fun getString(key: String, defaultValue: String?): String? {
+        return sharedPreferences.getString(key, defaultValue)
+    }
+
+    override fun putInt(key: String, value: Int) {
+        sharedPreferences.edit().putInt(key, value).apply()
+    }
+
+    override fun getInt(key: String, defaultValue: Int): Int {
+        return sharedPreferences.getInt(key, defaultValue)
+    }
 }

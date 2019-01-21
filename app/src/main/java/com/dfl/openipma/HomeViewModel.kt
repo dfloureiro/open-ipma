@@ -2,6 +2,7 @@ package com.dfl.openipma
 
 import android.arch.lifecycle.MutableLiveData
 import android.location.Location
+import com.bskyb.domainpersistence.usecase.HandleLastKnownLocationUseCase
 import com.dfl.domainipma.model.*
 import com.dfl.domainipma.usecase.*
 import kotlinx.coroutines.launch
@@ -13,6 +14,7 @@ class HomeViewModel @Inject constructor(
     private val getWeatherTypesUseCase: GetWeatherTypesUseCase,
     private val getCitiesUseCase: GetCitiesUseCase,
     private val getClosestCityUseCase: GetClosestCityUseCase,
+    private val handleLastKnownLocationUseCase: HandleLastKnownLocationUseCase,
     private val forecastUiModelMapper: ForecastUiModelMapper
 ) : BaseViewModel() {
 
@@ -52,14 +54,16 @@ class HomeViewModel @Inject constructor(
 
     private suspend fun getClosestCity(cities: List<City>, location: Location?): City? {
         return when {
-            location != null -> getClosestCityUseCase.buildUseCase(
-                GetClosestCityUseCase.Params(
-                    cities,
-                    location.longitude,
-                    location.latitude
-                )
-            )
-            else -> null
+            location != null -> {
+                getClosestCityUseCase.buildUseCase(
+                    GetClosestCityUseCase.Params(
+                        cities,
+                        location.longitude,
+                        location.latitude
+                    )
+                ).also { handleLastKnownLocationUseCase.setLastKnownTerritoryId(it.id) }
+            }
+            else -> cities.find { it.id == handleLastKnownLocationUseCase.getLastKnownTerritoryId() }
         }
     }
 

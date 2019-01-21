@@ -13,7 +13,7 @@ class HandleFirstLaunchUseCase(private val persistenceRepository: PersistenceRep
     }
 
     companion object {
-        const val FIRST_LAUNCH_KEY = "FIRST_LAUNCH_KEY"
-        const val FIRST_LAUNCH_DEFAULT_VALUE = true
+        private const val FIRST_LAUNCH_KEY = "FIRST_LAUNCH_KEY"
+        private const val FIRST_LAUNCH_DEFAULT_VALUE = true
     }
 }
