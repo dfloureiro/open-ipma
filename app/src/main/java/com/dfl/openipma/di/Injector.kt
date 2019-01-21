@@ -1,9 +1,6 @@
 package com.dfl.openipma.di
 
-import com.dfl.openipma.CityForecastsFragment
-import com.dfl.openipma.HomeFragment
-import com.dfl.openipma.IpmaApplication
-import com.dfl.openipma.OnBoardingActivity
+import com.dfl.openipma.*
 
 class Injector {
 
@@ -41,5 +38,20 @@ class Injector {
             .applicationComponent(applicationComponent)
             .build()
             .inject(onBoardingActivity)
+    }
+
+    fun inject(weatherNotificationJob: WeatherNotificationJob) {
+        DaggerWeatherJobComponent.builder()
+            .applicationComponent(DaggerApplicationComponent.builder()
+                .networkModule(NetworkModule())
+                .ipmaDataModule(IpmaDataModule())
+                .ipmaUseCasesModule(IpmaUseCasesModule())
+                .persistenceDataModule(PersistenceDataModule(weatherNotificationJob.application))
+                .persistenceUseCasesModule(PersistenceUseCasesModule())
+                .locationModule(LocationModule(weatherNotificationJob.application))
+                .build())
+            .cityModule(CityModule())
+            .build()
+            .inject(weatherNotificationJob)
     }
 }

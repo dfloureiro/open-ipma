@@ -49,6 +49,10 @@
         <activity android:name=".AboutActivity"/>
         <activity android:name=".CityForecastsActivity"/>
         <activity android:name=".SettingsActivity"/>
+
+        <service
+                android:name=".WeatherNotificationJob"
+                android:permission="android.permission.BIND_JOB_SERVICE"/>
     </application>
 
 </manifest>
