@@ -5,43 +5,50 @@ import com.dfl.domainipma.repository.LocationRepository
 import com.dfl.domainipma.usecase.*
 import dagger.Module
 import dagger.Provides
+import dagger.Reusable
 import javax.inject.Singleton
 
 @Module(includes = [IpmaDataModule::class])
-class IpmaUseCasesModule {
+object IpmaUseCasesModule {
 
-    @Singleton
+    @Reusable
     @Provides
+    @JvmStatic
     fun getForecastsForCityUseCase(ipmaRepository: IpmaRepository): GetForecastsForCityUseCase {
         return GetForecastsForCityUseCase(ipmaRepository)
     }
 
-    @Singleton
+    @Reusable
     @Provides
+    @JvmStatic
     fun getWeatherTypesUseCase(ipmaRepository: IpmaRepository): GetWeatherTypesUseCase {
         return GetWeatherTypesUseCase(ipmaRepository)
     }
 
-    @Singleton
+    @Reusable
     @Provides
+    @JvmStatic
     fun getWindSpeedsUseCase(ipmaRepository: IpmaRepository): GetWindSpeedsUseCase {
         return GetWindSpeedsUseCase(ipmaRepository)
     }
 
-    @Singleton
+    @Reusable
     @Provides
+    @JvmStatic
     fun getForecastsForDayUseCase(ipmaRepository: IpmaRepository): GetForecastsForDayUseCase {
         return GetForecastsForDayUseCase(ipmaRepository)
     }
 
-    @Singleton
+    @Reusable
     @Provides
+    @JvmStatic
     fun getCitiesUseCase(ipmaRepository: IpmaRepository): GetCitiesUseCase {
         return GetCitiesUseCase(ipmaRepository)
     }
 
-    @Singleton
+    @Reusable
     @Provides
+    @JvmStatic
     fun getClosestCityUseCase(locationRepository: LocationRepository): GetClosestCityUseCase {
         return GetClosestCityUseCase(locationRepository)
     }

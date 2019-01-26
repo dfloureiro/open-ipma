@@ -14,19 +14,22 @@ import com.dfl.domainipma.repository.IpmaRepository
 import com.dfl.domainipma.repository.LocationRepository
 import dagger.Module
 import dagger.Provides
+import dagger.Reusable
 import javax.inject.Singleton
 
 @Module(includes = [NetworkModule::class])
-class IpmaDataModule {
+object IpmaDataModule {
 
-    @Singleton
+    @Reusable
     @Provides
+    @JvmStatic
     fun locationRepository(): LocationRepository {
         return LocationRepositoryImpl()
     }
 
-    @Singleton
+    @Reusable
     @Provides
+    @JvmStatic
     fun ipmaRepository(
         forecastsDataSource: ForecastsDataSource,
         forecastsCityDtoToForecastsListMapper: ForecastsCityDtoToForecastsListMapper,
@@ -51,63 +54,73 @@ class IpmaDataModule {
         )
     }
 
-    @Singleton
+    @Reusable
     @Provides
+    @JvmStatic
     fun dateRepository(): DateRepository {
         return DateRepositoryImpl()
     }
 
-    @Singleton
+    @Reusable
     @Provides
+    @JvmStatic
     fun forecastDataSource(ipmaClient: IpmaClient): ForecastsDataSource {
         return ForecastsDataSource(ipmaClient)
     }
 
-    @Singleton
+    @Reusable
     @Provides
+    @JvmStatic
     fun globalIdsDataSource(ipmaClient: IpmaClient): GlobalIdsDataSource {
         return GlobalIdsDataSource(ipmaClient)
     }
 
 
-    @Singleton
+    @Reusable
     @Provides
+    @JvmStatic
     fun weatherTypesDataSource(ipmaClient: IpmaClient): WeatherTypesDataSource {
         return WeatherTypesDataSource(ipmaClient)
     }
 
-    @Singleton
+    @Reusable
     @Provides
+    @JvmStatic
     fun windSpeedsDataSource(ipmaClient: IpmaClient): WindSpeedsDataSource {
         return WindSpeedsDataSource(ipmaClient)
     }
 
-    @Singleton
+    @Reusable
     @Provides
+    @JvmStatic
     fun forecastsCityDtoToForecastsListMapper(dateRepository: DateRepository): ForecastsCityDtoToForecastsListMapper {
         return ForecastsCityDtoToForecastsListMapper(dateRepository)
     }
 
-    @Singleton
+    @Reusable
     @Provides
+    @JvmStatic
     fun forecastsDayDtoToForecastsListMapper(): ForecastsDayDtoToForecastsListMapper {
         return ForecastsDayDtoToForecastsListMapper()
     }
 
-    @Singleton
+    @Reusable
     @Provides
+    @JvmStatic
     fun weatherTypeDtoToWeatherTypeListMapper(): WeatherTypeDtoToWeatherTypeListMapper {
         return WeatherTypeDtoToWeatherTypeListMapper()
     }
 
-    @Singleton
+    @Reusable
     @Provides
+    @JvmStatic
     fun windSpeedsDtoToWindSpeedsListMapper(): WindSpeedsDtoToWindSpeedsListMapper {
         return WindSpeedsDtoToWindSpeedsListMapper()
     }
 
-    @Singleton
+    @Reusable
     @Provides
+    @JvmStatic
     fun globalIdsDtoToCityListMapper(): GlobalIdsDtoToCityListMapper {
         return GlobalIdsDtoToCityListMapper()
     }

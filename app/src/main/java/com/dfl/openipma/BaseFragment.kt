@@ -10,6 +10,10 @@ open class BaseFragment : Fragment() {
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
-        injector = (activity?.application as IpmaApplication).injector
+        val activity = activity
+        when {
+            activity != null -> injector = (activity.application as IpmaApplication).injector
+            else -> throw KotlinNullPointerException("can't instantiate the injector without a valid activity")
+        }
     }
 }

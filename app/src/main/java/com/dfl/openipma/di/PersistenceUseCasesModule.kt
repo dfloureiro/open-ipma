@@ -5,19 +5,22 @@ import com.bskyb.domainpersistence.usecase.HandleFirstLaunchUseCase
 import com.bskyb.domainpersistence.usecase.HandleLastKnownLocationUseCase
 import dagger.Module
 import dagger.Provides
+import dagger.Reusable
 import javax.inject.Singleton
 
 @Module(includes = [PersistenceDataModule::class])
-class PersistenceUseCasesModule {
+object PersistenceUseCasesModule {
 
-    @Singleton
+    @Reusable
     @Provides
+    @JvmStatic
     fun handleFirstLaunchUseCase(persistenceRepository: PersistenceRepository): HandleFirstLaunchUseCase {
         return HandleFirstLaunchUseCase(persistenceRepository)
     }
 
-    @Singleton
+    @Reusable
     @Provides
+    @JvmStatic
     fun handleLastKnownLocationUseCase(persistenceRepository: PersistenceRepository): HandleLastKnownLocationUseCase {
         return HandleLastKnownLocationUseCase(persistenceRepository)
     }

@@ -2,18 +2,11 @@ package com.dfl.openipma.di
 
 import com.dfl.openipma.*
 
-class Injector {
+class Injector(ipmaApplication: IpmaApplication) {
 
-    private lateinit var applicationComponent: ApplicationComponent
-
-    fun inject(ipmaApplication: IpmaApplication) {
-        applicationComponent = DaggerApplicationComponent.builder()
-            .networkModule(NetworkModule())
-            .ipmaDataModule(IpmaDataModule())
-            .ipmaUseCasesModule(IpmaUseCasesModule())
-            .persistenceDataModule(PersistenceDataModule(ipmaApplication))
-            .persistenceUseCasesModule(PersistenceUseCasesModule())
-            .locationModule(LocationModule(ipmaApplication))
+    private val applicationComponent: ApplicationComponent by lazy {
+        DaggerApplicationComponent.builder()
+            .contextModule(ContextModule(ipmaApplication))
             .build()
     }
 
@@ -28,7 +21,6 @@ class Injector {
     fun inject(cityForecastsFragment: CityForecastsFragment) {
         DaggerCityComponent.builder()
             .applicationComponent(applicationComponent)
-            .cityModule(CityModule())
             .build()
             .inject(cityForecastsFragment)
     }
@@ -42,15 +34,7 @@ class Injector {
 
     fun inject(weatherNotificationJob: WeatherNotificationJob) {
         DaggerWeatherJobComponent.builder()
-            .applicationComponent(DaggerApplicationComponent.builder()
-                .networkModule(NetworkModule())
-                .ipmaDataModule(IpmaDataModule())
-                .ipmaUseCasesModule(IpmaUseCasesModule())
-                .persistenceDataModule(PersistenceDataModule(weatherNotificationJob.application))
-                .persistenceUseCasesModule(PersistenceUseCasesModule())
-                .locationModule(LocationModule(weatherNotificationJob.application))
-                .build())
-            .cityModule(CityModule())
+            .applicationComponent(applicationComponent)
             .build()
             .inject(weatherNotificationJob)
     }

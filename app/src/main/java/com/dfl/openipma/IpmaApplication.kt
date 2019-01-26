@@ -5,5 +5,5 @@ import com.dfl.openipma.di.Injector
 
 class IpmaApplication : Application() {
 
-    val injector = Injector().also { it.inject(this) }
+    val injector: Injector by lazy { Injector(this) }
 }

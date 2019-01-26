@@ -7,24 +7,26 @@ import com.bskyb.domainpersistence.repository.PersistenceRepository
 import com.bskyb.domainpersistence.usecase.HandleFirstLaunchUseCase
 import dagger.Module
 import dagger.Provides
+import dagger.Reusable
+import javax.inject.Named
 import javax.inject.Singleton
 
-@Module
-class PersistenceDataModule(private val context: Context) {
+@Module(includes = [ContextModule::class])
+object PersistenceDataModule {
+
+    private const val PREFERENCES_FILE = "OPEN_IPMA_PREFERENCES"
 
     @Singleton
     @Provides
-    fun sharedPreferences(): SharedPreferences {
+    @JvmStatic
+    fun sharedPreferences(@Named("application") context: Context): SharedPreferences {
         return context.getSharedPreferences(PREFERENCES_FILE, Context.MODE_PRIVATE)
     }
 
-    @Singleton
+    @Reusable
     @Provides
+    @JvmStatic
     fun persistenceRepository(sharedPreferences: SharedPreferences): PersistenceRepository {
         return PersistenceRepositoryImpl(sharedPreferences)
-    }
-
-    companion object {
-        private const val PREFERENCES_FILE = "OPEN_IPMA_PREFERENCES"
     }
 }

@@ -5,11 +5,10 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class CityModule {
+object CityModule {
 
     @FragmentScope
     @Provides
-    fun cityForecastsAdapter(): CityForecastsAdapter {
-        return CityForecastsAdapter()
-    }
+    @JvmStatic
+    fun cityForecastsAdapter() = CityForecastsAdapter()
 }
