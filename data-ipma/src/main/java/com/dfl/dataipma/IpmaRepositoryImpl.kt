@@ -21,22 +21,22 @@ class IpmaRepositoryImpl(
 ) : IpmaRepository {
 
     override suspend fun getForecastsForCity(cityId: Int): List<CityForecast> {
-        return forecastsCityDtoToForecastsListMapper.map(forecastsDataSource.getForecastsForCity(cityId).await())
+        return forecastsCityDtoToForecastsListMapper.map(forecastsDataSource.getForecastsForCity(cityId))
     }
 
     override suspend fun getForecastsForDay(dayId: Int): List<Forecast> {
-        return forecastsDayDtoToForecastsListMapper.map(forecastsDataSource.getForecastsForDay(dayId).await())
+        return forecastsDayDtoToForecastsListMapper.map(forecastsDataSource.getForecastsForDay(dayId))
     }
 
     override suspend fun getCities(): List<City> {
-        return globalIdsDtoToCityListMapper.map(globalIdsDataSource.getGlobalIds().await())
+        return globalIdsDtoToCityListMapper.map(globalIdsDataSource.getGlobalIds())
     }
 
     override suspend fun getWeatherTypes(): List<WeatherType> {
-        return weatherTypeDtoToWeatherTypeListMapper.map(weatherTypesDataSource.getWeatherTypes().await())
+        return weatherTypeDtoToWeatherTypeListMapper.map(weatherTypesDataSource.getWeatherTypes())
     }
 
     override suspend fun getWindSpeeds(): List<WindSpeed> {
-        return windSpeedsDtoToWindSpeedsListMapper.map(windSpeedsDataSource.getWindSpeeds().await())
+        return windSpeedsDtoToWindSpeedsListMapper.map(windSpeedsDataSource.getWindSpeeds())
     }
 }
