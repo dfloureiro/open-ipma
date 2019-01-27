@@ -2,20 +2,18 @@ package com.dfl.openipma.di.component
 
 import com.bskyb.domainpersistence.usecase.HandleFirstLaunchUseCase
 import com.bskyb.domainpersistence.usecase.HandleLastKnownLocationUseCase
+import com.dfl.domainanalytics.usecase.HandleOnBoardingEvents
 import com.dfl.domainipma.usecase.GetForecastsForCityUseCase
 import com.dfl.domainipma.usecase.GetWeatherTypesUseCase
 import com.dfl.domainipma.usecase.GetWindSpeedsUseCase
 import com.dfl.openipma.ViewModelFactory
-import com.dfl.openipma.di.modules.IpmaUseCasesModule
-import com.dfl.openipma.di.modules.LocationModule
-import com.dfl.openipma.di.modules.PersistenceUseCasesModule
-import com.dfl.openipma.di.modules.ViewModelFactoryModule
+import com.dfl.openipma.di.modules.*
 import com.google.android.gms.location.FusedLocationProviderClient
 import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [ViewModelFactoryModule::class, LocationModule::class, PersistenceUseCasesModule::class, IpmaUseCasesModule::class])
+@Component(modules = [ViewModelFactoryModule::class, LocationModule::class, PersistenceUseCasesModule::class, IpmaUseCasesModule::class, AnalyticsUseCaseModule::class])
 interface ApplicationComponent {
 
     fun fusedLocationProviderClient(): FusedLocationProviderClient
@@ -31,4 +29,6 @@ interface ApplicationComponent {
     fun getWeatherTypesUseCase(): GetWeatherTypesUseCase
 
     fun handleLastKnownLocationUseCase(): HandleLastKnownLocationUseCase
+
+    fun handleOnBoardingEvents(): HandleOnBoardingEvents
 }

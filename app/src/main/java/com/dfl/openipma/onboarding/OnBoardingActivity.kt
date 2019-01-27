@@ -9,9 +9,10 @@ import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.bskyb.domainpersistence.usecase.HandleFirstLaunchUseCase
+import com.dfl.domainanalytics.usecase.HandleOnBoardingEvents
 import com.dfl.openipma.IpmaApplication
-import com.dfl.openipma.home.HomeActivity
 import com.dfl.openipma.R
+import com.dfl.openipma.home.HomeActivity
 import kotlinx.android.synthetic.main.on_boarding_activity.*
 import javax.inject.Inject
 
@@ -29,6 +30,8 @@ class OnBoardingActivity : AppCompatActivity() {
 
     @Inject
     lateinit var handleFirstLaunchUseCase: HandleFirstLaunchUseCase
+    @Inject
+    lateinit var handleOnBoardingEvents: HandleOnBoardingEvents
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,6 +41,8 @@ class OnBoardingActivity : AppCompatActivity() {
 
         if (handleFirstLaunchUseCase.isFirstLaunch().not()) {
             startMainActivity()
+        } else {
+            handleOnBoardingEvents.logOnBoardingBegin()
         }
 
         setContentView(R.layout.on_boarding_activity)
@@ -69,6 +74,7 @@ class OnBoardingActivity : AppCompatActivity() {
 
         val goToMainActivity: View.OnClickListener = View.OnClickListener {
             handleFirstLaunchUseCase.setHasNotFirstLaunch()
+            handleOnBoardingEvents.logOnBoardingComplete()
             startMainActivity()
         }
 
@@ -82,6 +88,7 @@ class OnBoardingActivity : AppCompatActivity() {
         container.currentItem = nextPagePosition
         if (nextPagePosition == NUMBER_OF_ON_BOARDING_PAGES) {
             handleFirstLaunchUseCase.setHasNotFirstLaunch()
+            handleOnBoardingEvents.logOnBoardingComplete()
             startMainActivity()
         }
     }

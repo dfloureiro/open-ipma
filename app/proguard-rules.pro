@@ -66,3 +66,5 @@
 -keep class com.dfl.dataipma.mapper.** { *; }
 -keep class com.dfl.dataipma.DateRepositoryImpl
 -keep class com.dfl.dataipma.IpmaClient
+
+-keep class com.dfl.domainanalytics.usecase.** { *; }

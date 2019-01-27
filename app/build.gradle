@@ -50,7 +50,7 @@ dependencies {
         exclude group: 'com.android.support'
     }
 
-    releaseImplementation("com.google.firebase:firebase-core:$firebase_version") {
+    implementation("com.google.firebase:firebase-core:$firebase_version") {
         exclude group: 'com.android.support'
     }
     releaseImplementation "com.crashlytics.sdk.android:crashlytics:$crashlytics_version"
@@ -59,6 +59,8 @@ dependencies {
     implementation project(path: ':data-ipma')
     implementation project(path: ':domain-persistence')
     implementation project(path: ':data-persistence')
+    implementation project(path: ':domain-analytics')
+    implementation project(path: ':data-analytics')
 
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "com.android.support.test:runner:$test_runner_version"
