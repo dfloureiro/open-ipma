@@ -94,5 +94,3 @@
 -keepclassmembers class kotlin.Metadata {
     public <methods>;
 }
-
--keep
