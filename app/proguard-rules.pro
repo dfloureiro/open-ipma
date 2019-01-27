@@ -56,41 +56,13 @@
     <fields>;
 }
 
-##########MOSHI
-# The name of @JsonClass types is used to look up the generated adapter.
--keepnames @com.squareup.moshi.JsonClass class *
-# Retain generated JsonAdapters if annotated type is retained.
--if @com.squareup.moshi.JsonClass class *
--keep class <1>JsonAdapter {
-    <init>(...);
-    <fields>;
-}
--if @com.squareup.moshi.JsonClass class **$*
--keep class <1>_<2>JsonAdapter {
-    <init>(...);
-    <fields>;
-}
--if @com.squareup.moshi.JsonClass class **$*$*
--keep class <1>_<2>_<3>JsonAdapter {
-    <init>(...);
-    <fields>;
-}
--if @com.squareup.moshi.JsonClass class **$*$*$*
--keep class <1>_<2>_<3>_<4>JsonAdapter {
-    <init>(...);
-    <fields>;
-}
--if @com.squareup.moshi.JsonClass class **$*$*$*$*
--keep class <1>_<2>_<3>_<4>_<5>JsonAdapter {
-    <init>(...);
-    <fields>;
-}
--if @com.squareup.moshi.JsonClass class **$*$*$*$*$*
--keep class <1>_<2>_<3>_<4>_<5>_<6>JsonAdapter {
-    <init>(...);
-    <fields>;
-}
--keep class kotlin.reflect.jvm.internal.impl.builtins.BuiltInsLoaderImpl
--keepclassmembers class kotlin.Metadata {
-    public <methods>;
-}
+-keep class com.dfl.openipma.di.** { *; }
+-keep class com.dfl.openipma.home.HomeForecastUiModelMapper
+-keep class com.dfl.openipma.home.HomeForecastViewHolder
+-keep class com.dfl.openipma.city.CityForecastUiModelMapper
+-keep class com.dfl.openipma.city.CityForecastViewHolder
+
+-keep class com.dfl.dataipma.model.** { *; }
+-keep class com.dfl.dataipma.mapper.** { *; }
+-keep class com.dfl.dataipma.DateRepositoryImpl
+-keep class com.dfl.dataipma.IpmaClient
