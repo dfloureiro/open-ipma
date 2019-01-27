@@ -10,7 +10,6 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.bskyb.domainpersistence.usecase.HandleFirstLaunchUseCase
 import kotlinx.android.synthetic.main.on_boarding_activity.*
-import java.lang.IllegalArgumentException
 import javax.inject.Inject
 
 

@@ -15,7 +15,6 @@ import com.dfl.domainipma.repository.LocationRepository
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable
-import javax.inject.Singleton
 
 @Module(includes = [NetworkModule::class])
 object IpmaDataModule {

@@ -30,10 +30,10 @@ class CityForecastsViewModel @Inject constructor(
                 val todayUiModel = uiModels.find { it.isToday }
                 if (todayUiModel != null) {
                     cityForecastsState.value =
-                            CityForecastsState(
-                                todayUiModel = todayUiModel,
-                                forecastUiModels = uiModels.toMutableList().also { it.remove(todayUiModel) }
-                            )
+                        CityForecastsState(
+                            todayUiModel = todayUiModel,
+                            forecastUiModels = uiModels.toMutableList().also { it.remove(todayUiModel) }
+                        )
                 } else {
                     throw IllegalArgumentException("Could not find valid today's forecast for cityId $cityId")
                 }

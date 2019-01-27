@@ -104,11 +104,6 @@ class WeatherNotificationJob : JobIntentService() {
         notificationManager.notify(WEATHER_NOTIFICATION_ID, notification)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        //viewModelJob.cancel()
-    }
-
     companion object {
         private const val WEATHER_NOTIFICATION_JOB_ID = 1000
         private const val WEATHER_NOTIFICATION_ID = 1001

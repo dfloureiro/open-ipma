@@ -6,7 +6,6 @@ import com.bskyb.domainpersistence.usecase.HandleLastKnownLocationUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable
-import javax.inject.Singleton
 
 @Module(includes = [PersistenceDataModule::class])
 object PersistenceUseCasesModule {

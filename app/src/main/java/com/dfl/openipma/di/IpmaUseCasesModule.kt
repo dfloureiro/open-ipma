@@ -6,7 +6,6 @@ import com.dfl.domainipma.usecase.*
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable
-import javax.inject.Singleton
 
 @Module(includes = [IpmaDataModule::class])
 object IpmaUseCasesModule {

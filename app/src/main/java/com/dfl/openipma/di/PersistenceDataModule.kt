@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.bskyb.datapersistance.PersistenceRepositoryImpl
 import com.bskyb.domainpersistence.repository.PersistenceRepository
-import com.bskyb.domainpersistence.usecase.HandleFirstLaunchUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable

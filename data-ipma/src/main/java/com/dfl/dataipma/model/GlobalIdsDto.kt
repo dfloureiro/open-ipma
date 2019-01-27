@@ -1,4 +1,5 @@
 package com.dfl.dataipma.model
+
 import com.squareup.moshi.Json
 
 
