@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'io.fabric'
 
 android {
     compileSdkVersion 28
@@ -49,6 +50,11 @@ dependencies {
         exclude group: 'com.android.support'
     }
 
+    releaseImplementation("com.google.firebase:firebase-core:$firebase_version") {
+        exclude group: 'com.android.support'
+    }
+    releaseImplementation "com.crashlytics.sdk.android:crashlytics:$crashlytics_version"
+
     implementation project(path: ':domain-ipma')
     implementation project(path: ':data-ipma')
     implementation project(path: ':domain-persistence')
@@ -58,3 +64,5 @@ dependencies {
     androidTestImplementation "com.android.support.test:runner:$test_runner_version"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$espresso_version"
 }
+
+apply plugin: 'com.google.gms.google-services'

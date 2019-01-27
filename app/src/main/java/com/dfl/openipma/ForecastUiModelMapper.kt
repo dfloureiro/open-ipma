@@ -5,10 +5,10 @@ import com.dfl.domainipma.model.City
 import com.dfl.domainipma.model.Forecast
 import com.dfl.domainipma.model.WeatherType
 import com.dfl.domainipma.model.WindSpeed
+import dagger.Reusable
 import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
+@Reusable
 class ForecastUiModelMapper @Inject constructor() : BaseUiModelMapper() {
 
     fun create(
