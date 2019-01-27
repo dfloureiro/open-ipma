@@ -1,6 +1,13 @@
 package com.dfl.openipma.di
 
-import com.dfl.openipma.*
+import com.dfl.openipma.IpmaApplication
+import com.dfl.openipma.city.CityForecastsFragment
+import com.dfl.openipma.di.component.*
+import com.dfl.openipma.di.modules.ContextModule
+import com.dfl.openipma.di.modules.HomeModule
+import com.dfl.openipma.home.HomeFragment
+import com.dfl.openipma.onboarding.OnBoardingActivity
+import com.dfl.openipma.service.WeatherNotificationJob
 
 class Injector(ipmaApplication: IpmaApplication) {
 

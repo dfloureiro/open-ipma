@@ -6,7 +6,7 @@
                                              android:layout_width="match_parent"
                                              android:layout_height="match_parent"
                                              android:background="@color/colorPrimary"
-                                             tools:context=".OnBoardingActivity">
+                                             tools:context=".onboarding.OnBoardingActivity">
 
     <android.support.constraint.Guideline
             android:id="@+id/on_boarding_location_left_guideline"

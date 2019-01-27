@@ -16,7 +16,7 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity
-                android:name=".OnBoardingActivity"
+                android:name=".onboarding.OnBoardingActivity"
                 android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -24,7 +24,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".home.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
 
@@ -46,12 +46,12 @@
                         android:scheme="http"/>
             </intent-filter>
         </activity>
-        <activity android:name=".AboutActivity"/>
-        <activity android:name=".CityForecastsActivity"/>
-        <activity android:name=".SettingsActivity"/>
+        <activity android:name=".about.AboutActivity"/>
+        <activity android:name=".city.CityForecastsActivity"/>
+        <activity android:name=".settings.SettingsActivity"/>
 
         <service
-                android:name=".WeatherNotificationJob"
+                android:name=".service.WeatherNotificationJob"
                 android:permission="android.permission.BIND_JOB_SERVICE"/>
     </application>
 
