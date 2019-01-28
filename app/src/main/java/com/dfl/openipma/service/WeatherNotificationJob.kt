@@ -21,6 +21,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.util.*
 import javax.inject.Inject
 
 
@@ -41,17 +42,6 @@ class WeatherNotificationJob : JobIntentService() {
     override fun onCreate() {
         super.onCreate()
         (application as IpmaApplication).injector.inject(this)
-    }
-
-    fun schedule(context: Context) {
-        val component = ComponentName(context, WeatherNotificationJob::class.java)
-        val builder = JobInfo.Builder(WEATHER_NOTIFICATION_JOB_ID, component)
-            // schedule it to run any time between 1 - 5 minutes
-            .setMinimumLatency(ONE_MIN.toLong())
-            .setOverrideDeadline((5 * ONE_MIN).toLong())
-
-        val jobScheduler = context.getSystemService(Context.JOB_SCHEDULER_SERVICE) as JobScheduler
-        jobScheduler.schedule(builder.build())
     }
 
     override fun onHandleWork(p0: Intent) {
@@ -109,17 +99,42 @@ class WeatherNotificationJob : JobIntentService() {
         notificationManager.notify(WEATHER_NOTIFICATION_ID, notification)
     }
 
+    override fun onStopCurrentWork(): Boolean {
+        schedule(this.applicationContext)
+        return super.onStopCurrentWork()
+    }
+
     companion object {
         private const val WEATHER_NOTIFICATION_JOB_ID = 1000
         private const val WEATHER_NOTIFICATION_ID = 1001
         private const val WEATHER_NOTIFICATION_CHANNEL_ID = "WeatherNotificationJob"
-        private const val ONE_MIN = 60 * 1000
+        private const val ESTIMATED_DOWNLOAD_BYTES: Long = 68000
+        private const val ESTIMATED_UPLOAD_BYTES: Long = 0
 
-        fun enqueueWork(context: Context, work: Intent) {
-            enqueueWork(
-                context, WeatherNotificationJob::class.java,
-                WEATHER_NOTIFICATION_JOB_ID, work
-            )
+        fun schedule(context: Context) {
+            val jobScheduler = context.getSystemService(Context.JOB_SCHEDULER_SERVICE) as JobScheduler
+            val tomorrowCalendar = GregorianCalendar()
+                .also {
+                    it.add(Calendar.DATE, 1)
+                    it.set(Calendar.HOUR_OF_DAY, 9)
+                }
+            val todayCalendar = GregorianCalendar()
+            val timeUntilTriggerJob = tomorrowCalendar.timeInMillis - todayCalendar.timeInMillis
+
+            val component = ComponentName(context, WeatherNotificationJob::class.java)
+            val builder = JobInfo.Builder(WEATHER_NOTIFICATION_JOB_ID, component)
+                .setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY)
+                .setOverrideDeadline(timeUntilTriggerJob)
+                .setPersisted(true)
+
+            when {
+                Build.VERSION.SDK_INT >= Build.VERSION_CODES.P -> builder.setEstimatedNetworkBytes(
+                    ESTIMATED_DOWNLOAD_BYTES,
+                    ESTIMATED_UPLOAD_BYTES
+                )
+            }
+
+            jobScheduler.schedule(builder.build())
         }
     }
 }

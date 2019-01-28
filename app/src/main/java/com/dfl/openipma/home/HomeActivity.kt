@@ -1,6 +1,5 @@
 package com.dfl.openipma.home
 
-import android.content.Intent
 import android.os.Bundle
 import com.dfl.openipma.R
 import com.dfl.openipma.base.OptionsMenuActivity
@@ -12,12 +11,15 @@ class HomeActivity : OptionsMenuActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.base_activity)
 
-        WeatherNotificationJob.enqueueWork(this, Intent())
-
         if (savedInstanceState == null) {
+            scheduleWeatherNotificationJob()
             supportFragmentManager.beginTransaction()
                 .replace(android.R.id.content, HomeFragment.newInstance())
                 .commit()
         }
+    }
+
+    private fun scheduleWeatherNotificationJob() {
+        WeatherNotificationJob.schedule(this.applicationContext)
     }
 }
