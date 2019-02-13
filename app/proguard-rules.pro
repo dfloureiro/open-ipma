@@ -61,6 +61,8 @@
 -keep class com.dfl.openipma.home.HomeForecastViewHolder
 -keep class com.dfl.openipma.city.CityForecastUiModelMapper
 -keep class com.dfl.openipma.city.CityForecastViewHolder
+-keep class com.dfl.openipma.service.WeatherNotificationService
+-keep class com.dfl.openipma.service.WeatherServiceNotificationContentMapper
 
 -keep class com.dfl.dataipma.model.** { *; }
 -keep class com.dfl.dataipma.mapper.** { *; }

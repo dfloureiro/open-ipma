@@ -24,4 +24,11 @@
     <string name="wind_direction_image_description">wind direction</string>
     <string name="temperature_change_level_description">temperature change</string>
     <string name="current_location_description">current location</string>
+
+    <string name="notification_channel_name">Weather notification</string>
+    <string name="notification_channel_description">Weather notifications based on your location</string>
+    <string name="notification_content_title">%1$s maximum and %2$s minimum for %3$s</string>
+
+    <string name="settings_weather_notification_preference_title">Show notification</string>
+    <string name="settings_notification_time_preference_title">Time to receive notification</string>
 </resources>

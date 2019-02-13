@@ -17,6 +17,7 @@ import com.dfl.openipma.R
 import com.dfl.openipma.ViewModelFactory
 import com.dfl.openipma.base.BaseFragment
 import com.dfl.openipma.city.CityForecastsActivity
+import com.dfl.openipma.service.AlarmManagerWrapper
 import com.google.android.gms.location.FusedLocationProviderClient
 import kotlinx.android.synthetic.main.home_fragment.*
 import javax.inject.Inject
@@ -29,6 +30,8 @@ class HomeFragment : BaseFragment() {
     lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     @Inject
     lateinit var homeForecastAdapter: HomeForecastsAdapter
+    @Inject
+    lateinit var alarmManagerWrapper: AlarmManagerWrapper
 
     private lateinit var viewModel: HomeViewModel
 
@@ -43,6 +46,9 @@ class HomeFragment : BaseFragment() {
         viewModel = ViewModelProviders.of(this, viewModeFactory).get(HomeViewModel::class.java)
         if (viewModel.homeViewState.value == null) {
             loadDataWithCurrentLocation()
+        }
+        if (savedInstanceState == null) {
+            activity?.also { alarmManagerWrapper.scheduleAlarmWeatherService(it.applicationContext) }
         }
     }
 

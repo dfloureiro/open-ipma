@@ -28,8 +28,8 @@ class ForecastsCityDtoToForecastsListMapper(private val dateRepository: DateRepo
             forecastCityDto.tMax.toDouble()
         )
         return CityForecast(
-            forecastCityDto.tMin.toDouble().toInt().toString(),
-            forecastCityDto.tMax.toDouble().toInt().toString(),
+            Math.round(forecastCityDto.tMin.toDouble()).toString(),
+            Math.round(forecastCityDto.tMax.toDouble()).toString(),
             forecastCityDto.precipitaProb,
             WindDirection.valueOf(forecastCityDto.predWindDir),
             forecastCityDto.classWindSpeed,

@@ -1,8 +1,12 @@
 package com.dfl.openipma.di.component
 
+import android.app.AlarmManager
+import android.app.NotificationManager
+import com.bskyb.domainpersistence.usecase.GetWeatherNotificationPreferencesUseCase
 import com.bskyb.domainpersistence.usecase.HandleFirstLaunchUseCase
 import com.bskyb.domainpersistence.usecase.HandleLastKnownLocationUseCase
 import com.dfl.domainanalytics.usecase.HandleOnBoardingEvents
+import com.dfl.domainipma.usecase.GetCitiesUseCase
 import com.dfl.domainipma.usecase.GetForecastsForCityUseCase
 import com.dfl.domainipma.usecase.GetWeatherTypesUseCase
 import com.dfl.domainipma.usecase.GetWindSpeedsUseCase
@@ -13,7 +17,7 @@ import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [ViewModelFactoryModule::class, LocationModule::class, PersistenceUseCasesModule::class, IpmaUseCasesModule::class, AnalyticsUseCaseModule::class])
+@Component(modules = [ViewModelFactoryModule::class, LocationModule::class, PersistenceUseCasesModule::class, IpmaUseCasesModule::class, AnalyticsUseCaseModule::class, ServiceModule::class])
 interface ApplicationComponent {
 
     fun fusedLocationProviderClient(): FusedLocationProviderClient
@@ -30,5 +34,13 @@ interface ApplicationComponent {
 
     fun handleLastKnownLocationUseCase(): HandleLastKnownLocationUseCase
 
+    fun getWeatherNotificationPreferencesUseCase(): GetWeatherNotificationPreferencesUseCase
+
     fun handleOnBoardingEvents(): HandleOnBoardingEvents
+
+    fun getCitiesUseCase(): GetCitiesUseCase
+
+    fun alarmManager(): AlarmManager
+
+    fun notificationManager(): NotificationManager
 }

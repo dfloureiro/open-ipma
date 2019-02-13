@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <SwitchPreference
-            android:defaultValue="true"
-            android:title="Settings option"
-            android:key="example_switch"
-            android:summary="Turn this option on or off"/>
+            android:key="weather_notification_preference"
+            android:title="@string/settings_weather_notification_preference_title"
+            android:defaultValue="true"/>
+
+    <ListPreference
+            android:key="notification_time_preference"
+            android:title="@string/settings_notification_time_preference_title"
+            android:defaultValue="8"
+            android:entries="@array/hours"
+            android:entryValues="@array/hoursAlias"/>
 </PreferenceScreen>

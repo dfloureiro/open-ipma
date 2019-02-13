@@ -1,6 +1,7 @@
 package com.dfl.openipma.di.modules
 
 import com.bskyb.domainpersistence.repository.PersistenceRepository
+import com.bskyb.domainpersistence.usecase.GetWeatherNotificationPreferencesUseCase
 import com.bskyb.domainpersistence.usecase.HandleFirstLaunchUseCase
 import com.bskyb.domainpersistence.usecase.HandleLastKnownLocationUseCase
 import dagger.Module
@@ -22,5 +23,12 @@ object PersistenceUseCasesModule {
     @JvmStatic
     fun handleLastKnownLocationUseCase(persistenceRepository: PersistenceRepository): HandleLastKnownLocationUseCase {
         return HandleLastKnownLocationUseCase(persistenceRepository)
+    }
+
+    @Reusable
+    @Provides
+    @JvmStatic
+    fun getWeatherNotificationPreferencesUseCase(persistenceRepository: PersistenceRepository): GetWeatherNotificationPreferencesUseCase {
+        return GetWeatherNotificationPreferencesUseCase(persistenceRepository)
     }
 }
