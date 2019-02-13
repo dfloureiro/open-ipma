@@ -31,4 +31,7 @@
 
     <string name="settings_weather_notification_preference_title">Mostrar notificação</string>
     <string name="settings_notification_time_preference_title">Hora para receber a notificação</string>
+
+    <string name="error_description">Ocorreu um erro</string>
+    <string name="error_retry_button">Tentar novamente</string>
 </resources>

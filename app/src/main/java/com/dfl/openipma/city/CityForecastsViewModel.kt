@@ -22,6 +22,7 @@ class CityForecastsViewModel @Inject constructor(
     val cityForecastsState = MutableLiveData<CityForecastsState>()
 
     fun loadData(cityId: Int) {
+        cityForecastsState.value = CityForecastsState(loading = true)
         scope.launch {
             try {
                 val cityForecasts = loadCityForecasts(cityId)

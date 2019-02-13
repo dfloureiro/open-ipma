@@ -31,4 +31,7 @@
 
     <string name="settings_weather_notification_preference_title">Show notification</string>
     <string name="settings_notification_time_preference_title">Time to receive notification</string>
+
+    <string name="error_description">Ups something went wrong</string>
+    <string name="error_retry_button">Retry</string>
 </resources>

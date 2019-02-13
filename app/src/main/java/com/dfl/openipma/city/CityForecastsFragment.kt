@@ -15,6 +15,7 @@ import com.dfl.openipma.R
 import com.dfl.openipma.ViewModelFactory
 import com.dfl.openipma.base.BaseFragment
 import kotlinx.android.synthetic.main.city_forecasts_fragment.*
+import kotlinx.android.synthetic.main.error_layout.*
 import javax.inject.Inject
 
 class CityForecastsFragment : BaseFragment() {
@@ -65,8 +66,8 @@ class CityForecastsFragment : BaseFragment() {
                     }
 
                     when {
-                        it.error -> city_error_text_view.visibility = View.VISIBLE
-                        else -> city_error_text_view.visibility = View.GONE
+                        it.error -> city_error_layout.visibility = View.VISIBLE
+                        else -> city_error_layout.visibility = View.GONE
                     }
 
                     it.todayUiModel?.apply { setTodayUiModel(view, this) }
@@ -77,6 +78,8 @@ class CityForecastsFragment : BaseFragment() {
                 }
             }
         })
+
+        error_retry_button.setOnClickListener { reloadData() }
     }
 
     private fun setTodayUiModel(view: View, uiModel: CityForecastUiModel) {
@@ -95,6 +98,14 @@ class CityForecastsFragment : BaseFragment() {
         view.findViewById<TextView>(R.id.city_card_wind_direction).text = uiModel.windDirection
         view.findViewById<ImageView>(R.id.city_card_wind_direction_icon).rotation = uiModel.windRotation
         view.findViewById<CardView>(R.id.city_today).visibility = View.VISIBLE
+    }
+
+    private fun reloadData() {
+        val cityId = arguments?.getInt(CityForecastsActivity.CITY_ID_BUNDLE_KEY)
+        when {
+            cityId != null -> viewModel.loadData(cityId)
+            else -> throw IllegalArgumentException("Cannot get forecasts from null cityId")
+        }
     }
 
     companion object {

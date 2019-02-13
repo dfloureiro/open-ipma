@@ -19,6 +19,7 @@ import com.dfl.openipma.base.BaseFragment
 import com.dfl.openipma.city.CityForecastsActivity
 import com.dfl.openipma.service.AlarmManagerWrapper
 import com.google.android.gms.location.FusedLocationProviderClient
+import kotlinx.android.synthetic.main.error_layout.*
 import kotlinx.android.synthetic.main.home_fragment.*
 import javax.inject.Inject
 
@@ -70,8 +71,8 @@ class HomeFragment : BaseFragment() {
                     }
 
                     when {
-                        it.error -> home_error_text_view.visibility = View.VISIBLE
-                        else -> home_error_text_view.visibility = View.GONE
+                        it.error -> home_error_layout.visibility = View.VISIBLE
+                        else -> home_error_layout.visibility = View.GONE
                     }
                     if (homeForecastAdapter.itemCount == 0) {
                         homeForecastAdapter.add(it.homeForecastUiModels)
@@ -79,6 +80,8 @@ class HomeFragment : BaseFragment() {
                 }
             }
         })
+
+        error_retry_button.setOnClickListener { loadDataWithCurrentLocation() }
     }
 
     fun loadForecastsForCity(cityId: Int, cityName: String) {

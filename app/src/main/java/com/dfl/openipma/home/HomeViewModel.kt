@@ -22,6 +22,7 @@ class HomeViewModel @Inject constructor(
     val homeViewState = MutableLiveData<HomeViewState>()
 
     fun loadData(currentLocation: Location?) {
+        homeViewState.value = HomeViewState(loading = true)
         scope.launch {
             try {
                 val cities = loadCities()
