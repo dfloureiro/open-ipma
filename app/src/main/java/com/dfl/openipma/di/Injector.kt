@@ -8,6 +8,7 @@ import com.dfl.openipma.di.modules.HomeModule
 import com.dfl.openipma.home.HomeFragment
 import com.dfl.openipma.onboarding.OnBoardingActivity
 import com.dfl.openipma.service.WeatherNotificationService
+import com.dfl.openipma.settings.SettingsFragment
 
 class Injector(ipmaApplication: IpmaApplication) {
 
@@ -44,5 +45,12 @@ class Injector(ipmaApplication: IpmaApplication) {
             .applicationComponent(applicationComponent)
             .build()
             .inject(weatherNotificationService)
+    }
+
+    fun inject(settingsFragment: SettingsFragment) {
+        DaggerSettingsComponent.builder()
+            .applicationComponent(applicationComponent)
+            .build()
+            .inject(settingsFragment)
     }
 }
