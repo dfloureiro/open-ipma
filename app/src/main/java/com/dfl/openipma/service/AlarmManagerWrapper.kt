@@ -21,7 +21,7 @@ class AlarmManagerWrapper @Inject constructor(
         val notificationHour = getWeatherNotificationPreferencesUseCase.getHourForWeatherNotification()
         val timeInMillisToTriggerAlarm = GregorianCalendar.getInstance()
             .let {
-                if (isNotificationHourAfterCurrentTime(notificationHour)) {
+                if (isNotificationHourBeforeCurrentTime(notificationHour)) {
                     it.add(GregorianCalendar.DATE, 1)
                 }
                 it.set(GregorianCalendar.HOUR_OF_DAY, notificationHour)
@@ -59,7 +59,7 @@ class AlarmManagerWrapper @Inject constructor(
         }
     }
 
-    private fun isNotificationHourAfterCurrentTime(notificationHour: Int): Boolean {
+    private fun isNotificationHourBeforeCurrentTime(notificationHour: Int): Boolean {
         val timeOfTheAlarmAsToday = GregorianCalendar.getInstance()
             .let {
                 it.set(GregorianCalendar.HOUR_OF_DAY, notificationHour)
@@ -67,7 +67,7 @@ class AlarmManagerWrapper @Inject constructor(
                 it.set(GregorianCalendar.SECOND, ALARM_NOTIFICATION_SECONDS)
                 it.timeInMillis
             }
-        return timeOfTheAlarmAsToday >= GregorianCalendar.getInstance().timeInMillis
+        return timeOfTheAlarmAsToday < GregorianCalendar.getInstance().timeInMillis
     }
 
     companion object {
