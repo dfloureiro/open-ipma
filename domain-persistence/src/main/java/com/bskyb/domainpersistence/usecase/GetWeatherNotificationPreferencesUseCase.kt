@@ -14,7 +14,7 @@ class GetWeatherNotificationPreferencesUseCase(private val preferencesRepository
     }
 
     companion object {
-        private const val WEATHER_NOTIFICATION_KEY = "weather_notification_preference"
+        const val WEATHER_NOTIFICATION_KEY = "weather_notification_preference"
         private const val WEATHER_NOTIFICATION_DEFAULT_VALUE = true
         private const val NOTIFICATION_TIME_KEY = "notification_time_preference"
         private const val NOTIFICATION_TIME_DEFAULT_VALUE = "8"

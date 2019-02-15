@@ -12,6 +12,10 @@ class HandleLastKnownLocationUseCase(private val persistenceRepository: Persiste
         persistenceRepository.putInt(LAST_KNOWN_TERRITORY_KEY, territoryId)
     }
 
+    fun wasLastKnownTerritoryIdSet(): Boolean {
+        return getLastKnownTerritoryId() != LAST_KNOWN_TERRITORY_DEFAULT_VALUE
+    }
+
     companion object {
         private const val LAST_KNOWN_TERRITORY_KEY = "LAST_KNOWN_TERRITORY_KEY"
         private const val LAST_KNOWN_TERRITORY_DEFAULT_VALUE = 0

@@ -30,6 +30,7 @@
     <string name="notification_content_title">%1$s máxima e %2$s mínima para %3$s</string>
 
     <string name="settings_weather_notification_preference_title">Mostrar notificação</string>
+    <string name="settings_weather_notification_preference_description_disabled">Desativado porque não foi encontrada nenhuma localização atual válida</string>
     <string name="settings_notification_time_preference_title">Hora para receber a notificação</string>
 
     <string name="error_description">Ocorreu um erro</string>
