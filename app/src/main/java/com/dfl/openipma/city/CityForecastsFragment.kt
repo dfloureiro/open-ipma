@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import com.dfl.domainanalytics.usecase.HandleOnScreenOpenEvents
 import com.dfl.openipma.R
 import com.dfl.openipma.ViewModelFactory
 import com.dfl.openipma.base.BaseFragment
@@ -24,6 +25,8 @@ class CityForecastsFragment : BaseFragment() {
     lateinit var viewModeFactory: ViewModelFactory
     @Inject
     lateinit var cityForecastAdapter: CityForecastsAdapter
+    @Inject
+    lateinit var handleOnScreenOpenEvents: HandleOnScreenOpenEvents
 
     private lateinit var viewModel: CityForecastsViewModel
 
@@ -36,6 +39,9 @@ class CityForecastsFragment : BaseFragment() {
         super.onCreate(savedInstanceState)
         val cityId = arguments?.getInt(CityForecastsActivity.CITY_ID_BUNDLE_KEY)
         if (cityId != null) {
+            if (savedInstanceState == null) {
+                handleOnScreenOpenEvents.logCityForecastsScreenLaunch(cityId)
+            }
             viewModel = ViewModelProviders.of(this, viewModeFactory).get(CityForecastsViewModel::class.java)
             when {
                 viewModel.cityForecastsState.value == null -> {

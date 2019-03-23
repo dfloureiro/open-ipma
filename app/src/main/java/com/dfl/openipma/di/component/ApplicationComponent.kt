@@ -6,6 +6,8 @@ import com.bskyb.domainpersistence.usecase.GetWeatherNotificationPreferencesUseC
 import com.bskyb.domainpersistence.usecase.HandleFirstLaunchUseCase
 import com.bskyb.domainpersistence.usecase.HandleLastKnownLocationUseCase
 import com.dfl.domainanalytics.usecase.HandleOnBoardingEvents
+import com.dfl.domainanalytics.usecase.HandleOnScreenOpenEvents
+import com.dfl.domainanalytics.usecase.HandleOnSettingsChangeEvents
 import com.dfl.domainipma.usecase.GetCitiesUseCase
 import com.dfl.domainipma.usecase.GetForecastsForCityUseCase
 import com.dfl.domainipma.usecase.GetWeatherTypesUseCase
@@ -37,6 +39,10 @@ interface ApplicationComponent {
     fun getWeatherNotificationPreferencesUseCase(): GetWeatherNotificationPreferencesUseCase
 
     fun handleOnBoardingEvents(): HandleOnBoardingEvents
+
+    fun handleOnScreenOpenEvents(): HandleOnScreenOpenEvents
+
+    fun handleOnSettingsChangeEvents(): HandleOnSettingsChangeEvents
 
     fun getCitiesUseCase(): GetCitiesUseCase
 

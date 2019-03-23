@@ -1,9 +1,6 @@
 package com.dfl.openipma.service
 
-import android.app.IntentService
-import android.app.Notification
-import android.app.NotificationChannel
-import android.app.NotificationManager
+import android.app.*
 import android.content.Intent
 import android.os.Build
 import android.util.Log
@@ -15,6 +12,7 @@ import com.dfl.domainipma.usecase.GetWeatherTypesUseCase
 import com.dfl.domainipma.usecase.GetWindSpeedsUseCase
 import com.dfl.openipma.IpmaApplication
 import com.dfl.openipma.R
+import com.dfl.openipma.city.CityForecastsActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -83,10 +81,19 @@ class WeatherNotificationService : IntentService(SERVICE_NAME) {
 
         val title = String.format(getString(R.string.notification_content_title), notificationContent.maximumTemperature, notificationContent.minimumTemperature, notificationContent.cityName)
 
+        val notificationIntent = Intent(this, CityForecastsActivity::class.java).also {
+            it.putExtra(CityForecastsActivity.CITY_ID_BUNDLE_KEY, notificationContent.cityId)
+            it.putExtra(CityForecastsActivity.CITY_NAME_BUNDLE_KEY, notificationContent.cityName)
+            it.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
+        }
+        val pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0)
+
         val notification = notificationBuilder
             .setContentTitle(title)
             .setContentText(notificationContent.text)
             .setSmallIcon(notificationContent.iconResourceId)
+            .setContentIntent(pendingIntent)
+            .setAutoCancel(true)
             .build()
         notificationManager.notify(WEATHER_NOTIFICATION_ID, notification)
     }

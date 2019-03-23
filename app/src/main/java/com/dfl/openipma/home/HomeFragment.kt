@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.dfl.domainanalytics.usecase.HandleOnScreenOpenEvents
 import com.dfl.openipma.R
 import com.dfl.openipma.ViewModelFactory
 import com.dfl.openipma.base.BaseFragment
@@ -33,6 +34,8 @@ class HomeFragment : BaseFragment() {
     lateinit var homeForecastAdapter: HomeForecastsAdapter
     @Inject
     lateinit var alarmManagerWrapper: AlarmManagerWrapper
+    @Inject
+    lateinit var handleOnScreenOpenEvents: HandleOnScreenOpenEvents
 
     private lateinit var viewModel: HomeViewModel
 
@@ -49,6 +52,7 @@ class HomeFragment : BaseFragment() {
             loadDataWithCurrentLocation()
         }
         if (savedInstanceState == null) {
+            handleOnScreenOpenEvents.logHomeScreenLaunch()
             activity?.also { alarmManagerWrapper.scheduleAlarmWeatherService(it.applicationContext) }
         }
     }

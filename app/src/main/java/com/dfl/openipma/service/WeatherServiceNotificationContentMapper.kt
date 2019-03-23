@@ -21,6 +21,7 @@ class WeatherServiceNotificationContentMapper @Inject constructor() : BaseUiMode
             ?: defaultUnknownDescription
 
         return NotificationContent(
+            cityId,
             "${todayForecast.maxTemp}º",
             "${todayForecast.minTemp}º",
             cityName,
