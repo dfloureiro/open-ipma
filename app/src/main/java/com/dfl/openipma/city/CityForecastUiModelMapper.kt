@@ -32,9 +32,9 @@ class CityForecastUiModelMapper @Inject constructor() : BaseUiModelMapper() {
             cityForecastsUiModels.add(
                 CityForecastUiModel(
                     forecastDate,
-                    forecast.minTemp,
-                    forecast.maxTemp,
-                    forecast.precipitation.substringBefore("."),
+                    setTemperatureSuffix(forecast.minTemp),
+                    setTemperatureSuffix(forecast.maxTemp),
+                    setPrecipitationSuffix(forecast.precipitation.substringBefore(".")),
                     windSpeedDescription,
                     forecast.windDirection.rotation,
                     forecast.windDirection.name,

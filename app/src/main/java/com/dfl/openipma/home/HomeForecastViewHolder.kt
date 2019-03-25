@@ -19,18 +19,15 @@ class HomeForecastViewHolder(private val viewHolderView: View) : RecyclerView.Vi
     }
 
     fun setMinTemperature(minTemperature: String) {
-        val text = "${minTemperature}º"
-        viewHolderView.findViewById<TextView>(R.id.home_card_min_temp).text = text
+        viewHolderView.findViewById<TextView>(R.id.home_card_min_temp).text = minTemperature
     }
 
     fun setMaxTemperature(maxTemperature: String) {
-        val text = "${maxTemperature}º"
-        viewHolderView.findViewById<TextView>(R.id.home_card_max_temp).text = text
+        viewHolderView.findViewById<TextView>(R.id.home_card_max_temp).text = maxTemperature
     }
 
     fun setPrecipitation(precipitation: String) {
-        val text = "$precipitation%"
-        viewHolderView.findViewById<TextView>(R.id.home_card_precipitation).text = text
+        viewHolderView.findViewById<TextView>(R.id.home_card_precipitation).text = precipitation
     }
 
     fun setWindRotation(rotation: Float) {

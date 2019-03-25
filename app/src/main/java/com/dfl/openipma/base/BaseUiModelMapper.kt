@@ -81,4 +81,12 @@ open class BaseUiModelMapper {
             TemperatureStatus.DECREASE -> R.string.temperature_decrease
         }
     }
+
+    internal fun setTemperatureSuffix(temperature: String): String {
+        return "${temperature}º"
+    }
+
+    internal fun setPrecipitationSuffix(precipitation: String): String {
+        return "$precipitation%"
+    }
 }

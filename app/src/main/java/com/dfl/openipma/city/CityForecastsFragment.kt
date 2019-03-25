@@ -11,7 +11,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import com.dfl.domainanalytics.usecase.HandleOnScreenOpenEvents
 import com.dfl.openipma.R
 import com.dfl.openipma.ViewModelFactory
 import com.dfl.openipma.base.BaseFragment
@@ -89,21 +88,19 @@ class CityForecastsFragment : BaseFragment() {
     }
 
     private fun setTodayUiModel(view: View, uiModel: CityForecastUiModel) {
-        //TODO change the strings to the baseMapper
-        val backgroundColor = ContextCompat.getColor(view.context, uiModel.cardBackgroundColor)
-        view.findViewById<CardView>(R.id.city_today).setCardBackgroundColor(backgroundColor)
-        view.findViewById<ImageView>(R.id.city_card_weather_icon).setImageResource(uiModel.weatherTypeResourceId)
-        view.findViewById<TextView>(R.id.city_card_weather_description).text = uiModel.weatherDescription
-        val minTemp = "${uiModel.minTemperature}º"
-        view.findViewById<TextView>(R.id.city_card_min_temp).text = minTemp
-        val maxTemp = "${uiModel.maxTemperature}º"
-        view.findViewById<TextView>(R.id.city_card_max_temp).text = maxTemp
-        val precipitation = "${uiModel.precipitationProbability}%"
-        view.findViewById<TextView>(R.id.city_card_precipitation).text = precipitation
-        view.findViewById<TextView>(R.id.city_card_wind).text = uiModel.windSpeedDescription
-        view.findViewById<TextView>(R.id.city_card_wind_direction).text = uiModel.windDirection
-        view.findViewById<ImageView>(R.id.city_card_wind_direction_icon).rotation = uiModel.windRotation
-        view.findViewById<CardView>(R.id.city_today).visibility = View.VISIBLE
+        view.also {
+            val backgroundColor = ContextCompat.getColor(it.context, uiModel.cardBackgroundColor)
+            it.findViewById<CardView>(R.id.city_today).setCardBackgroundColor(backgroundColor)
+            it.findViewById<ImageView>(R.id.city_card_weather_icon).setImageResource(uiModel.weatherTypeResourceId)
+            it.findViewById<TextView>(R.id.city_card_weather_description).text = uiModel.weatherDescription
+            it.findViewById<TextView>(R.id.city_card_min_temp).text = uiModel.minTemperature
+            it.findViewById<TextView>(R.id.city_card_max_temp).text = uiModel.maxTemperature
+            it.findViewById<TextView>(R.id.city_card_precipitation).text = uiModel.precipitationProbability
+            it.findViewById<TextView>(R.id.city_card_wind).text = uiModel.windSpeedDescription
+            it.findViewById<TextView>(R.id.city_card_wind_direction).text = uiModel.windDirection
+            it.findViewById<ImageView>(R.id.city_card_wind_direction_icon).rotation = uiModel.windRotation
+            it.findViewById<CardView>(R.id.city_today).visibility = View.VISIBLE
+        }
     }
 
     private fun reloadData() {

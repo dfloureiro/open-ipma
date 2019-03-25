@@ -22,8 +22,8 @@ class WeatherServiceNotificationContentMapper @Inject constructor() : BaseUiMode
 
         return NotificationContent(
             cityId,
-            "${todayForecast.maxTemp}º",
-            "${todayForecast.minTemp}º",
+            setTemperatureSuffix(todayForecast.maxTemp),
+            setTemperatureSuffix(todayForecast.minTemp),
             cityName,
             text,
             getIcon(todayForecast.weatherType)
