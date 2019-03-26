@@ -68,3 +68,5 @@
 -keep class com.dfl.dataipma.IpmaClient
 
 -keep class com.dfl.domainanalytics.usecase.** { *; }
+
+-keep class com.dfl.domainpersistence.usecase.** { *; }
