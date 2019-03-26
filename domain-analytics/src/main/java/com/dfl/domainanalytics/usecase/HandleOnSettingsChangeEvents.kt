@@ -14,4 +14,8 @@ class HandleOnSettingsChangeEvents(private val analyticsRepository: AnalyticsRep
             mapOf(Pair("notification_enabled", isEnabled.toString()))
         )
     }
+
+    fun setAnalyticsStatus(status: Boolean) {
+        analyticsRepository.setStatus(status)
+    }
 }

@@ -32,6 +32,8 @@
     <string name="settings_weather_notification_preference_title">Show notification</string>
     <string name="settings_weather_notification_preference_description_disabled">Disabled because no valid current location found</string>
     <string name="settings_notification_time_preference_title">Time to receive notification</string>
+    <string name="settings_analytics_status_title">Allow anonymous analytics</string>
+    <string name="settings_analytics_status_description">Allow the app to recover some anonymous analytics and crash reports</string>
 
     <string name="error_description">Ups something went wrong</string>
     <string name="error_retry_button">Retry</string>

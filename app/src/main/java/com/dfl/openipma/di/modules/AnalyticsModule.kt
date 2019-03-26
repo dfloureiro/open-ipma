@@ -11,7 +11,7 @@ import dagger.Reusable
 import javax.inject.Named
 import javax.inject.Singleton
 
-@Module(includes = [ContextModule::class])
+@Module(includes = [ContextModule::class, PersistenceUseCasesModule::class])
 object AnalyticsModule {
 
     @Singleton
@@ -31,7 +31,7 @@ object AnalyticsModule {
     @Reusable
     @Provides
     @JvmStatic
-    fun analyticsRepositoryImpl(firebaseAnalyticsWrapper: FirebaseAnalyticsWrapper): AnalyticsRepository {
-        return AnalyticsRepositoryImpl(firebaseAnalyticsWrapper)
+    fun analyticsRepositoryImpl(firebaseAnalyticsWrapper: FirebaseAnalyticsWrapper, @Named("analytics_status") analyticsStatus: Boolean): AnalyticsRepository {
+        return AnalyticsRepositoryImpl(firebaseAnalyticsWrapper).also { it.setStatus(analyticsStatus) }
     }
 }

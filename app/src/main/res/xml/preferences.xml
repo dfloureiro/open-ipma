@@ -11,4 +11,10 @@
             android:defaultValue="8"
             android:entries="@array/hours"
             android:entryValues="@array/hoursAlias"/>
+
+    <SwitchPreference
+            android:key="analytics_status"
+            android:title="@string/settings_analytics_status_title"
+            android:summary="@string/settings_analytics_status_description"
+            android:defaultValue="true"/>
 </PreferenceScreen>

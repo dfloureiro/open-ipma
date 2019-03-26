@@ -7,6 +7,7 @@ import com.bskyb.domainpersistence.usecase.HandleLastKnownLocationUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable
+import javax.inject.Named
 
 @Module(includes = [PersistenceDataModule::class])
 object PersistenceUseCasesModule {
@@ -30,5 +31,12 @@ object PersistenceUseCasesModule {
     @JvmStatic
     fun getWeatherNotificationPreferencesUseCase(persistenceRepository: PersistenceRepository): GetWeatherNotificationPreferencesUseCase {
         return GetWeatherNotificationPreferencesUseCase(persistenceRepository)
+    }
+
+    @Named("analytics_status")
+    @Provides
+    @JvmStatic
+    fun getAnalyticsStatus(getWeatherNotificationPreferencesUseCase: GetWeatherNotificationPreferencesUseCase): Boolean {
+        return getWeatherNotificationPreferencesUseCase.getAnalyticsStatus()
     }
 }

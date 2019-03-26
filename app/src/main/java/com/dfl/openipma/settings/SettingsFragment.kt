@@ -3,6 +3,7 @@ package com.dfl.openipma.settings
 import android.content.Context
 import android.os.Bundle
 import android.support.v7.preference.PreferenceFragmentCompat
+import com.bskyb.domainpersistence.usecase.GetWeatherNotificationPreferencesUseCase
 import com.bskyb.domainpersistence.usecase.GetWeatherNotificationPreferencesUseCase.Companion.WEATHER_NOTIFICATION_KEY
 import com.bskyb.domainpersistence.usecase.HandleLastKnownLocationUseCase
 import com.dfl.domainanalytics.usecase.HandleOnScreenOpenEvents
@@ -51,15 +52,19 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
         preferenceManager.sharedPreferences.registerOnSharedPreferenceChangeListener { sharedPreferences, key ->
             context?.also {
-                if (key == NOTIFICATION_TIME_PREFERENCE) {
-                    val time = sharedPreferences.getString(key, "")
-                    if (time.isNullOrEmpty().not()) {
-                        handleOnSettingsChangeEvents.logOnNotificationTimeChange(time!!)
+                when (key) {
+                    GetWeatherNotificationPreferencesUseCase.NOTIFICATION_TIME_KEY -> {
+                        val time = sharedPreferences.getString(key, "")
+                        if (time.isNullOrEmpty().not()) {
+                            handleOnSettingsChangeEvents.logOnNotificationTimeChange(time!!)
+                        }
                     }
-                } else if (key == WEATHER_NOTIFICATION_PREFERENCE) {
-                    handleOnSettingsChangeEvents.logOnNotificationStatusChange(
-                        sharedPreferences.getBoolean(key, true)
-                    )
+                    GetWeatherNotificationPreferencesUseCase.WEATHER_NOTIFICATION_KEY ->
+                        handleOnSettingsChangeEvents.logOnNotificationStatusChange(
+                            sharedPreferences.getBoolean(key, true)
+                        )
+                    GetWeatherNotificationPreferencesUseCase.ANALYTICS_STATUS_KEY ->
+                        handleOnSettingsChangeEvents.setAnalyticsStatus(sharedPreferences.getBoolean(key, true))
                 }
                 alarmManagerWrapper.scheduleAlarmWeatherService(it)
             }
@@ -67,10 +72,6 @@ class SettingsFragment : PreferenceFragmentCompat() {
     }
 
     companion object {
-
-        const val NOTIFICATION_TIME_PREFERENCE = "notification_time_preference"
-        const val WEATHER_NOTIFICATION_PREFERENCE = "weather_notification_preference"
-
         fun newInstance(): SettingsFragment {
             return SettingsFragment()
         }
