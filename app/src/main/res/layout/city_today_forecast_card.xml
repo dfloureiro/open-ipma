@@ -36,14 +36,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.15"/>
+                app:layout_constraintGuide_percent="0.08"/>
 
         <android.support.constraint.Guideline
                 android:id="@+id/city_card_horizontal_bottom_guideline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.85"/>
+                app:layout_constraintGuide_percent="0.92"/>
 
         <android.support.constraint.Barrier
                 android:id="@+id/city_horizontal_card_center_barrier"
@@ -66,6 +66,7 @@
                 android:id="@+id/city_card_day_of_week"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
                 android:textSize="20sp"
                 android:text="@string/today_description"
                 android:textColor="@android:color/white"

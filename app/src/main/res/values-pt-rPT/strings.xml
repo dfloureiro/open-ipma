@@ -12,7 +12,7 @@
     <string name="on_boarding_skip_button">Saltar</string>
     <string name="on_boarding_finish_button">Terminar</string>
 
-    <string name="today_description">Hoje</string>
+    <string name="today_description">hoje</string>
 
     <string name="temperature_rising">Subida</string>
     <string name="temperature_equal">Igual</string>

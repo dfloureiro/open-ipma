@@ -12,7 +12,7 @@
     <string name="on_boarding_skip_button">Skip</string>
     <string name="on_boarding_finish_button">Finish</string>
 
-    <string name="today_description">Today</string>
+    <string name="today_description">today</string>
 
     <string name="temperature_rising">Rise</string>
     <string name="temperature_equal">Equal</string>
