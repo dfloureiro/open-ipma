@@ -66,7 +66,7 @@
                 android:id="@+id/city_card_day_of_week"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="28sp"
+                android:textSize="20sp"
                 android:text="@string/today_description"
                 android:textColor="@android:color/white"
                 app:layout_constraintLeft_toRightOf="@+id/city_card_weather_icon"
