@@ -8,7 +8,7 @@ import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import com.bskyb.domainpersistence.usecase.HandleFirstLaunchUseCase
+import com.dfl.domainpersistence.usecase.HandleFirstLaunchUseCase
 import com.dfl.domainanalytics.usecase.HandleOnBoardingEvents
 import com.dfl.openipma.IpmaApplication
 import com.dfl.openipma.R

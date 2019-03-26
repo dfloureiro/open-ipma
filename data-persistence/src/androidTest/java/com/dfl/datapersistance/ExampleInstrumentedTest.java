@@ -1,4 +1,4 @@
-package com.bskyb.datapersistance;
+package com.dfl.datapersistance;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.bskyb.datapersistance.test", appContext.getPackageName());
+        assertEquals("com.dfl.datapersistance.test", appContext.getPackageName());
     }
 }

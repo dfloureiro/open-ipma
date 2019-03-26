@@ -2,7 +2,7 @@ package com.dfl.openipma.home
 
 import android.arch.lifecycle.MutableLiveData
 import android.location.Location
-import com.bskyb.domainpersistence.usecase.HandleLastKnownLocationUseCase
+import com.dfl.domainpersistence.usecase.HandleLastKnownLocationUseCase
 import com.dfl.domainipma.model.*
 import com.dfl.domainipma.usecase.*
 import com.dfl.openipma.base.BaseViewModel

@@ -1,6 +1,6 @@
-package com.bskyb.domainpersistence.usecase
+package com.dfl.domainpersistence.usecase
 
-import com.bskyb.domainpersistence.repository.PersistenceRepository
+import com.dfl.domainpersistence.repository.PersistenceRepository
 
 class HandleFirstLaunchUseCase(private val persistenceRepository: PersistenceRepository) {
 

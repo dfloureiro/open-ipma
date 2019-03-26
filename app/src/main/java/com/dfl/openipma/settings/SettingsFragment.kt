@@ -3,9 +3,9 @@ package com.dfl.openipma.settings
 import android.content.Context
 import android.os.Bundle
 import android.support.v7.preference.PreferenceFragmentCompat
-import com.bskyb.domainpersistence.usecase.GetWeatherNotificationPreferencesUseCase
-import com.bskyb.domainpersistence.usecase.GetWeatherNotificationPreferencesUseCase.Companion.WEATHER_NOTIFICATION_KEY
-import com.bskyb.domainpersistence.usecase.HandleLastKnownLocationUseCase
+import com.dfl.domainpersistence.usecase.GetWeatherNotificationPreferencesUseCase
+import com.dfl.domainpersistence.usecase.GetWeatherNotificationPreferencesUseCase.Companion.WEATHER_NOTIFICATION_KEY
+import com.dfl.domainpersistence.usecase.HandleLastKnownLocationUseCase
 import com.dfl.domainanalytics.usecase.HandleOnScreenOpenEvents
 import com.dfl.domainanalytics.usecase.HandleOnSettingsChangeEvents
 import com.dfl.openipma.IpmaApplication

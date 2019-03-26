@@ -1,4 +1,4 @@
-package com.bskyb.domainpersistence.repository
+package com.dfl.domainpersistence.repository
 
 interface PersistenceRepository {
 

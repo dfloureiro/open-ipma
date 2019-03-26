@@ -2,9 +2,9 @@ package com.dfl.openipma.di.component
 
 import android.app.AlarmManager
 import android.app.NotificationManager
-import com.bskyb.domainpersistence.usecase.GetWeatherNotificationPreferencesUseCase
-import com.bskyb.domainpersistence.usecase.HandleFirstLaunchUseCase
-import com.bskyb.domainpersistence.usecase.HandleLastKnownLocationUseCase
+import com.dfl.domainpersistence.usecase.GetWeatherNotificationPreferencesUseCase
+import com.dfl.domainpersistence.usecase.HandleFirstLaunchUseCase
+import com.dfl.domainpersistence.usecase.HandleLastKnownLocationUseCase
 import com.dfl.domainanalytics.usecase.HandleOnBoardingEvents
 import com.dfl.domainanalytics.usecase.HandleOnScreenOpenEvents
 import com.dfl.domainanalytics.usecase.HandleOnSettingsChangeEvents

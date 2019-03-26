@@ -4,8 +4,8 @@ import android.app.*
 import android.content.Intent
 import android.os.Build
 import android.util.Log
-import com.bskyb.domainpersistence.usecase.GetWeatherNotificationPreferencesUseCase
-import com.bskyb.domainpersistence.usecase.HandleLastKnownLocationUseCase
+import com.dfl.domainpersistence.usecase.GetWeatherNotificationPreferencesUseCase
+import com.dfl.domainpersistence.usecase.HandleLastKnownLocationUseCase
 import com.dfl.domainipma.usecase.GetCitiesUseCase
 import com.dfl.domainipma.usecase.GetForecastsForCityUseCase
 import com.dfl.domainipma.usecase.GetWeatherTypesUseCase

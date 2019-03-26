@@ -5,7 +5,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.os.Build
-import com.bskyb.domainpersistence.usecase.GetWeatherNotificationPreferencesUseCase
+import com.dfl.domainpersistence.usecase.GetWeatherNotificationPreferencesUseCase
 import dagger.Reusable
 import java.util.*
 import javax.inject.Inject
