@@ -35,6 +35,13 @@
     <string name="settings_analytics_status_title">Allow anonymous analytics</string>
     <string name="settings_analytics_status_description">Allow the app to recover some anonymous analytics and crash reports</string>
 
+    <string name="about_the_app_title">About the Weather App</string>
+    <string name="about_the_app_description">Weather is a free open-source app to follow the latest weather forecasts in Portugal.\n\n All the forecasts information present in this app are from the full responsibility and ownership of IPMA - Instituto Português do Mar e da Atmosfera.\n For more information, please visit https://api.ipma.pt .\n</string>
+    <string name="about_contact_us_title">Contact Us</string>
+    <string name="about_contact_us_description">Please fell free to send any feedback via Play Store app page https://play.google.com/store/apps/details?id=com.dfl.openipma or send them by email to dfloureiro@protonmail.com .\n</string>
+    <string name="about_our_stack_title">Our Stack</string>
+    <string name="about_our_stack_description">You can consult all the licensing and the full code base in the GitHub repository at https://github.com/dfloureiro/open-ipma .\n</string>
+
     <string name="error_description">Ups something went wrong</string>
     <string name="error_retry_button">Retry</string>
 </resources>

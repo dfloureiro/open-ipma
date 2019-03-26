@@ -11,42 +11,50 @@
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp">
 
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="@android:style/TextAppearance.Material.Title"
-                android:text="About OpenIPMA"/>
+                android:text="@string/about_the_app_title"/>
 
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="@android:style/TextAppearance.Material.Body1"
-                android:text="who what where"/>
+                android:autoLink="web"
+                android:textAlignment="textStart"
+                android:text="@string/about_the_app_description"/>
 
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="@android:style/TextAppearance.Material.Title"
-                android:text="Contact Us"/>
+                android:text="@string/about_contact_us_title"/>
 
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="@android:style/TextAppearance.Material.Body1"
-                android:text="Contact us via"/>
+                android:autoLink="web|email"
+                android:textAlignment="textStart"
+                android:text="@string/about_contact_us_description"/>
 
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="@android:style/TextAppearance.Material.Title"
-                android:text="Our Stack"/>
+                android:text="@string/about_our_stack_title"/>
 
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="@android:style/TextAppearance.Material.Body1"
-                android:text="Libraries and licenses"/>
+                android:autoLink="web"
+                android:textAlignment="textStart"
+                android:text="@string/about_our_stack_description"/>
     </LinearLayout>
 </ScrollView>
