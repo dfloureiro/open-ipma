@@ -35,7 +35,7 @@ class HomeForecastUiModelMapper @Inject constructor() : BaseUiModelMapper() {
                             city.name,
                             setTemperatureSuffix(forecast.minTemp),
                             setTemperatureSuffix(forecast.maxTemp),
-                            setPrecipitationSuffix(forecast.precipitation.substringBefore(".")),
+                            setPrecipitationSuffix(forecast.precipitation.substringBefore(precipitationDelimiter)),
                             windSpeedDescription,
                             forecast.windDirection.rotation,
                             weatherDescription,

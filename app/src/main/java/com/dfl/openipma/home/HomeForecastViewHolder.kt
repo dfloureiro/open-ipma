@@ -10,6 +10,8 @@ import com.dfl.openipma.R
 
 class HomeForecastViewHolder(private val viewHolderView: View) : RecyclerView.ViewHolder(viewHolderView) {
 
+    private val currentLocationIconRotation = 45f
+
     fun setViewHolderOnClickListener(onClickListener: View.OnClickListener) {
         viewHolderView.setOnClickListener(onClickListener)
     }
@@ -53,7 +55,8 @@ class HomeForecastViewHolder(private val viewHolderView: View) : RecyclerView.Vi
 
     fun setHasCurrentLocation(isCurrentLocation: Boolean) {
         if (isCurrentLocation) {
-            viewHolderView.findViewById<ImageView>(R.id.home_card_current_location).rotation = 45f
+            viewHolderView.findViewById<ImageView>(R.id.home_card_current_location).rotation =
+                currentLocationIconRotation
         }
         val visibility = when {
             isCurrentLocation -> View.VISIBLE

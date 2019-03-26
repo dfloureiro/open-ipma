@@ -7,6 +7,7 @@ import com.dfl.openipma.R
 open class BaseUiModelMapper {
 
     internal val defaultUnknownDescription = Resources.getSystem().getString(android.R.string.unknownName)
+    internal val precipitationDelimiter = "."
 
     internal fun getIcon(id: Int): Int {
         return when (id) {
