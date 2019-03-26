@@ -33,7 +33,7 @@
     <string name="settings_weather_notification_preference_description_disabled">Desativado porque não foi encontrada nenhuma localização atual válida</string>
     <string name="settings_notification_time_preference_title">Hora para receber a notificação</string>
     <string name="settings_analytics_status_title">Permitir estatísticas anónimas</string>
-    <string name="settings_analytics_status_description">Permitir que a aplicação recolha estatísticas anónimas e relatórios de falhas críticas</string>
+    <string name="settings_analytics_status_description">Permitir que a aplicação recolha estatísticas anônimas e relatórios de falhas críticas</string>
 
     <string name="about_the_app_title">Sobre a aplicação Tempo</string>
     <string name="about_the_app_description">Tempo é uma aplicação grátis e de código-aberto para seguir as últimas previsões meteorológias em Portugal.\n\n Todas as informações de previsões presentes nesta aplicação são da inteira responsabilidade e domíno do IPMA - Instituto Português do Mar e da Atmosfera.\n Para mais informações, por favor consulte https://api.ipma.pt .\n</string>
