@@ -32,7 +32,7 @@
     <string name="settings_weather_notification_preference_title">Mostrar notificação</string>
     <string name="settings_weather_notification_preference_description_disabled">Desativado porque não foi encontrada nenhuma localização atual válida</string>
     <string name="settings_notification_time_preference_title">Hora para receber a notificação</string>
-    <string name="settings_analytics_status_title">Permitir estatísticas anónimas</string>
+    <string name="settings_analytics_status_title">Permitir estatísticas anônimas</string>
     <string name="settings_analytics_status_description">Permitir que a aplicação recolha estatísticas anônimas e relatórios de falhas críticas</string>
 
     <string name="about_the_app_title">Sobre a aplicação Tempo</string>
