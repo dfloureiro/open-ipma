@@ -36,7 +36,7 @@
     <string name="settings_analytics_status_description">Permitir que a aplicação recolha estatísticas anônimas e relatórios de falhas críticas</string>
 
     <string name="about_the_app_title">Sobre a aplicação Tempo</string>
-    <string name="about_the_app_description">Tempo é uma aplicação grátis e de código-aberto para seguir as últimas previsões meteorológias em Portugal.\n\n Todas as informações de previsões presentes nesta aplicação são da inteira responsabilidade e domíno do IPMA - Instituto Português do Mar e da Atmosfera.\n Para mais informações, por favor consulte https://api.ipma.pt .\n</string>
+    <string name="about_the_app_description">Tempo é uma aplicação grátis e de código-aberto para seguir as últimas previsões meteorológias em Portugal.\n\n Todas as informações de previsões presentes nesta aplicação são da inteira responsabilidade e domínio do IPMA - Instituto Português do Mar e da Atmosfera.\n Para mais informações, por favor consulte https://api.ipma.pt .\n</string>
     <string name="about_contact_us_title">Contactos</string>
     <string name="about_contact_us_description">Para qualquer opinião ou sugestão utilize a nossa página na Play Store https://play.google.com/store/apps/details?id=com.dfl.openipma ou envie um email para dfloureiro@protonmail.com .\n</string>
     <string name="about_our_stack_title">Código Fonte</string>
