@@ -44,4 +44,8 @@
 
     <string name="error_description">Ocorreu um erro</string>
     <string name="error_retry_button">Tentar novamente</string>
+
+    <string name="privacy_policy_message">"Precisamos do seu consentimento para podermos continuar a melhorar a aplicação. Pedimos que nos permita:\n\n- Obter relatórios anónimos através do Firebase Crash Reporting e do Crashlytics, necessário para corrigir erros e falhas.\n\n Obter estatísticas anónimas através do Google Analytics para o Firebase, necessário para melhor entender a utilização da aplicação e como podemos melhorar.\n\n Para mais informações consulte https://firebase.google.com/support/privacy/."</string>
+    <string name="privacy_policy_allow_button">Permitir</string>
+    <string name="privacy_policy_disallow_button">Proibir</string>
 </resources>

@@ -44,4 +44,8 @@
 
     <string name="error_description">Ups something went wrong</string>
     <string name="error_retry_button">Retry</string>
+
+    <string name="privacy_policy_message">"We need your consent to keep on improving the app. Please allow us to:\n\n- Gather anonymous reports using Firebase Crash Reporting and Crashlytics, this is necessary to fix bugs and crashes.\n\n- Gather anonymous analytics using Google Analytics for Firebase, this is necessary to understand app usage and how can it improve.\n\nFor more information please visit https://firebase.google.com/support/privacy/."</string>
+    <string name="privacy_policy_allow_button">Allow</string>
+    <string name="privacy_policy_disallow_button">Disallow</string>
 </resources>
