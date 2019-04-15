@@ -1,10 +1,7 @@
 package com.dfl.openipma.di.component
 
-import android.app.AlarmManager
 import android.app.NotificationManager
-import com.dfl.domainpersistence.usecase.GetWeatherNotificationPreferencesUseCase
-import com.dfl.domainpersistence.usecase.HandleFirstLaunchUseCase
-import com.dfl.domainpersistence.usecase.HandleLastKnownLocationUseCase
+import android.app.job.JobScheduler
 import com.dfl.domainanalytics.usecase.HandleOnBoardingEvents
 import com.dfl.domainanalytics.usecase.HandleOnScreenOpenEvents
 import com.dfl.domainanalytics.usecase.HandleOnSettingsChangeEvents
@@ -12,6 +9,9 @@ import com.dfl.domainipma.usecase.GetCitiesUseCase
 import com.dfl.domainipma.usecase.GetForecastsForCityUseCase
 import com.dfl.domainipma.usecase.GetWeatherTypesUseCase
 import com.dfl.domainipma.usecase.GetWindSpeedsUseCase
+import com.dfl.domainpersistence.usecase.GetWeatherNotificationPreferencesUseCase
+import com.dfl.domainpersistence.usecase.HandleFirstLaunchUseCase
+import com.dfl.domainpersistence.usecase.HandleLastKnownLocationUseCase
 import com.dfl.openipma.ViewModelFactory
 import com.dfl.openipma.di.modules.*
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -46,7 +46,7 @@ interface ApplicationComponent {
 
     fun getCitiesUseCase(): GetCitiesUseCase
 
-    fun alarmManager(): AlarmManager
+    fun jobScheduler(): JobScheduler
 
     fun notificationManager(): NotificationManager
 }

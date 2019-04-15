@@ -20,7 +20,7 @@ import com.dfl.openipma.R
 import com.dfl.openipma.ViewModelFactory
 import com.dfl.openipma.base.BaseFragment
 import com.dfl.openipma.city.CityForecastsActivity
-import com.dfl.openipma.service.AlarmManagerWrapper
+import com.dfl.openipma.service.JobSchedulerWrapper
 import com.google.android.gms.location.FusedLocationProviderClient
 import kotlinx.android.synthetic.main.error_layout.*
 import kotlinx.android.synthetic.main.home_fragment.*
@@ -36,7 +36,7 @@ class HomeFragment : BaseFragment() {
     @Inject
     lateinit var homeForecastAdapter: HomeForecastsAdapter
     @Inject
-    lateinit var alarmManagerWrapper: AlarmManagerWrapper
+    lateinit var jobSchedulerWrapper: JobSchedulerWrapper
     @Inject
     lateinit var handleOnScreenOpenEvents: HandleOnScreenOpenEvents
     @Inject
@@ -58,7 +58,7 @@ class HomeFragment : BaseFragment() {
         }
         if (savedInstanceState == null) {
             handleOnScreenOpenEvents.logHomeScreenLaunch()
-            activity?.also { alarmManagerWrapper.scheduleAlarmWeatherService(it.applicationContext) }
+            activity?.also { jobSchedulerWrapper.scheduleAlarmWeatherService(it.applicationContext) }
         }
         loadPrivacyPolicyDialog()
     }

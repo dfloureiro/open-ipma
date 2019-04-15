@@ -1,8 +1,8 @@
 package com.dfl.openipma.di.modules
 
-import android.app.AlarmManager
 import android.app.IntentService
 import android.app.NotificationManager
+import android.app.job.JobScheduler
 import android.content.Context
 import dagger.Module
 import dagger.Provides
@@ -15,8 +15,8 @@ object ServiceModule {
     @Singleton
     @Provides
     @JvmStatic
-    fun alarmManager(@Named("application") context: Context): AlarmManager {
-        return context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+    fun jobScheduler(@Named("application") context: Context): JobScheduler {
+        return context.getSystemService(Context.JOB_SCHEDULER_SERVICE) as JobScheduler
     }
 
     @Singleton

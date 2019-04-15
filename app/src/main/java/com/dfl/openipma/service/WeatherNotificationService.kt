@@ -3,13 +3,14 @@ package com.dfl.openipma.service
 import android.app.*
 import android.content.Intent
 import android.os.Build
+import android.support.v4.app.NotificationCompat
 import android.util.Log
-import com.dfl.domainpersistence.usecase.GetWeatherNotificationPreferencesUseCase
-import com.dfl.domainpersistence.usecase.HandleLastKnownLocationUseCase
 import com.dfl.domainipma.usecase.GetCitiesUseCase
 import com.dfl.domainipma.usecase.GetForecastsForCityUseCase
 import com.dfl.domainipma.usecase.GetWeatherTypesUseCase
 import com.dfl.domainipma.usecase.GetWindSpeedsUseCase
+import com.dfl.domainpersistence.usecase.GetWeatherNotificationPreferencesUseCase
+import com.dfl.domainpersistence.usecase.HandleLastKnownLocationUseCase
 import com.dfl.openipma.IpmaApplication
 import com.dfl.openipma.R
 import com.dfl.openipma.city.CityForecastsActivity
@@ -35,8 +36,6 @@ class WeatherNotificationService : IntentService(SERVICE_NAME) {
     @Inject
     lateinit var weatherServiceNotificationContentMapper: WeatherServiceNotificationContentMapper
     @Inject
-    lateinit var alarmManagerWrapper: AlarmManagerWrapper
-    @Inject
     lateinit var notificationManager: NotificationManager
     @Inject
     lateinit var getWeatherNotificationPreferencesUseCase: GetWeatherNotificationPreferencesUseCase
@@ -47,6 +46,11 @@ class WeatherNotificationService : IntentService(SERVICE_NAME) {
     override fun onCreate() {
         super.onCreate()
         (application as IpmaApplication).injector.inject(this)
+
+        createNotificationChannel()
+
+        startForeground(WEATHER_NOTIFICATION_ID, NotificationCompat.Builder(this, WEATHER_NOTIFICATION_CHANNEL_ID).setContentTitle("").setContentText("").build()
+        )
     }
 
     override fun onHandleIntent(intent: Intent?) {
@@ -70,10 +74,6 @@ class WeatherNotificationService : IntentService(SERVICE_NAME) {
     @Suppress("DEPRECATION")
     private fun sendNotification(notificationContent: NotificationContent) {
         val notificationBuilder = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val name = getString(R.string.notification_channel_name)
-            val mChannel = NotificationChannel(WEATHER_NOTIFICATION_CHANNEL_ID, name, NotificationManager.IMPORTANCE_LOW)
-            mChannel.description = getString(R.string.notification_channel_description)
-            notificationManager.createNotificationChannel(mChannel)
             Notification.Builder(this, WEATHER_NOTIFICATION_CHANNEL_ID)
         } else {
             Notification.Builder(this)
@@ -98,9 +98,13 @@ class WeatherNotificationService : IntentService(SERVICE_NAME) {
         notificationManager.notify(WEATHER_NOTIFICATION_ID, notification)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        alarmManagerWrapper.scheduleAlarmWeatherService(applicationContext)
+    private fun createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val name = getString(R.string.notification_channel_name)
+            val mChannel = NotificationChannel(WEATHER_NOTIFICATION_CHANNEL_ID, name, NotificationManager.IMPORTANCE_LOW)
+            mChannel.description = getString(R.string.notification_channel_description)
+            notificationManager.createNotificationChannel(mChannel)
+        }
     }
 
     companion object {

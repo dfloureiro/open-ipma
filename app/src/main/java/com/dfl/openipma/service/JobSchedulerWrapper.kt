@@ -1,24 +1,26 @@
 package com.dfl.openipma.service
 
-import android.app.AlarmManager
-import android.app.PendingIntent
+import android.app.job.JobInfo
+import android.app.job.JobScheduler
+import android.content.ComponentName
 import android.content.Context
-import android.content.Intent
 import android.os.Build
 import com.dfl.domainpersistence.usecase.GetWeatherNotificationPreferencesUseCase
 import dagger.Reusable
 import java.util.*
 import javax.inject.Inject
 
+
 @Reusable
-class AlarmManagerWrapper @Inject constructor(
-    private val alarmManager: AlarmManager,
+class JobSchedulerWrapper @Inject constructor(
+    private val jobScheduler: JobScheduler,
     private val getWeatherNotificationPreferencesUseCase: GetWeatherNotificationPreferencesUseCase
 ) {
 
     fun scheduleAlarmWeatherService(context: Context) {
 
         val notificationHour = getWeatherNotificationPreferencesUseCase.getHourForWeatherNotification()
+        val currentTimeInMillis = GregorianCalendar.getInstance().timeInMillis
         val timeInMillisToTriggerAlarm = GregorianCalendar.getInstance()
             .let {
                 if (isNotificationHourBeforeCurrentTime(notificationHour)) {
@@ -28,35 +30,21 @@ class AlarmManagerWrapper @Inject constructor(
                 it.set(GregorianCalendar.MINUTE, ALARM_NOTIFICATION_MINUTES)
                 it.set(GregorianCalendar.SECOND, ALARM_NOTIFICATION_SECONDS)
                 it.timeInMillis
-            }
+            } - currentTimeInMillis
 
-        val weatherServicePendingIntent = weatherServicePendingIntent(context)
-        alarmManager.cancel(weatherServicePendingIntent)
+        val serviceComponent = ComponentName(context, ServiceStarterJobService::class.java)
+        val builder = JobInfo.Builder(WEATHER_NOTIFICATION_JOB_ID, serviceComponent)
+            .setMinimumLatency(timeInMillisToTriggerAlarm)
+            .setOverrideDeadline(ALARM_DEADLINE_MARGIN + timeInMillisToTriggerAlarm)
+            .setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY)
+            .setPersisted(true)
+            .setRequiresCharging(false)
 
-        when {
-            Build.VERSION.SDK_INT >= Build.VERSION_CODES.M -> alarmManager.setExactAndAllowWhileIdle(
-                AlarmManager.RTC_WAKEUP,
-                timeInMillisToTriggerAlarm,
-                weatherServicePendingIntent
-            )
-            Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP -> alarmManager.setExact(
-                AlarmManager.RTC_WAKEUP,
-                timeInMillisToTriggerAlarm,
-                weatherServicePendingIntent
-            )
-            else -> alarmManager.set(AlarmManager.RTC_WAKEUP, timeInMillisToTriggerAlarm, weatherServicePendingIntent)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            builder.setEstimatedNetworkBytes(EXPECTED_DOWNLOAD_BYTES, EXPECTED_UPLOAD_BYTES)
         }
-    }
 
-    private fun weatherServicePendingIntent(context: Context): PendingIntent {
-        return Intent(context, WeatherServiceReceiver::class.java).let {
-            PendingIntent.getBroadcast(
-                context,
-                WEATHER_NOTIFICATION_SERVICE_ID,
-                it,
-                PendingIntent.FLAG_CANCEL_CURRENT
-            )
-        }
+        jobScheduler.schedule(builder.build())
     }
 
     private fun isNotificationHourBeforeCurrentTime(notificationHour: Int): Boolean {
@@ -71,8 +59,11 @@ class AlarmManagerWrapper @Inject constructor(
     }
 
     companion object {
-        private const val WEATHER_NOTIFICATION_SERVICE_ID = 123451
+        private const val WEATHER_NOTIFICATION_JOB_ID = 123451
         private const val ALARM_NOTIFICATION_MINUTES = 0
         private const val ALARM_NOTIFICATION_SECONDS = 0
+        private const val ALARM_DEADLINE_MARGIN = 5 * 60 * 1000
+        private const val EXPECTED_DOWNLOAD_BYTES: Long = 34590
+        private const val EXPECTED_UPLOAD_BYTES: Long = 0
     }
 }

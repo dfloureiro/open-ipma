@@ -10,13 +10,13 @@ import com.dfl.domainanalytics.usecase.HandleOnScreenOpenEvents
 import com.dfl.domainanalytics.usecase.HandleOnSettingsChangeEvents
 import com.dfl.openipma.IpmaApplication
 import com.dfl.openipma.R
-import com.dfl.openipma.service.AlarmManagerWrapper
+import com.dfl.openipma.service.JobSchedulerWrapper
 import javax.inject.Inject
 
 class SettingsFragment : PreferenceFragmentCompat() {
 
     @Inject
-    lateinit var alarmManagerWrapper: AlarmManagerWrapper
+    lateinit var jobSchedulerWrapper: JobSchedulerWrapper
     @Inject
     lateinit var lastKnownLocationUseCase: HandleLastKnownLocationUseCase
     @Inject
@@ -66,7 +66,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
                     GetWeatherNotificationPreferencesUseCase.ANALYTICS_STATUS_KEY ->
                         handleOnSettingsChangeEvents.setAnalyticsStatus(sharedPreferences.getBoolean(key, true))
                 }
-                alarmManagerWrapper.scheduleAlarmWeatherService(it)
+                jobSchedulerWrapper.scheduleAlarmWeatherService(it)
             }
         }
     }
