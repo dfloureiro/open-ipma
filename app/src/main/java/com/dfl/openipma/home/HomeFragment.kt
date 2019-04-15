@@ -15,7 +15,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.dfl.domainanalytics.usecase.HandleOnScreenOpenEvents
-import com.dfl.domainpersistence.usecase.GetWeatherNotificationPreferencesUseCase
 import com.dfl.openipma.R
 import com.dfl.openipma.ViewModelFactory
 import com.dfl.openipma.base.BaseFragment
@@ -39,8 +38,6 @@ class HomeFragment : BaseFragment() {
     lateinit var jobSchedulerWrapper: JobSchedulerWrapper
     @Inject
     lateinit var handleOnScreenOpenEvents: HandleOnScreenOpenEvents
-    @Inject
-    lateinit var getWeatherNotificationPreferencesUseCase: GetWeatherNotificationPreferencesUseCase
 
     private lateinit var viewModel: HomeViewModel
 
@@ -60,7 +57,6 @@ class HomeFragment : BaseFragment() {
             handleOnScreenOpenEvents.logHomeScreenLaunch()
             activity?.also { jobSchedulerWrapper.scheduleAlarmWeatherService(it.applicationContext) }
         }
-        loadPrivacyPolicyDialog()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -75,6 +71,10 @@ class HomeFragment : BaseFragment() {
         viewModel.homeViewState.observe(viewLifecycleOwner, Observer<HomeViewModel.HomeViewState> {
             when {
                 it != null -> {
+                    if (it.privacyPolicy) {
+                        loadPrivacyPolicyDialog()
+                    }
+
                     when {
                         it.loading -> home_progress_bar.visibility = View.VISIBLE
                         else -> home_progress_bar.visibility = View.GONE
@@ -102,24 +102,13 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun loadPrivacyPolicyDialog() {
-        if (getWeatherNotificationPreferencesUseCase.getPrivacyPolicyDialogShowed().not()) {
-            context?.also {
-                AlertDialog.Builder(it)
-                    .setMessage(R.string.privacy_policy_message)
-                    .setPositiveButton(R.string.privacy_policy_allow_button) { _, _ ->
-                        getWeatherNotificationPreferencesUseCase.setAnalyticsStatus(
-                            true
-                        )
-                    }
-                    .setNegativeButton(R.string.privacy_policy_disallow_button) { _, _ ->
-                        getWeatherNotificationPreferencesUseCase.setAnalyticsStatus(
-                            false
-                        )
-                    }
-                    .setOnDismissListener { getWeatherNotificationPreferencesUseCase.setPrivacyPolicyDialogShowed(true) }
-                    .setCancelable(false)
-                    .show()
-            }
+        context?.also {
+            AlertDialog.Builder(it)
+                .setMessage(R.string.privacy_policy_message)
+                .setPositiveButton(R.string.privacy_policy_allow_button) { _, _ -> viewModel.setPrivacyPolicyPreferences(true) }
+                .setNegativeButton(R.string.privacy_policy_disallow_button) { _, _ -> viewModel.setPrivacyPolicyPreferences(false) }
+                .setCancelable(false)
+                .show()
         }
     }
 

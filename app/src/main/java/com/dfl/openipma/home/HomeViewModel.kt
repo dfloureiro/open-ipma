@@ -2,9 +2,11 @@ package com.dfl.openipma.home
 
 import android.arch.lifecycle.MutableLiveData
 import android.location.Location
-import com.dfl.domainpersistence.usecase.HandleLastKnownLocationUseCase
+import com.dfl.domainanalytics.usecase.HandleOnSettingsChangeEvents
 import com.dfl.domainipma.model.*
 import com.dfl.domainipma.usecase.*
+import com.dfl.domainpersistence.usecase.GetWeatherNotificationPreferencesUseCase
+import com.dfl.domainpersistence.usecase.HandleLastKnownLocationUseCase
 import com.dfl.openipma.base.BaseViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -16,7 +18,9 @@ class HomeViewModel @Inject constructor(
     private val getCitiesUseCase: GetCitiesUseCase,
     private val getClosestCityUseCase: GetClosestCityUseCase,
     private val handleLastKnownLocationUseCase: HandleLastKnownLocationUseCase,
-    private val homeForecastUiModelMapper: HomeForecastUiModelMapper
+    private val homeForecastUiModelMapper: HomeForecastUiModelMapper,
+    private val handleOnSettingsChangeEvents: HandleOnSettingsChangeEvents,
+    private val getWeatherNotificationPreferencesUseCase: GetWeatherNotificationPreferencesUseCase
 ) : BaseViewModel() {
 
     val homeViewState = MutableLiveData<HomeViewState>()
@@ -31,12 +35,21 @@ class HomeViewModel @Inject constructor(
                 val windSpeeds = loadWindSpeeds()
                 val weatherTypes = loadWeatherTypes()
                 val forecastUiModels = homeForecastUiModelMapper.create(forecasts, windSpeeds, weatherTypes, cities)
-                homeViewState.value =
-                    HomeViewState(homeForecastUiModels = forecastUiModels)
+                homeViewState.value = HomeViewState(
+                    privacyPolicy = getWeatherNotificationPreferencesUseCase.getPrivacyPolicyDialogShowed().not(),
+                    homeForecastUiModels = forecastUiModels
+                )
             } catch (e: Exception) {
                 homeViewState.value = HomeViewState(error = true)
             }
         }
+    }
+
+    fun setPrivacyPolicyPreferences(status: Boolean) {
+        handleOnSettingsChangeEvents.setAnalyticsStatus(status)
+        getWeatherNotificationPreferencesUseCase.setAnalyticsStatus(status)
+        getWeatherNotificationPreferencesUseCase.setPrivacyPolicyDialogShowed(true)
+        homeViewState.value = homeViewState.value?.copy(privacyPolicy = false)
     }
 
     private suspend fun loadForecastsForDay(closestCity: City?): List<Forecast> {
@@ -71,6 +84,7 @@ class HomeViewModel @Inject constructor(
     }
 
     data class HomeViewState(
+        val privacyPolicy: Boolean = false,
         val loading: Boolean = false,
         val error: Boolean = false,
         val homeForecastUiModels: List<HomeForecastUiModel> = listOf()
