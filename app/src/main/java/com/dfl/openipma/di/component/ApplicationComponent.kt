@@ -5,10 +5,7 @@ import android.app.job.JobScheduler
 import com.dfl.domainanalytics.usecase.HandleOnBoardingEvents
 import com.dfl.domainanalytics.usecase.HandleOnScreenOpenEvents
 import com.dfl.domainanalytics.usecase.HandleOnSettingsChangeEvents
-import com.dfl.domainipma.usecase.GetCitiesUseCase
-import com.dfl.domainipma.usecase.GetForecastsForCityUseCase
-import com.dfl.domainipma.usecase.GetWeatherTypesUseCase
-import com.dfl.domainipma.usecase.GetWindSpeedsUseCase
+import com.dfl.domainipma.usecase.*
 import com.dfl.domainpersistence.usecase.GetWeatherNotificationPreferencesUseCase
 import com.dfl.domainpersistence.usecase.HandleFirstLaunchUseCase
 import com.dfl.domainpersistence.usecase.HandleLastKnownLocationUseCase
@@ -45,6 +42,8 @@ interface ApplicationComponent {
     fun handleOnSettingsChangeEvents(): HandleOnSettingsChangeEvents
 
     fun getCitiesUseCase(): GetCitiesUseCase
+
+    fun getSeismicInfoForAreaIdUseCase(): GetSeismicInfoForAreaIdUseCase
 
     fun jobScheduler(): JobScheduler
 

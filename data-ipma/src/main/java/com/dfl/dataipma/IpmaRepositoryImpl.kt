@@ -1,9 +1,6 @@
 package com.dfl.dataipma
 
-import com.dfl.dataipma.datasource.ForecastsDataSource
-import com.dfl.dataipma.datasource.GlobalIdsDataSource
-import com.dfl.dataipma.datasource.WeatherTypesDataSource
-import com.dfl.dataipma.datasource.WindSpeedsDataSource
+import com.dfl.dataipma.datasource.*
 import com.dfl.dataipma.mapper.*
 import com.dfl.domainipma.model.*
 import com.dfl.domainipma.repository.IpmaRepository
@@ -17,7 +14,9 @@ class IpmaRepositoryImpl(
     private val weatherTypesDataSource: WeatherTypesDataSource,
     private val weatherTypeDtoToWeatherTypeListMapper: WeatherTypeDtoToWeatherTypeListMapper,
     private val windSpeedsDataSource: WindSpeedsDataSource,
-    private val windSpeedsDtoToWindSpeedsListMapper: WindSpeedsDtoToWindSpeedsListMapper
+    private val windSpeedsDtoToWindSpeedsListMapper: WindSpeedsDtoToWindSpeedsListMapper,
+    private val seismicDataSource: SeismicDataSource,
+    private val seismicInfosDtoToSeismicInfoListMapper: SeismicInfosDtoToSeismicInfoListMapper
 ) : IpmaRepository {
 
     override suspend fun getForecastsForCity(cityId: Int): List<CityForecast> {
@@ -41,6 +40,6 @@ class IpmaRepositoryImpl(
     }
 
     override suspend fun getSeismicInfo(areaId: Int): List<SeismicInfo> {
-        return
+        return seismicInfosDtoToSeismicInfoListMapper.map(seismicDataSource.getSeismicInfo(areaId))
     }
 }

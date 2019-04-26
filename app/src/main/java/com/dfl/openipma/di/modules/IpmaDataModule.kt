@@ -4,10 +4,7 @@ import com.dfl.dataipma.DateRepositoryImpl
 import com.dfl.dataipma.IpmaClient
 import com.dfl.dataipma.IpmaRepositoryImpl
 import com.dfl.dataipma.LocationRepositoryImpl
-import com.dfl.dataipma.datasource.ForecastsDataSource
-import com.dfl.dataipma.datasource.GlobalIdsDataSource
-import com.dfl.dataipma.datasource.WeatherTypesDataSource
-import com.dfl.dataipma.datasource.WindSpeedsDataSource
+import com.dfl.dataipma.datasource.*
 import com.dfl.dataipma.mapper.*
 import com.dfl.domainipma.repository.DateRepository
 import com.dfl.domainipma.repository.IpmaRepository
@@ -38,7 +35,9 @@ object IpmaDataModule {
         weatherTypesDataSource: WeatherTypesDataSource,
         weatherTypeDtoToWeatherTypeListMapper: WeatherTypeDtoToWeatherTypeListMapper,
         windSpeedsDataSource: WindSpeedsDataSource,
-        windSpeedsDtoToWindSpeedsListMapper: WindSpeedsDtoToWindSpeedsListMapper
+        windSpeedsDtoToWindSpeedsListMapper: WindSpeedsDtoToWindSpeedsListMapper,
+        seismicDataSource: SeismicDataSource,
+        seismicInfosDtoToSeismicInfoListMapper: SeismicInfosDtoToSeismicInfoListMapper
     ): IpmaRepository {
         return IpmaRepositoryImpl(
             forecastsDataSource,
@@ -49,7 +48,9 @@ object IpmaDataModule {
             weatherTypesDataSource,
             weatherTypeDtoToWeatherTypeListMapper,
             windSpeedsDataSource,
-            windSpeedsDtoToWindSpeedsListMapper
+            windSpeedsDtoToWindSpeedsListMapper,
+            seismicDataSource,
+            seismicInfosDtoToSeismicInfoListMapper
         )
     }
 
@@ -92,6 +93,14 @@ object IpmaDataModule {
     @Reusable
     @Provides
     @JvmStatic
+    fun seismicDataSource(ipmaClient: IpmaClient): SeismicDataSource {
+        return SeismicDataSource(ipmaClient)
+    }
+
+
+    @Reusable
+    @Provides
+    @JvmStatic
     fun forecastsCityDtoToForecastsListMapper(dateRepository: DateRepository): ForecastsCityDtoToForecastsListMapper {
         return ForecastsCityDtoToForecastsListMapper(dateRepository)
     }
@@ -122,5 +131,12 @@ object IpmaDataModule {
     @JvmStatic
     fun globalIdsDtoToCityListMapper(): GlobalIdsDtoToCityListMapper {
         return GlobalIdsDtoToCityListMapper()
+    }
+
+    @Reusable
+    @Provides
+    @JvmStatic
+    fun seismicInfosDtoToSeismicInfoListMapper(): SeismicInfosDtoToSeismicInfoListMapper {
+        return SeismicInfosDtoToSeismicInfoListMapper()
     }
 }

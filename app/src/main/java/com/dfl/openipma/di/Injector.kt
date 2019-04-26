@@ -5,7 +5,7 @@ import com.dfl.openipma.city.CityForecastsFragment
 import com.dfl.openipma.di.component.*
 import com.dfl.openipma.di.modules.ContextModule
 import com.dfl.openipma.di.modules.HomeModule
-import com.dfl.openipma.earthquake.EarthquakesFragment
+import com.dfl.openipma.seismic.SeismicFragment
 import com.dfl.openipma.home.HomeFragment
 import com.dfl.openipma.onboarding.OnBoardingActivity
 import com.dfl.openipma.service.ServiceStarterJobService
@@ -63,10 +63,10 @@ class Injector(ipmaApplication: IpmaApplication) {
             .inject(settingsFragment)
     }
 
-    fun inject(earthquakesFragment: EarthquakesFragment) {
+    fun inject(seismicFragment: SeismicFragment) {
         DaggerEarthquakeComponent.builder()
             .applicationComponent(applicationComponent)
             .build()
-            .inject(earthquakesFragment)
+            .inject(seismicFragment)
     }
 }

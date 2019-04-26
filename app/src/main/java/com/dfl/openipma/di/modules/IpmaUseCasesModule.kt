@@ -48,6 +48,13 @@ object IpmaUseCasesModule {
     @Reusable
     @Provides
     @JvmStatic
+    fun getSeismicInfoForAreaIdUseCase(ipmaRepository: IpmaRepository): GetSeismicInfoForAreaIdUseCase {
+        return GetSeismicInfoForAreaIdUseCase(ipmaRepository)
+    }
+
+    @Reusable
+    @Provides
+    @JvmStatic
     fun getClosestCityUseCase(locationRepository: LocationRepository): GetClosestCityUseCase {
         return GetClosestCityUseCase(locationRepository)
     }

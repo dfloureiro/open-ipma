@@ -2,7 +2,6 @@ package com.dfl.dataipma.model
 
 import com.squareup.moshi.Json
 
-
 data class SeismicInfosDto(
     @Json(name = "country")
     val country: String,
@@ -40,7 +39,7 @@ data class SeismicInfoDto(
     @Json(name = "obsRegion")
     val obsRegion: String,
     @Json(name = "sensed")
-    val sensed: Any?,
+    val sensed: Boolean?,
     @Json(name = "shakemapid")
     val shakemapid: String,
     @Json(name = "shakemapref")
