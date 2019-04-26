@@ -37,7 +37,7 @@ ext {
     retrofit_version = "2.5.0"
     retrofit_coroutines_adapter_version = "0.9.2"
     lifecycle_version = "1.1.1"
-    play_services_location_version = "16.0.0"
+    google_play_services_version = "16.0.0"
     firebase_version = "16.0.6"
     crashlytics_version = "2.9.8"
 

@@ -21,4 +21,7 @@ interface IpmaClient {
 
     @GET("open-data/wind-speed-daily-classe.json")
     fun getWindSpeedsAsync(): Deferred<WindSpeedsDto>
+
+    @GET("open-data/observation/seismic/{idArea}.json")
+    fun getSeismicForAreaAsync(@Path("idArea") areaId: Int): Deferred<SeismicInfosDto>
 }

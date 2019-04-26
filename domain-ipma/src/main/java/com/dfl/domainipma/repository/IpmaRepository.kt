@@ -13,4 +13,6 @@ interface IpmaRepository {
     suspend fun getWeatherTypes(): List<WeatherType>
 
     suspend fun getWindSpeeds(): List<WindSpeed>
+
+    suspend fun getSeismicInfo(areaId: Int): List<SeismicInfo>
 }

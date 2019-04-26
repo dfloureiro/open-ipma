@@ -39,4 +39,8 @@ class IpmaRepositoryImpl(
     override suspend fun getWindSpeeds(): List<WindSpeed> {
         return windSpeedsDtoToWindSpeedsListMapper.map(windSpeedsDataSource.getWindSpeeds())
     }
+
+    override suspend fun getSeismicInfo(areaId: Int): List<SeismicInfo> {
+        return
+    }
 }
