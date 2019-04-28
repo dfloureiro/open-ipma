@@ -38,7 +38,7 @@ class SeismicFragment : BaseFragment(), OnMapReadyCallback {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.earthquakes_fragment, container, false)
+        return inflater.inflate(R.layout.earthquake_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -58,12 +58,12 @@ class SeismicFragment : BaseFragment(), OnMapReadyCallback {
             viewModel.seismicState.observe(viewLifecycleOwner, Observer<SeismicViewModel.SeismicState> {
                 when {
                     it != null -> {
-                        it.seismicUiModels.forEach { seismicInfo ->
+                        it.seismicUiModels.forEach { seismicUiModel ->
                             map.addMarker(
                                 MarkerOptions().position(
                                     LatLng(
-                                        seismicInfo.latitude,
-                                        seismicInfo.longitude
+                                        seismicUiModel.latitude,
+                                        seismicUiModel.longitude
                                     )
                                 )
                             )

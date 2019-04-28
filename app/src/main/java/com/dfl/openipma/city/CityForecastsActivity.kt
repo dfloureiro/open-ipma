@@ -1,8 +1,9 @@
 package com.dfl.openipma.city
 
 import android.os.Bundle
-import com.dfl.openipma.base.OptionsMenuActivity
+import android.view.Menu
 import com.dfl.openipma.R
+import com.dfl.openipma.base.OptionsMenuActivity
 
 class CityForecastsActivity : OptionsMenuActivity() {
 
@@ -24,6 +25,12 @@ class CityForecastsActivity : OptionsMenuActivity() {
                     CityForecastsFragment.newInstance(cityId)
                 )
                 .commit()
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        return super.onCreateOptionsMenu(menu).also {
+            menu.findItem(R.id.seismic).isVisible = false
         }
     }
 

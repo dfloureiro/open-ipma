@@ -3,7 +3,6 @@ package com.dfl.openipma.home
 import android.os.Bundle
 import com.dfl.openipma.R
 import com.dfl.openipma.base.OptionsMenuActivity
-import com.dfl.openipma.seismic.SeismicFragment
 
 class HomeActivity : OptionsMenuActivity() {
 
@@ -13,7 +12,7 @@ class HomeActivity : OptionsMenuActivity() {
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(android.R.id.content, SeismicFragment.newInstance())
+                .replace(android.R.id.content, HomeFragment.newInstance())
                 .commit()
         }
     }

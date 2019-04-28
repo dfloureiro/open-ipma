@@ -8,7 +8,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class SeismicViewModel @Inject constructor(
-    private val getSeismicInfoForAreaIdUseCase: GetSeismicInfoForAreaIdUseCase
+    private val getSeismicInfoForAreaIdUseCase: GetSeismicInfoForAreaIdUseCase,
+    private val seismicUiModelMapper: SeismicUiModelMapper
 ) : BaseViewModel() {
 
     val seismicState = MutableLiveData<SeismicState>()
@@ -19,7 +20,8 @@ class SeismicViewModel @Inject constructor(
             try {
                 val seismicInfoAzores = loadSeismicInfo(3)
                 val seismicInfoContinentAndMadeira = loadSeismicInfo(7)
-                seismicState.value = SeismicState(seismicUiModels = seismicInfoAzores + seismicInfoContinentAndMadeira)
+                val uiModels = seismicUiModelMapper.map(seismicInfoAzores + seismicInfoContinentAndMadeira)
+                seismicState.value = SeismicState(seismicUiModels = uiModels)
             } catch (e: Exception) {
                 seismicState.value = SeismicState(error = true)
             }
@@ -33,6 +35,6 @@ class SeismicViewModel @Inject constructor(
     data class SeismicState(
         val loading: Boolean = false,
         val error: Boolean = false,
-        val seismicUiModels: List<SeismicInfo> = listOf()
+        val seismicUiModels: List<SeismicUiModel> = listOf()
     )
 }

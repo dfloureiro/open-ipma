@@ -64,6 +64,7 @@
         <activity android:name=".about.AboutActivity"/>
         <activity android:name=".city.CityForecastsActivity"/>
         <activity android:name=".settings.SettingsActivity"/>
+        <activity android:name=".seismic.SeismicActivity"/>
 
         <service
                 android:name=".service.ServiceStarterJobService"

@@ -2,6 +2,7 @@
     <string name="app_name">Weather</string>
     <string name="home_toolbar_title">Places</string>
     <string name="settings_toolbar_title">Settings</string>
+    <string name="seismic_toolbar_title">Seismicity</string>
     <string name="about_toolbar_title">About</string>
 
     <string name="on_boarding_location_description">Allow the application to access your current location in order to provide you better weather forecasts</string>
