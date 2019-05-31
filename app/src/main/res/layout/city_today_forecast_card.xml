@@ -13,37 +13,10 @@
         card_view:cardCornerRadius="5dp"
         tools:backgroundTint="@color/rainy">
 
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                 android:layout_width="match_parent"
-                                                 android:layout_height="wrap_content">
-
-        <android.support.constraint.Guideline
-                android:id="@+id/city_card_vertical_right_guideline"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.92"/>
-
-        <android.support.constraint.Guideline
-                android:id="@+id/city_card_vertical_left_guideline"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.08"/>
-
-        <android.support.constraint.Guideline
-                android:id="@+id/city_card_horizontal_top_guideline"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.08"/>
-
-        <android.support.constraint.Guideline
-                android:id="@+id/city_card_horizontal_bottom_guideline"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.92"/>
+    <android.support.constraint.ConstraintLayout
+            android:padding="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
         <android.support.constraint.Barrier
                 android:id="@+id/city_horizontal_card_center_barrier"
@@ -56,32 +29,38 @@
         <ImageView
                 android:id="@+id/city_card_weather_icon"
                 android:layout_width="wrap_content"
-                android:layout_height="43dp"
+                android:layout_height="0dp"
                 android:contentDescription="@string/weather_image_description"
-                app:layout_constraintLeft_toRightOf="@id/city_card_vertical_left_guideline"
-                app:layout_constraintTop_toBottomOf="@+id/city_card_horizontal_top_guideline"
+                app:layout_constraintRight_toLeftOf="@id/city_card_day_of_week"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/city_card_weather_description"
                 tools:src="@drawable/ic_cloudy"/>
 
         <TextView
                 android:id="@+id/city_card_day_of_week"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
                 android:textSize="20sp"
                 android:text="@string/today_description"
+                android:layout_marginStart="10dp"
                 android:textColor="@android:color/white"
                 app:layout_constraintLeft_toRightOf="@+id/city_card_weather_icon"
-                app:layout_constraintBottom_toTopOf="@+id/city_card_weather_description"/>
+                app:layout_constraintRight_toLeftOf="@+id/city_card_max_temp"
+                app:layout_constraintBottom_toTopOf="@+id/city_card_weather_description"
+                app:layout_constraintTop_toTopOf="parent"
+                />
 
         <TextView
                 android:id="@+id/city_card_weather_description"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:textColor="@color/secondary_text"
                 app:layout_constraintTop_toBottomOf="@+id/city_card_max_temp"
                 app:layout_constraintLeft_toLeftOf="@+id/city_card_day_of_week"
-                tools:text="Partly Cloudy (high clouds today)"/>
+                app:layout_constraintRight_toRightOf="@+id/city_card_min_temp"
+                tools:text="Partly Cloudy"/>
 
         <TextView
                 android:id="@+id/city_card_min_temp"
@@ -89,9 +68,10 @@
                 android:layout_height="wrap_content"
                 android:textSize="28sp"
                 android:textColor="@color/secondary_text"
-                app:layout_constraintRight_toLeftOf="@id/city_card_vertical_right_guideline"
-                app:layout_constraintTop_toBottomOf="@+id/city_card_horizontal_top_guideline"
                 app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/city_card_max_temp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/city_card_weather_description"
                 tools:text="17º"/>
 
         <TextView
@@ -102,44 +82,36 @@
                 android:textColor="@android:color/white"
                 android:layout_marginEnd="12dp"
                 app:layout_constraintRight_toLeftOf="@+id/city_card_min_temp"
-                app:layout_constraintTop_toTopOf="@+id/city_card_min_temp"
+                app:layout_constraintLeft_toRightOf="@+id/city_card_day_of_week"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/city_card_weather_description"
                 tools:text="42º"/>
-
-        <TextView
-                android:id="@+id/city_card_precipitation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/white"
-                app:layout_constraintBottom_toTopOf="@+id/city_card_horizontal_bottom_guideline"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/city_card_wind"
-                tools:text="100%"/>
 
         <ImageView
                 android:id="@+id/city_umbrella_icon"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_umbrella"
-                android:layout_marginTop="20dp"
                 android:contentDescription="@string/precipitation_image_description"
+                android:layout_marginTop="20dp"
                 app:layout_constraintTop_toBottomOf="@+id/city_horizontal_card_center_barrier"
                 app:layout_constraintLeft_toLeftOf="@id/city_card_precipitation"
                 app:layout_constraintRight_toRightOf="@+id/city_card_precipitation"
                 app:layout_constraintBottom_toTopOf="@+id/city_card_precipitation"/>
 
         <TextView
-                android:id="@+id/city_card_wind"
+                android:id="@+id/city_card_precipitation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/white"
-                app:layout_constraintBottom_toTopOf="@+id/city_card_horizontal_bottom_guideline"
-                app:layout_constraintStart_toEndOf="@+id/city_card_precipitation"
-                app:layout_constraintEnd_toStartOf="@+id/city_card_wind_direction"
-                tools:text="Muito Forte"/>
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/city_card_wind"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:text="100%"/>
 
         <ImageView
                 android:id="@+id/city_wind_icon"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_windy"
                 android:contentDescription="@string/wind_strength_image_description"
@@ -148,24 +120,34 @@
                 app:layout_constraintBottom_toTopOf="@+id/city_card_wind"/>
 
         <TextView
-                android:id="@+id/city_card_wind_direction"
+                android:id="@+id/city_card_wind"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/white"
-                app:layout_constraintBottom_toTopOf="@+id/city_card_horizontal_bottom_guideline"
-                app:layout_constraintStart_toEndOf="@+id/city_card_wind"
-                app:layout_constraintEnd_toEndOf="parent"
-                tools:text="NE"/>
+                app:layout_constraintRight_toLeftOf="@+id/city_card_wind_direction"
+                app:layout_constraintLeft_toRightOf="@id/city_card_precipitation"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:text="Muito Forte"/>
 
         <ImageView
                 android:id="@+id/city_card_wind_direction_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_arrow"
                 android:contentDescription="@string/wind_direction_image_description"
+                android:src="@drawable/ic_arrow"
                 app:layout_constraintLeft_toLeftOf="@id/city_card_wind_direction"
                 app:layout_constraintRight_toRightOf="@+id/city_card_wind_direction"
                 app:layout_constraintBottom_toTopOf="@+id/city_card_wind_direction"/>
+
+        <TextView
+                android:id="@+id/city_card_wind_direction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                app:layout_constraintLeft_toRightOf="@+id/city_card_wind"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:text="NE"/>
 
     </android.support.constraint.ConstraintLayout>
 
