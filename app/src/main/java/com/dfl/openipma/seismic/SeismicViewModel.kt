@@ -18,8 +18,8 @@ class SeismicViewModel @Inject constructor(
         seismicState.value = SeismicState(loading = true)
         scope.launch {
             try {
-                val seismicInfoAzores = loadSeismicInfo(3)
-                val seismicInfoContinentAndMadeira = loadSeismicInfo(7)
+                val seismicInfoAzores = loadSeismicInfo(azoresAreaId)
+                val seismicInfoContinentAndMadeira = loadSeismicInfo(continentAndMadeiraAreaId)
                 val uiModels = seismicUiModelMapper.map(seismicInfoAzores + seismicInfoContinentAndMadeira)
                 seismicState.value = SeismicState(seismicUiModels = uiModels)
             } catch (e: Exception) {
@@ -37,4 +37,9 @@ class SeismicViewModel @Inject constructor(
         val error: Boolean = false,
         val seismicUiModels: List<SeismicUiModel> = listOf()
     )
+
+    companion object {
+        private const val azoresAreaId = 3
+        private const val continentAndMadeiraAreaId = 7
+    }
 }
