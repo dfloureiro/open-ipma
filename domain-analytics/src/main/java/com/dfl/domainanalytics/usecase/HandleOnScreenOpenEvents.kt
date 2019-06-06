@@ -15,4 +15,8 @@ class HandleOnScreenOpenEvents(private val analyticsRepository: AnalyticsReposit
     fun logSettingsScreenLaunch() {
         analyticsRepository.logEvent("settings_open", mapOf())
     }
+
+    fun logSeismicScreenLaunch() {
+        analyticsRepository.logEvent("seismic_open", mapOf())
+    }
 }

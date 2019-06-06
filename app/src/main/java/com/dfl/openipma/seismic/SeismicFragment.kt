@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.dfl.domainanalytics.usecase.HandleOnScreenOpenEvents
 import com.dfl.openipma.R
 import com.dfl.openipma.ViewModelFactory
 import com.dfl.openipma.base.BaseFragment
@@ -29,6 +30,8 @@ class SeismicFragment : BaseFragment(), OnMapReadyCallback, MapFragment {
     lateinit var viewModeFactory: ViewModelFactory
     @Inject
     lateinit var seismicAdapter: SeismicAdapter
+    @Inject
+    lateinit var handleOnScreenOpenEvents: HandleOnScreenOpenEvents
 
     private var map: GoogleMap? = null
     private lateinit var viewModel: SeismicViewModel
@@ -40,6 +43,9 @@ class SeismicFragment : BaseFragment(), OnMapReadyCallback, MapFragment {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (savedInstanceState == null) {
+            handleOnScreenOpenEvents.logSeismicScreenLaunch()
+        }
         (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.seismic_toolbar_title)
         viewModel = ViewModelProviders.of(this, viewModeFactory).get(SeismicViewModel::class.java)
         when {
