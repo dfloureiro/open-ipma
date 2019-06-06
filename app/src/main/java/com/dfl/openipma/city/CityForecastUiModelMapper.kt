@@ -19,33 +19,33 @@ class CityForecastUiModelMapper @Inject constructor() : BaseUiModelMapper() {
         windSpeeds: List<WindSpeed>,
         weathersType: List<WeatherType>
     ): List<CityForecastUiModel> {
-        val cityForecastsUiModels = mutableListOf<CityForecastUiModel>()
-        forecasts.forEach { forecast ->
-            val forecastDate = GregorianCalendar()
-            forecastDate.time = simpleDateFormat.parse(forecast.forecastDate)
+        return forecasts.map { forecast ->
             val weatherDescription =
                 weathersType.find { it.weatherTypeId == forecast.weatherType }?.weatherTypeDescription
                     ?: defaultUnknownDescription
             val windSpeedDescription =
                 windSpeeds.find { it.windSpeedId == forecast.windSpeed }?.windSpeedDescription
                     ?: defaultUnknownDescription
-            cityForecastsUiModels.add(
-                CityForecastUiModel(
-                    forecastDate,
-                    setTemperatureSuffix(forecast.minTemp),
-                    setTemperatureSuffix(forecast.maxTemp),
-                    setPrecipitationSuffix(forecast.precipitation.substringBefore(precipitationDelimiter)),
-                    windSpeedDescription,
-                    forecast.windDirection.rotation,
-                    forecast.windDirection.name,
-                    weatherDescription,
-                    getIcon(forecast.weatherType),
-                    getBackgroundColor(forecast.weatherType),
-                    forecast.isToday,
-                    getTemperatureStatusDescription(forecast.temperatureStatus)
-                )
+            CityForecastUiModel(
+                getDayOfWeek(forecast.forecastDate),
+                setTemperatureSuffix(forecast.minTemp),
+                setTemperatureSuffix(forecast.maxTemp),
+                setPrecipitationSuffix(forecast.precipitation.substringBefore(precipitationDelimiter)),
+                windSpeedDescription,
+                forecast.windDirection.rotation,
+                forecast.windDirection.name,
+                weatherDescription,
+                getIcon(forecast.weatherType),
+                getBackgroundColor(forecast.weatherType),
+                forecast.isToday,
+                getTemperatureStatusDescription(forecast.temperatureStatus)
             )
         }
-        return cityForecastsUiModels
+    }
+
+    private fun getDayOfWeek(date: String): String {
+        val forecastDate = GregorianCalendar()
+        forecastDate.time = simpleDateFormat.parse(date)
+        return forecastDate.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault())
     }
 }

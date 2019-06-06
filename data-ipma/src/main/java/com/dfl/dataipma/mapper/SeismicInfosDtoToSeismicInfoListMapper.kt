@@ -12,10 +12,11 @@ class SeismicInfosDtoToSeismicInfoListMapper {
 
     private fun seismicInfoDtoToSeismicInfo(seismicInfoDto: SeismicInfoDto): SeismicInfo {
         return SeismicInfo(
+            seismicInfoDto.magnitud,
+            seismicInfoDto.obsRegion,
+            seismicInfoDto.time,
             seismicInfoDto.lat.toDouble(),
             seismicInfoDto.lon.toDouble(),
-            seismicInfoDto.depth,
-            seismicInfoDto.magnitud,
             seismicInfoDto.sensed ?: false
         )
     }

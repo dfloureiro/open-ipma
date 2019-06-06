@@ -2,7 +2,7 @@
     <string name="app_name">Weather</string>
     <string name="home_toolbar_title">Places</string>
     <string name="settings_toolbar_title">Settings</string>
-    <string name="seismic_toolbar_title">Seismicity</string>
+    <string name="seismic_toolbar_title">Seisms</string>
     <string name="about_toolbar_title">About</string>
 
     <string name="on_boarding_location_description">Allow the application to access your current location in order to provide you better weather forecasts</string>
@@ -42,6 +42,11 @@
     <string name="about_contact_us_description">Please fell free to send any feedback via Play Store app page https://play.google.com/store/apps/details?id=com.dfl.openipma or send them by email to dfloureiro@protonmail.com .\n</string>
     <string name="about_our_stack_title">Our Stack</string>
     <string name="about_our_stack_description">You can consult all the licensing and the full code base in the GitHub repository at https://github.com/dfloureiro/open-ipma .\n</string>
+
+    <string name="seismic_felt_yes">Yes</string>
+    <string name="seismic_felt_no">No</string>
+    <string name="seismic_coordinates_label">Coordinates:</string>
+    <string name="seismic_felt_label">Felt:</string>
 
     <string name="error_description">Ups something went wrong</string>
     <string name="error_retry_button">Retry</string>

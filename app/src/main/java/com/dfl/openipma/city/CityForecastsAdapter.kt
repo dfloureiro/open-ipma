@@ -4,7 +4,6 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.dfl.openipma.R
-import java.util.*
 
 class CityForecastsAdapter : RecyclerView.Adapter<CityForecastViewHolder>() {
 
@@ -26,7 +25,7 @@ class CityForecastsAdapter : RecyclerView.Adapter<CityForecastViewHolder>() {
 
     override fun onBindViewHolder(p0: CityForecastViewHolder, p1: Int) {
         forecasts[p1].also {
-            p0.setDay(it.date.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault()))
+            p0.setDay(it.dayOfWeek)
             p0.setMinTemperature(it.minTemperature)
             p0.setMaxTemperature(it.maxTemperature)
             p0.setPrecipitation(it.precipitationProbability)

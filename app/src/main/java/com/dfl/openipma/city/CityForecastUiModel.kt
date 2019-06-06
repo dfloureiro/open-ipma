@@ -1,9 +1,7 @@
 package com.dfl.openipma.city
 
-import java.util.*
-
 data class CityForecastUiModel(
-    val date: GregorianCalendar,
+    val dayOfWeek: String,
     val minTemperature: String,
     val maxTemperature: String,
     val precipitationProbability: String,

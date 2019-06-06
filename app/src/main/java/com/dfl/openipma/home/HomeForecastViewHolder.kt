@@ -60,7 +60,7 @@ class HomeForecastViewHolder(private val viewHolderView: View) : RecyclerView.Vi
         }
         val visibility = when {
             isCurrentLocation -> View.VISIBLE
-            else -> View.INVISIBLE
+            else -> View.GONE
         }
         viewHolderView.findViewById<ImageView>(R.id.home_card_current_location).visibility = visibility
     }

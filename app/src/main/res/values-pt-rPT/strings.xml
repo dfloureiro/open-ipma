@@ -2,7 +2,7 @@
     <string name="app_name">Tempo</string>
     <string name="home_toolbar_title">Locais</string>
     <string name="settings_toolbar_title">Definições</string>
-    <string name="seismic_toolbar_title">Sismicidade</string>
+    <string name="seismic_toolbar_title">Sismos</string>
     <string name="about_toolbar_title">Sobre</string>
 
     <string name="on_boarding_location_description">Permitir que a aplicação aceda à sua localização atual por forma a fornecer melhores previsões do tempo</string>
@@ -42,6 +42,11 @@
     <string name="about_contact_us_description">Para qualquer opinião ou sugestão utilize a nossa página na Play Store https://play.google.com/store/apps/details?id=com.dfl.openipma ou envie um email para dfloureiro@protonmail.com .\n</string>
     <string name="about_our_stack_title">Código Fonte</string>
     <string name="about_our_stack_description">Pode consultar as licenças e todo o código no repositório de GitHub em https://github.com/dfloureiro/open-ipma .\n</string>
+
+    <string name="seismic_felt_yes">Sim</string>
+    <string name="seismic_felt_no">Não</string>
+    <string name="seismic_coordinates_label">Coordenadas:</string>
+    <string name="seismic_felt_label">Sentido:</string>
 
     <string name="error_description">Ocorreu um erro</string>
     <string name="error_retry_button">Tentar novamente</string>

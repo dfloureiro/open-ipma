@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:textColor="@android:color/white"
-                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/home_card_current_location"
                 app:layout_constraintRight_toLeftOf="@+id/home_card_weather_icon"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toTopOf="@+id/home_card_weather_description"
@@ -49,11 +49,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_navigation"
-                android:layout_marginStart="@dimen/activity_horizontal_margin"
                 android:contentDescription="@string/current_location_description"
                 android:visibility="gone"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/home_card_city_name"
+                app:layout_constraintTop_toTopOf="@+id/home_card_city_name"
+                app:layout_constraintBottom_toBottomOf="@+id/home_card_city_name"
                 tools:visibility="visible"/>
 
         <TextView
