@@ -21,6 +21,7 @@ import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.earthquake_fragment.*
+import kotlinx.android.synthetic.main.error_layout.*
 import javax.inject.Inject
 
 
@@ -69,12 +70,24 @@ class SeismicFragment : BaseFragment(), OnMapReadyCallback, MapFragment {
         viewModel.seismicState.observe(viewLifecycleOwner, Observer<SeismicViewModel.SeismicState> {
             when {
                 it != null -> {
+                    when {
+                        it.error -> seismic_error_layout.visibility = View.VISIBLE
+                        else -> seismic_error_layout.visibility = View.GONE
+                    }
+
+                    when {
+                        it.loading -> seismic_progress_bar.visibility = View.VISIBLE
+                        else -> seismic_progress_bar.visibility = View.GONE
+                    }
+
                     if (seismicAdapter.itemCount == 0) {
                         seismicAdapter.add(it.seismicUiModels)
                     }
                 }
             }
         })
+
+        error_retry_button.setOnClickListener { viewModel.loadData() }
     }
 
     override fun onMapReady(googleMap: GoogleMap?) {
