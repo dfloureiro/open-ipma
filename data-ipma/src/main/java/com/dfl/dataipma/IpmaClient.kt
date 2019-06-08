@@ -1,27 +1,26 @@
 package com.dfl.dataipma
 
 import com.dfl.dataipma.model.*
-import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface IpmaClient {
 
     @GET("open-data/forecast/meteorology/cities/daily/{globalIdLocal}.json")
-    fun getForecastsForCityAsync(@Path("globalIdLocal") localGlobalId: Int): Deferred<ForecastsCityDto>
+    suspend fun getForecastsForCity(@Path("globalIdLocal") localGlobalId: Int): ForecastsCityDto
 
     @GET("open-data/forecast/meteorology/cities/daily/hp-daily-forecast-day{idDay}.json")
-    fun getForecastsForDayAsync(@Path("idDay") dayId: Int): Deferred<ForecastsDayDto>
+    suspend fun getForecastsForDay(@Path("idDay") dayId: Int): ForecastsDayDto
 
     @GET("open-data/distrits-islands.json")
-    fun getLocalGlobalIdsAsync(): Deferred<GlobalIdsDto>
+    suspend fun getLocalGlobalIds(): GlobalIdsDto
 
     @GET("open-data/weather-type-classe.json")
-    fun getWeatherTypesAsync(): Deferred<WeatherTypesDto>
+    suspend fun getWeatherTypes(): WeatherTypesDto
 
     @GET("open-data/wind-speed-daily-classe.json")
-    fun getWindSpeedsAsync(): Deferred<WindSpeedsDto>
+    suspend fun getWindSpeeds(): WindSpeedsDto
 
     @GET("open-data/observation/seismic/{idArea}.json")
-    fun getSeismicForAreaAsync(@Path("idArea") areaId: Int): Deferred<SeismicInfosDto>
+    suspend fun getSeismicForArea(@Path("idArea") areaId: Int): SeismicInfosDto
 }

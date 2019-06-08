@@ -2,7 +2,6 @@ package com.dfl.openipma.di.modules
 
 import android.content.Context
 import com.dfl.dataipma.IpmaClient
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import dagger.Module
 import dagger.Provides
 import okhttp3.Cache
@@ -23,24 +22,15 @@ object NetworkModule {
     @Provides
     @JvmStatic
     fun ipmaClient(
-        coroutineCallAdapterFactory: CoroutineCallAdapterFactory,
         moshiConverterFactory: MoshiConverterFactory,
         okHttpClient: OkHttpClient
     ): IpmaClient {
         return Retrofit.Builder()
-            .addCallAdapterFactory(coroutineCallAdapterFactory)
             .addConverterFactory(moshiConverterFactory)
             .baseUrl(IPMA_URL)
             .client(okHttpClient)
             .build()
             .create(IpmaClient::class.java)
-    }
-
-    @Singleton
-    @Provides
-    @JvmStatic
-    fun coroutineCallAdapterFactory(): CoroutineCallAdapterFactory {
-        return CoroutineCallAdapterFactory()
     }
 
     @Singleton
