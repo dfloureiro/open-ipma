@@ -95,16 +95,17 @@ class SeismicFragment : BaseFragment(), OnMapReadyCallback, MapFragment {
             viewModel.seismicState.observe(viewLifecycleOwner, Observer<SeismicViewModel.SeismicState> {
                 when {
                     it != null -> {
-                        it.seismicUiModels.forEach { seismicUiModel ->
-                            map.addMarker(
-                                MarkerOptions().position(
-                                    LatLng(
-                                        seismicUiModel.latitude,
-                                        seismicUiModel.longitude
-                                    )
-                                )
+                        it.seismicUiModels.map { seismicUiModel ->
+                            LatLng(
+                                seismicUiModel.latitude,
+                                seismicUiModel.longitude
                             )
                         }
+                            .map { latLng ->
+                                MarkerOptions().position(latLng)
+                            }.forEach { markerOptions ->
+                                map.addMarker(markerOptions)
+                            }
                     }
                 }
             })
