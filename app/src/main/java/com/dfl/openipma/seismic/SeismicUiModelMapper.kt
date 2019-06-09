@@ -39,7 +39,7 @@ class SeismicUiModelMapper @Inject constructor() : BaseUiModelMapper() {
         return "${seismicTime.get(Calendar.DAY_OF_MONTH)}/" +
                 "${seismicTime.get(Calendar.MONTH)}/" +
                 "${seismicTime.get(Calendar.YEAR)} " +
-                "${seismicTime.get(Calendar.HOUR_OF_DAY)}" +
-                ":${seismicTime.get(Calendar.MINUTE)}"
+                String.format("%02d\n", seismicTime.get(Calendar.HOUR_OF_DAY)).dropLast(1) +
+                "h:${String.format("%02d\n", seismicTime.get(Calendar.MINUTE)).dropLast(1)}m"
     }
 }
