@@ -49,7 +49,12 @@ class WeatherNotificationService : IntentService(SERVICE_NAME) {
 
         createNotificationChannel()
 
-        startForeground(WEATHER_NOTIFICATION_ID, NotificationCompat.Builder(this, WEATHER_NOTIFICATION_CHANNEL_ID).setContentTitle("").setContentText("").build()
+        startForeground(
+            WEATHER_NOTIFICATION_ID,
+            NotificationCompat.Builder(
+                this,
+                WEATHER_NOTIFICATION_CHANNEL_ID
+            ).setContentTitle("").setContentText("").build()
         )
     }
 
@@ -60,10 +65,20 @@ class WeatherNotificationService : IntentService(SERVICE_NAME) {
                     val lastKnownLocationId = handleLastKnownLocationUseCase.getLastKnownTerritoryId()
                     val cities = getCitiesUseCase.buildUseCase()
                     val weatherTypes = getWeatherTypesUseCase.buildUseCase()
-                    val forecasts = getForecastsForCityUseCase.buildUseCase(GetForecastsForCityUseCase.Params(lastKnownLocationId))
-                    forecasts.find { it.isToday }?.also { sendNotification(weatherServiceNotificationContentMapper.create(lastKnownLocationId, it, cities, weatherTypes)) }
+                    val forecasts =
+                        getForecastsForCityUseCase.buildUseCase(GetForecastsForCityUseCase.Params(lastKnownLocationId))
+                    forecasts.find { it.isToday }?.also {
+                        sendNotification(
+                            weatherServiceNotificationContentMapper.create(
+                                lastKnownLocationId,
+                                it,
+                                cities,
+                                weatherTypes
+                            )
+                        )
+                    }
                 } catch (e: Exception) {
-                    Log.e("NotificationService", e.localizedMessage)
+                    Log.e("NotificationService", e.localizedMessage.orEmpty())
                 } finally {
                     viewModelJob.cancel()
                 }
@@ -79,7 +94,12 @@ class WeatherNotificationService : IntentService(SERVICE_NAME) {
             Notification.Builder(this)
         }
 
-        val title = String.format(getString(R.string.notification_content_title), notificationContent.maximumTemperature, notificationContent.minimumTemperature, notificationContent.cityName)
+        val title = String.format(
+            getString(R.string.notification_content_title),
+            notificationContent.maximumTemperature,
+            notificationContent.minimumTemperature,
+            notificationContent.cityName
+        )
 
         val notificationIntent = Intent(this, CityForecastsActivity::class.java).also {
             it.putExtra(CityForecastsActivity.CITY_ID_BUNDLE_KEY, notificationContent.cityId)
@@ -101,7 +121,8 @@ class WeatherNotificationService : IntentService(SERVICE_NAME) {
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val name = getString(R.string.notification_channel_name)
-            val mChannel = NotificationChannel(WEATHER_NOTIFICATION_CHANNEL_ID, name, NotificationManager.IMPORTANCE_LOW)
+            val mChannel =
+                NotificationChannel(WEATHER_NOTIFICATION_CHANNEL_ID, name, NotificationManager.IMPORTANCE_LOW)
             mChannel.description = getString(R.string.notification_channel_description)
             notificationManager.createNotificationChannel(mChannel)
         }
