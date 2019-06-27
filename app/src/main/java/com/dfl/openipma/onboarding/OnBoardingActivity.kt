@@ -8,14 +8,13 @@ import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import com.dfl.domainpersistence.usecase.HandleFirstLaunchUseCase
 import com.dfl.domainanalytics.usecase.HandleOnBoardingEvents
+import com.dfl.domainpersistence.usecase.HandleFirstLaunchUseCase
 import com.dfl.openipma.IpmaApplication
 import com.dfl.openipma.R
 import com.dfl.openipma.home.HomeActivity
 import kotlinx.android.synthetic.main.on_boarding_activity.*
 import javax.inject.Inject
-
 
 class OnBoardingActivity : AppCompatActivity() {
 
@@ -32,7 +31,6 @@ class OnBoardingActivity : AppCompatActivity() {
     lateinit var handleFirstLaunchUseCase: HandleFirstLaunchUseCase
     @Inject
     lateinit var handleOnBoardingEvents: HandleOnBoardingEvents
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

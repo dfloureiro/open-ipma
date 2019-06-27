@@ -24,7 +24,6 @@ import kotlinx.android.synthetic.main.earthquake_fragment.*
 import kotlinx.android.synthetic.main.error_layout.*
 import javax.inject.Inject
 
-
 class SeismicFragment : BaseFragment(), OnMapReadyCallback, MapFragment {
 
     @Inject

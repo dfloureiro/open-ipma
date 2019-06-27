@@ -9,4 +9,3 @@ class GetCitiesUseCase(private val ipmaRepository: IpmaRepository) {
         return ipmaRepository.getCities()
     }
 }
-

@@ -2,7 +2,6 @@ package com.dfl.dataipma.model
 
 import com.squareup.moshi.Json
 
-
 data class ForecastsDayDto(
     @Json(name = "country")
     val country: String,

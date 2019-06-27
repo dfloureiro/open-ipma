@@ -64,5 +64,3 @@ class CityForecastsViewModel @Inject constructor(
         val forecastUiModels: List<CityForecastUiModel> = listOf()
     )
 }
-
-

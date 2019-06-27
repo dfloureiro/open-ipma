@@ -25,7 +25,6 @@ import kotlinx.android.synthetic.main.error_layout.*
 import kotlinx.android.synthetic.main.home_fragment.*
 import javax.inject.Inject
 
-
 class HomeFragment : BaseFragment() {
 
     @Inject
@@ -105,8 +104,16 @@ class HomeFragment : BaseFragment() {
         context?.also {
             AlertDialog.Builder(it)
                 .setMessage(R.string.privacy_policy_message)
-                .setPositiveButton(R.string.privacy_policy_allow_button) { _, _ -> viewModel.setPrivacyPolicyPreferences(true) }
-                .setNegativeButton(R.string.privacy_policy_disallow_button) { _, _ -> viewModel.setPrivacyPolicyPreferences(false) }
+                .setPositiveButton(R.string.privacy_policy_allow_button) { _, _ ->
+                    viewModel.setPrivacyPolicyPreferences(
+                        true
+                    )
+                }
+                .setNegativeButton(R.string.privacy_policy_disallow_button) { _, _ ->
+                    viewModel.setPrivacyPolicyPreferences(
+                        false
+                    )
+                }
                 .setCancelable(false)
                 .show()
         }

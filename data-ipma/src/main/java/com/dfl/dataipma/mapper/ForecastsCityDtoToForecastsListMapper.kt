@@ -58,7 +58,7 @@ class ForecastsCityDtoToForecastsListMapper(private val dateRepository: DateRepo
         todayMinTemp: Double,
         todayMaxTemp: Double
     ): TemperatureStatus {
-        //TODO move this to other place
+        // TODO move this to other place
         val averageYesterdayTemp = (yesterdayMaxTemp + yesterdayMinTemp) / 2
         val averageTodayTemp = (todayMaxTemp + todayMinTemp) / 2
         val difference = averageTodayTemp.compareTo(averageYesterdayTemp)

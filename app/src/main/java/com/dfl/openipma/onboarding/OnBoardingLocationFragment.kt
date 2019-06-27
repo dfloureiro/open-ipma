@@ -12,10 +12,7 @@ import kotlinx.android.synthetic.main.on_boarding_location_fragment.*
 
 class OnBoardingLocationFragment : BaseFragment() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.on_boarding_location_fragment, container, false)
     }
 

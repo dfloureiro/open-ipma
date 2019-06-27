@@ -20,7 +20,6 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-
 class WeatherNotificationService : IntentService(SERVICE_NAME) {
 
     @Inject

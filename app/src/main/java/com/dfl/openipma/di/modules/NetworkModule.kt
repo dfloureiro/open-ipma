@@ -17,7 +17,6 @@ object NetworkModule {
     private const val IPMA_URL = "https://api.ipma.pt/"
     private const val cacheSize = (1 * 1024 * 1024).toLong()
 
-
     @Singleton
     @Provides
     @JvmStatic

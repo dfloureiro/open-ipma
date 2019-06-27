@@ -10,7 +10,6 @@ import dagger.Reusable
 import java.util.*
 import javax.inject.Inject
 
-
 @Reusable
 class JobSchedulerWrapper @Inject constructor(
     private val jobScheduler: JobScheduler,

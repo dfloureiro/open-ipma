@@ -53,7 +53,6 @@ class CityForecastsFragment : BaseFragment() {
         }
     }
 
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.city_forecasts_fragment, container, false)
     }

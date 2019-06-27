@@ -13,5 +13,4 @@ interface CityComponent {
     fun inject(cityForecastsFragment: CityForecastsFragment)
 
     fun cityForecastsAdapter(): CityForecastsAdapter
-
 }

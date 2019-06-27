@@ -19,5 +19,4 @@ class ViewModelFactory @Inject constructor(private val viewModelsMap: Map<Class<
             throw RuntimeException(e)
         }
     }
-
 }
