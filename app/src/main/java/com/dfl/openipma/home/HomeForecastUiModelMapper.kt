@@ -1,7 +1,7 @@
 package com.dfl.openipma.home
 
 import android.util.Log
-import com.dfl.common.precipitationSuffix
+import com.dfl.common.precipitationDivider
 import com.dfl.domainipma.model.City
 import com.dfl.domainipma.model.Forecast
 import com.dfl.domainipma.model.WeatherType
@@ -36,7 +36,7 @@ class HomeForecastUiModelMapper @Inject constructor() : BaseUiModelMapper() {
                             city.name,
                             setTemperatureSuffix(forecast.minTemp),
                             setTemperatureSuffix(forecast.maxTemp),
-                            setPrecipitationSuffix(forecast.precipitation.substringBefore(precipitationSuffix)),
+                            setPrecipitationSuffix(forecast.precipitation.substringBefore(precipitationDivider)),
                             windSpeedDescription,
                             forecast.windDirection.rotation,
                             weatherDescription,

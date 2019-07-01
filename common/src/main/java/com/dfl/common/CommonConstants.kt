@@ -11,5 +11,6 @@ const val dateFormat = "yyyy-MM-dd"
 const val dateWithTimeFormat = "yyyy-MM-dd'T'hh:mm:ss"
 const val dateFormatLanguageCode = "pt"
 
-const val precipitationSuffix = "."
+const val precipitationDivider = "."
+const val percipitationSuffix = "%"
 const val temperatureSuffix = "º"

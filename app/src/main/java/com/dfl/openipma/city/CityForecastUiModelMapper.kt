@@ -1,7 +1,7 @@
 package com.dfl.openipma.city
 
 import com.dfl.common.dateFormatLanguageCode
-import com.dfl.common.precipitationSuffix
+import com.dfl.common.precipitationDivider
 import com.dfl.domainipma.model.CityForecast
 import com.dfl.domainipma.model.WeatherType
 import com.dfl.domainipma.model.WindSpeed
@@ -36,7 +36,7 @@ class CityForecastUiModelMapper @Inject constructor() : BaseUiModelMapper() {
                 getDayOfWeek(forecast.forecastDate),
                 setTemperatureSuffix(forecast.minTemp),
                 setTemperatureSuffix(forecast.maxTemp),
-                setPrecipitationSuffix(forecast.precipitation.substringBefore(precipitationSuffix)),
+                setPrecipitationSuffix(forecast.precipitation.substringBefore(precipitationDivider)),
                 windSpeedDescription,
                 forecast.windDirection.rotation,
                 forecast.windDirection.name,
