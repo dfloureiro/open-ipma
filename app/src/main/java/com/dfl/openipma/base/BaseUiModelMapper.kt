@@ -8,7 +8,8 @@ import com.dfl.openipma.R
 
 open class BaseUiModelMapper {
 
-    internal val defaultUnknownDescription = Resources.getSystem().getString(android.R.string.unknownName)
+    internal val defaultUnknownDescription =
+        Resources.getSystem().getString(android.R.string.unknownName)
 
     internal fun getIcon(id: Int): Int {
         return when (id) {
@@ -85,10 +86,10 @@ open class BaseUiModelMapper {
     }
 
     internal fun setTemperatureSuffix(temperature: String): String {
-        return "$temperature+$temperatureSuffix"
+        return "$temperature$temperatureSuffix"
     }
 
     internal fun setPrecipitationSuffix(precipitation: String): String {
-        return "$precipitation+$precipitationSuffix"
+        return "$precipitation$precipitationSuffix"
     }
 }
