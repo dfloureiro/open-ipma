@@ -1,22 +1,23 @@
 package com.dfl.domainanalytics.usecase
 
+import com.dfl.domainanalytics.*
 import com.dfl.domainanalytics.repository.AnalyticsRepository
 
 class HandleOnScreenOpenEvents(private val analyticsRepository: AnalyticsRepository) {
 
     fun logCityForecastsScreenLaunch(cityId: Int) {
-        analyticsRepository.logEvent("city_forecasts_open", mapOf(Pair("city_id", cityId.toString())))
+        analyticsRepository.logEvent(CITY_FORECASTS_OPEN_KEY, mapOf(Pair(CITY_ID, cityId.toString())))
     }
 
     fun logHomeScreenLaunch() {
-        analyticsRepository.logEvent("home_open", mapOf())
+        analyticsRepository.logEvent(HOME_OPEN_KEY, mapOf())
     }
 
     fun logSettingsScreenLaunch() {
-        analyticsRepository.logEvent("settings_open", mapOf())
+        analyticsRepository.logEvent(SETTINGS_OPEN_KEY, mapOf())
     }
 
     fun logSeismicScreenLaunch() {
-        analyticsRepository.logEvent("seismic_open", mapOf())
+        analyticsRepository.logEvent(SEISMIC_OPEN_KEY, mapOf())
     }
 }

@@ -1,13 +1,14 @@
 package com.dfl.openipma.base
 
 import android.content.res.Resources
+import com.dfl.common.precipitationSuffix
+import com.dfl.common.temperatureSuffix
 import com.dfl.domainipma.model.TemperatureStatus
 import com.dfl.openipma.R
 
 open class BaseUiModelMapper {
 
     internal val defaultUnknownDescription = Resources.getSystem().getString(android.R.string.unknownName)
-    internal val precipitationDelimiter = "."
 
     internal fun getIcon(id: Int): Int {
         return when (id) {
@@ -84,10 +85,10 @@ open class BaseUiModelMapper {
     }
 
     internal fun setTemperatureSuffix(temperature: String): String {
-        return "${temperature}º"
+        return "$temperature+$temperatureSuffix"
     }
 
     internal fun setPrecipitationSuffix(precipitation: String): String {
-        return "$precipitation%"
+        return "$precipitation+$precipitationSuffix"
     }
 }

@@ -6,6 +6,7 @@ import com.dfl.domainipma.model.CityForecast
 import com.dfl.domainipma.model.TemperatureStatus
 import com.dfl.domainipma.model.WindDirection
 import com.dfl.domainipma.repository.DateRepository
+import kotlin.math.roundToInt
 
 class ForecastsCityDtoToForecastsListMapper(private val dateRepository: DateRepository) {
 
@@ -28,8 +29,8 @@ class ForecastsCityDtoToForecastsListMapper(private val dateRepository: DateRepo
             forecastCityDto.tMax.toDouble()
         )
         return CityForecast(
-            Math.round(forecastCityDto.tMin.toDouble()).toString(),
-            Math.round(forecastCityDto.tMax.toDouble()).toString(),
+            forecastCityDto.tMin.toDouble().roundToInt().toString(),
+            forecastCityDto.tMax.toDouble().roundToInt().toString(),
             forecastCityDto.precipitaProb,
             WindDirection.valueOf(forecastCityDto.predWindDir),
             forecastCityDto.classWindSpeed,

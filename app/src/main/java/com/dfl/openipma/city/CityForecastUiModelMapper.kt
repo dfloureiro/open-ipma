@@ -1,5 +1,7 @@
 package com.dfl.openipma.city
 
+import com.dfl.common.dateFormatLanguageCode
+import com.dfl.common.precipitationSuffix
 import com.dfl.domainipma.model.CityForecast
 import com.dfl.domainipma.model.WeatherType
 import com.dfl.domainipma.model.WindSpeed
@@ -12,7 +14,11 @@ import javax.inject.Inject
 @Reusable
 class CityForecastUiModelMapper @Inject constructor() : BaseUiModelMapper() {
 
-    private val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.forLanguageTag("pt"))
+    private val simpleDateFormat = SimpleDateFormat(
+        com.dfl.common.dateFormat, Locale.forLanguageTag(
+            dateFormatLanguageCode
+        )
+    )
 
     fun map(
         forecasts: List<CityForecast>,
@@ -30,7 +36,7 @@ class CityForecastUiModelMapper @Inject constructor() : BaseUiModelMapper() {
                 getDayOfWeek(forecast.forecastDate),
                 setTemperatureSuffix(forecast.minTemp),
                 setTemperatureSuffix(forecast.maxTemp),
-                setPrecipitationSuffix(forecast.precipitation.substringBefore(precipitationDelimiter)),
+                setPrecipitationSuffix(forecast.precipitation.substringBefore(precipitationSuffix)),
                 windSpeedDescription,
                 forecast.windDirection.rotation,
                 forecast.windDirection.name,

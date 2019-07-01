@@ -1,1 +1,1 @@
-include ':app', ':data-ipma', ':domain-ipma', ':data-persistence', ':domain-persistence', ':data-analytics', ':domain-analytics'
+include ':app', ':data-ipma', ':domain-ipma', ':data-persistence', ':domain-persistence', ':data-analytics', ':domain-analytics', ':common'

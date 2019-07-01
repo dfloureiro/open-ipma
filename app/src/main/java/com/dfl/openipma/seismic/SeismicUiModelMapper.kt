@@ -1,5 +1,6 @@
 package com.dfl.openipma.seismic
 
+import com.dfl.common.*
 import com.dfl.domainipma.model.SeismicInfo
 import com.dfl.openipma.base.BaseUiModelMapper
 import dagger.Reusable
@@ -10,7 +11,7 @@ import javax.inject.Inject
 @Reusable
 class SeismicUiModelMapper @Inject constructor() : BaseUiModelMapper() {
 
-    private val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss", Locale.forLanguageTag("pt"))
+    private val simpleDateFormat = SimpleDateFormat(dateWithTimeFormat, Locale.forLanguageTag(dateFormatLanguageCode))
 
     fun map(seismicInfos: List<SeismicInfo>): List<SeismicUiModel> {
         return seismicInfos
@@ -36,10 +37,13 @@ class SeismicUiModelMapper @Inject constructor() : BaseUiModelMapper() {
     private fun getTimeString(date: String): String {
         val seismicTime = GregorianCalendar()
         seismicTime.time = simpleDateFormat.parse(date)
-        return "${seismicTime.get(Calendar.DAY_OF_MONTH)}/" +
-                "${seismicTime.get(Calendar.MONTH)}/" +
+        return "${seismicTime.get(Calendar.DAY_OF_MONTH)}+$dateDivider" +
+                "${seismicTime.get(Calendar.MONTH)}+$dateDivider" +
                 "${seismicTime.get(Calendar.YEAR)} " +
-                String.format("%02d\n", seismicTime.get(Calendar.HOUR_OF_DAY)).dropLast(1) +
-                "h:${String.format("%02d\n", seismicTime.get(Calendar.MINUTE)).dropLast(1)}m"
+                String.format(hoursFormat, seismicTime.get(Calendar.HOUR_OF_DAY)).dropLast(1) +
+                "$hoursSuffix+$timeDivider+${String.format(
+                    hoursFormat,
+                    seismicTime.get(Calendar.MINUTE)
+                ).dropLast(1)}+$minutesSuffix"
     }
 }

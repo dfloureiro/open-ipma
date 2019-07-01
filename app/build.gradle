@@ -66,6 +66,7 @@ dependencies {
     implementation project(path: ':data-persistence')
     implementation project(path: ':domain-analytics')
     implementation project(path: ':data-analytics')
+    implementation project(path: ':common')
 
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "com.android.support.test:runner:$test_runner_version"

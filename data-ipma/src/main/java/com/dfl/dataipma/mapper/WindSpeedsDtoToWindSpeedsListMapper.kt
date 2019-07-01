@@ -1,5 +1,6 @@
 package com.dfl.dataipma.mapper
 
+import com.dfl.common.dateFormatLanguageCode
 import com.dfl.dataipma.model.WindSpeedDto
 import com.dfl.dataipma.model.WindSpeedsDto
 import com.dfl.domainipma.model.WindSpeed
@@ -13,8 +14,8 @@ class WindSpeedsDtoToWindSpeedsListMapper {
 
     private fun windSpeedDtoToWindSpeed(windSpeedDto: WindSpeedDto): WindSpeed {
         val windSpeedDescription =
-            when {
-                Locale.getDefault().language == "pt" -> windSpeedDto.descClassWindSpeedDailyPT
+            when (Locale.getDefault().language) {
+                dateFormatLanguageCode -> windSpeedDto.descClassWindSpeedDailyPT
                 else -> windSpeedDto.descClassWindSpeedDailyEN
             }
 

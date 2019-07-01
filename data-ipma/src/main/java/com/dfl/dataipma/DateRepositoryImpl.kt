@@ -1,6 +1,8 @@
 package com.dfl.dataipma
 
 import android.text.format.DateUtils
+import com.dfl.common.dateFormat
+import com.dfl.common.dateFormatLanguageCode
 import com.dfl.domainipma.repository.DateRepository
 import java.text.SimpleDateFormat
 import java.util.*
@@ -18,6 +20,6 @@ class DateRepositoryImpl : DateRepository {
     }
 
     companion object {
-        private val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.forLanguageTag("pt"))
+        private val simpleDateFormat = SimpleDateFormat(dateFormat, Locale.forLanguageTag(dateFormatLanguageCode))
     }
 }

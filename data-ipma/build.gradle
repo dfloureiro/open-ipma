@@ -39,6 +39,7 @@ dependencies {
 
     //domain
     implementation project(path: ':domain-ipma')
+    implementation project(path: ':common')
 
     testImplementation "junit:junit:$junit_version"
 }

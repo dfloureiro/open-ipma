@@ -6,11 +6,10 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import com.dfl.common.currentLocationIconRotation
 import com.dfl.openipma.R
 
 class HomeForecastViewHolder(private val viewHolderView: View) : RecyclerView.ViewHolder(viewHolderView) {
-
-    private val currentLocationIconRotation = 45f
 
     fun setViewHolderOnClickListener(onClickListener: View.OnClickListener) {
         viewHolderView.setOnClickListener(onClickListener)
