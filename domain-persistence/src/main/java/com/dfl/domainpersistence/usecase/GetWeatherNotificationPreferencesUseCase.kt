@@ -1,5 +1,6 @@
 package com.dfl.domainpersistence.usecase
 
+import com.dfl.domainpersistence.*
 import com.dfl.domainpersistence.repository.PersistenceRepository
 
 class GetWeatherNotificationPreferencesUseCase(private val preferencesRepository: PersistenceRepository) {
@@ -27,16 +28,5 @@ class GetWeatherNotificationPreferencesUseCase(private val preferencesRepository
 
     fun setPrivacyPolicyDialogShowed(wasShowed: Boolean) {
         preferencesRepository.putBoolean(PRIVACY_POLICY_DIALOG_KEY, wasShowed)
-    }
-
-    companion object {
-        const val WEATHER_NOTIFICATION_KEY = "weather_notification_preference"
-        private const val WEATHER_NOTIFICATION_DEFAULT_VALUE = true
-        const val NOTIFICATION_TIME_KEY = "notification_time_preference"
-        private const val NOTIFICATION_TIME_DEFAULT_VALUE = "8"
-        const val ANALYTICS_STATUS_KEY = "analytics_status"
-        private const val ANALYTICS_STATUS_DEFAULT_VALUE = false
-        const val PRIVACY_POLICY_DIALOG_KEY = "privacy_policy_dialog"
-        private const val PRIVACY_POLICY_DIALOG_DEFAULT_VALUE = false
     }
 }

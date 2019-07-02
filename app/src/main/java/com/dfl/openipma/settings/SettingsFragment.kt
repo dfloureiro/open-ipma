@@ -5,9 +5,9 @@ import android.os.Bundle
 import android.support.v7.preference.PreferenceFragmentCompat
 import com.dfl.domainanalytics.usecase.HandleOnScreenOpenEvents
 import com.dfl.domainanalytics.usecase.HandleOnSettingsChangeEvents
-import com.dfl.domainpersistence.usecase.GetWeatherNotificationPreferencesUseCase.Companion.ANALYTICS_STATUS_KEY
-import com.dfl.domainpersistence.usecase.GetWeatherNotificationPreferencesUseCase.Companion.NOTIFICATION_TIME_KEY
-import com.dfl.domainpersistence.usecase.GetWeatherNotificationPreferencesUseCase.Companion.WEATHER_NOTIFICATION_KEY
+import com.dfl.domainpersistence.ANALYTICS_STATUS_KEY
+import com.dfl.domainpersistence.NOTIFICATION_TIME_KEY
+import com.dfl.domainpersistence.WEATHER_NOTIFICATION_KEY
 import com.dfl.domainpersistence.usecase.HandleLastKnownLocationUseCase
 import com.dfl.openipma.IpmaApplication
 import com.dfl.openipma.R

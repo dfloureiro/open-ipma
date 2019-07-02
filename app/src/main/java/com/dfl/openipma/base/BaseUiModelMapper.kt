@@ -1,7 +1,7 @@
 package com.dfl.openipma.base
 
 import android.content.res.Resources
-import com.dfl.common.percipitationSuffix
+import com.dfl.common.precipitationSuffix
 import com.dfl.common.temperatureSuffix
 import com.dfl.domainipma.model.TemperatureStatus
 import com.dfl.openipma.R
@@ -90,6 +90,6 @@ open class BaseUiModelMapper {
     }
 
     internal fun setPrecipitationSuffix(precipitation: String): String {
-        return "$precipitation$percipitationSuffix"
+        return "$precipitation$precipitationSuffix"
     }
 }

@@ -57,13 +57,9 @@
 }
 
 -keep class com.dfl.openipma.di.** { *; }
--keep class com.dfl.openipma.service.WeatherNotificationService
-
 -keep class com.dfl.dataipma.model.** { *; }
 -keep class com.dfl.dataipma.IpmaClient
-
+-keep class com.dfl.openipma.service.WeatherServiceConstants
 -keep class com.dfl.domainanalytics.AnalyticsKey
-
--keep class com.dfl.domainpersistence.usecase.** { *; }
-
+-keep class com.dfl.domainpersistence.PersistenceConstants
 -keep class com.dfl.common.CommonConstants

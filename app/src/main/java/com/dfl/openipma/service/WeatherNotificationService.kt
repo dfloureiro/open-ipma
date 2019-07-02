@@ -20,7 +20,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class WeatherNotificationService : IntentService(SERVICE_NAME) {
+class WeatherNotificationService : IntentService(weatherNotificationService) {
 
     @Inject
     lateinit var getCitiesUseCase: GetCitiesUseCase
@@ -49,10 +49,10 @@ class WeatherNotificationService : IntentService(SERVICE_NAME) {
         createNotificationChannel()
 
         startForeground(
-            WEATHER_NOTIFICATION_ID,
+            weatherNotificationId,
             NotificationCompat.Builder(
                 this,
-                WEATHER_NOTIFICATION_CHANNEL_ID
+                weatherNotificationChannelId
             ).setContentTitle("").setContentText("").build()
         )
     }
@@ -88,7 +88,7 @@ class WeatherNotificationService : IntentService(SERVICE_NAME) {
     @Suppress("DEPRECATION")
     private fun sendNotification(notificationContent: NotificationContent) {
         val notificationBuilder = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            Notification.Builder(this, WEATHER_NOTIFICATION_CHANNEL_ID)
+            Notification.Builder(this, weatherNotificationChannelId)
         } else {
             Notification.Builder(this)
         }
@@ -114,22 +114,16 @@ class WeatherNotificationService : IntentService(SERVICE_NAME) {
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
             .build()
-        notificationManager.notify(WEATHER_NOTIFICATION_ID, notification)
+        notificationManager.notify(weatherNotificationId, notification)
     }
 
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val name = getString(R.string.notification_channel_name)
             val mChannel =
-                NotificationChannel(WEATHER_NOTIFICATION_CHANNEL_ID, name, NotificationManager.IMPORTANCE_LOW)
+                NotificationChannel(weatherNotificationChannelId, name, NotificationManager.IMPORTANCE_LOW)
             mChannel.description = getString(R.string.notification_channel_description)
             notificationManager.createNotificationChannel(mChannel)
         }
-    }
-
-    companion object {
-        private const val WEATHER_NOTIFICATION_ID = 1001
-        private const val WEATHER_NOTIFICATION_CHANNEL_ID = "WeatherNotificationService"
-        private const val SERVICE_NAME = "WeatherNotificationService"
     }
 }

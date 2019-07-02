@@ -1,5 +1,7 @@
 package com.dfl.domainpersistence.usecase
 
+import com.dfl.domainpersistence.FIRST_LAUNCH_DEFAULT_VALUE
+import com.dfl.domainpersistence.FIRST_LAUNCH_KEY
 import com.dfl.domainpersistence.repository.PersistenceRepository
 
 class HandleFirstLaunchUseCase(private val persistenceRepository: PersistenceRepository) {
@@ -10,10 +12,5 @@ class HandleFirstLaunchUseCase(private val persistenceRepository: PersistenceRep
 
     fun setHasNotFirstLaunch() {
         persistenceRepository.putBoolean(FIRST_LAUNCH_KEY, false)
-    }
-
-    companion object {
-        private const val FIRST_LAUNCH_KEY = "FIRST_LAUNCH_KEY"
-        private const val FIRST_LAUNCH_DEFAULT_VALUE = true
     }
 }

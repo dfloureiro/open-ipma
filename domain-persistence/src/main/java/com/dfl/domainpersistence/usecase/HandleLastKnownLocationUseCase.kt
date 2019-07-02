@@ -1,5 +1,7 @@
 package com.dfl.domainpersistence.usecase
 
+import com.dfl.domainpersistence.LAST_KNOWN_TERRITORY_DEFAULT_VALUE
+import com.dfl.domainpersistence.LAST_KNOWN_TERRITORY_KEY
 import com.dfl.domainpersistence.repository.PersistenceRepository
 
 class HandleLastKnownLocationUseCase(private val persistenceRepository: PersistenceRepository) {
@@ -14,10 +16,5 @@ class HandleLastKnownLocationUseCase(private val persistenceRepository: Persiste
 
     fun wasLastKnownTerritoryIdSet(): Boolean {
         return getLastKnownTerritoryId() != LAST_KNOWN_TERRITORY_DEFAULT_VALUE
-    }
-
-    companion object {
-        private const val LAST_KNOWN_TERRITORY_KEY = "LAST_KNOWN_TERRITORY_KEY"
-        private const val LAST_KNOWN_TERRITORY_DEFAULT_VALUE = 0
     }
 }
