@@ -4,17 +4,15 @@ apply plugin: 'kotlin-android-extensions'
 apply from: '../ktlint.gradle'
 
 android {
-    compileSdkVersion 28
-
+    compileSdkVersion 29
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -40,7 +38,7 @@ dependencies {
     //domain
     implementation project(path: ':domain-analytics')
 
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    testImplementation "junit:junit:$junit_version"
+    androidTestImplementation "androidx.test.ext:junit:$junitx_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
 }

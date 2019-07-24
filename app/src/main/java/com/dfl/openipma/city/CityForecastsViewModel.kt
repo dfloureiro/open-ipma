@@ -1,6 +1,6 @@
 package com.dfl.openipma.city
 
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.MutableLiveData
 import com.dfl.domainipma.model.CityForecast
 import com.dfl.domainipma.model.WeatherType
 import com.dfl.domainipma.model.WindSpeed

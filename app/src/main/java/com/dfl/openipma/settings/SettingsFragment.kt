@@ -2,7 +2,7 @@ package com.dfl.openipma.settings
 
 import android.content.Context
 import android.os.Bundle
-import android.support.v7.preference.PreferenceFragmentCompat
+import androidx.preference.PreferenceFragmentCompat
 import com.dfl.domainanalytics.usecase.HandleOnScreenOpenEvents
 import com.dfl.domainanalytics.usecase.HandleOnSettingsChangeEvents
 import com.dfl.domainpersistence.ANALYTICS_STATUS_KEY

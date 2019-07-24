@@ -1,7 +1,7 @@
 package com.dfl.openipma.di.modules
 
-import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.dfl.openipma.ViewModelFactory
 import com.dfl.openipma.city.CityForecastsViewModel
 import com.dfl.openipma.home.HomeViewModel

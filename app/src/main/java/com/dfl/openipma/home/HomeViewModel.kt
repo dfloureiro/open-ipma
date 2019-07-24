@@ -1,6 +1,6 @@
 package com.dfl.openipma.home
 
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.MutableLiveData
 import android.location.Location
 import com.dfl.domainanalytics.usecase.HandleOnSettingsChangeEvents
 import com.dfl.domainipma.model.*

@@ -12,7 +12,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.2'
+        classpath 'com.android.tools.build:gradle:3.5.0-rc01'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "com.google.gms:google-services:$google_services_version"
         classpath "io.fabric.tools:gradle:$fabric_version"
@@ -30,19 +30,23 @@ allprojects {
 }
 
 ext {
-    android_lib_version = "28.0.0"
-    constraint_layout_version = "2.0.0-beta2"
+    appcompat_version = "1.0.2"
+    preference_version = "1.0.0"
+    cardview_version = "1.0.0"
+    recyclerview_version = "1.0.0"
+    material_version = "1.0.0"
+    constraint_layout_version = "1.1.3"
+    lifecycle_version = "2.0.0"
     coroutines_version = "1.3.0-M2"
     dagger_version = "2.23.2"
     retrofit_version = "2.6.0"
-    lifecycle_version = "1.1.1"
-    google_play_services_version = "16.0.0"
+    google_play_services_version = "17.0.0"
     firebase_version = "16.0.9"
     crashlytics_version = "2.10.1"
 
     junit_version = "4.12"
-    test_runner_version = "1.0.2"
-    espresso_version = "3.0.2"
+    junitx_version = "1.1.1"
+    espresso_version = "3.2.0"
 }
 
 task clean(type: Delete) {

@@ -1,7 +1,7 @@
 package com.dfl.openipma.base
 
 import android.content.Context
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import com.dfl.openipma.IpmaApplication
 import com.dfl.openipma.di.Injector
 

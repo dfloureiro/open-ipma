@@ -1,6 +1,6 @@
 package com.dfl.openipma.seismic
 
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.MutableLiveData
 import com.dfl.domainipma.model.SeismicInfo
 import com.dfl.domainipma.usecase.GetSeismicInfoForAreaIdUseCase
 import com.dfl.openipma.base.BaseViewModel
