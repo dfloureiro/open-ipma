@@ -1,6 +1,7 @@
-# open-ipma
+# Open-IPMA
 Open Source Android IPMA weather app
 
+<img src="https://github.com/dfloureiro/open-ipma/blob/master/screenshots/Screenshot_20190724_184951_com.dfl.openipma.jpg" width="256"> <img src="https://github.com/dfloureiro/open-ipma/blob/master/screenshots/Screenshot_20190724_185009_com.dfl.openipma.jpg" width="256"> <img src="https://github.com/dfloureiro/open-ipma/blob/master/screenshots/Screenshot_20190724_185027_com.dfl.openipma.jpg" width="256">
 
 # Privacy policy
 
