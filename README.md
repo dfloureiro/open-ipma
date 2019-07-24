@@ -1,11 +1,13 @@
 # Open-IPMA
-Open Source Android IPMA weather app
+Open Source Android IPMA weather app.
 
 <img src="https://github.com/dfloureiro/open-ipma/blob/master/screenshots/Screenshot_20190724_184951_com.dfl.openipma.jpg" width="256"> <img src="https://github.com/dfloureiro/open-ipma/blob/master/screenshots/Screenshot_20190724_185009_com.dfl.openipma.jpg" width="256"> <img src="https://github.com/dfloureiro/open-ipma/blob/master/screenshots/Screenshot_20190724_185027_com.dfl.openipma.jpg" width="256">
 
+Download it at [Play Store](https://play.google.com/store/apps/details?id=com.dfl.openipma) or [Aptoide](https://weather-dfloureiro.en.aptoide.com).
+
 # Privacy policy
 
-This is the privacy policy for Weather - open-ipma - App
+This is the privacy policy for Weather Open-IPMA app
 
 * Your data is your own - none of this data will be shared with other parties without your consent.
 
