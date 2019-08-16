@@ -124,7 +124,7 @@ class HomeFragment : BaseFragment() {
         return when {
             currentContext != null -> return ContextCompat.checkSelfPermission(
                 currentContext,
-                Manifest.permission.ACCESS_COARSE_LOCATION
+                Manifest.permission.ACCESS_FINE_LOCATION
             ) == PackageManager.PERMISSION_GRANTED
             else -> false
         }

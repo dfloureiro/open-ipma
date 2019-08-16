@@ -55,6 +55,7 @@ dependencies {
     implementation("com.google.android.gms:play-services-maps:$google_play_services_version") {
         exclude group: 'com.android.support'
     }
+    implementation "com.mapbox.mapboxsdk:mapbox-android-sdk:$mapbox_version"
 
     implementation("com.google.firebase:firebase-core:$firebase_version") {
         exclude group: 'com.android.support'

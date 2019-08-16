@@ -23,14 +23,14 @@ class OnBoardingLocationFragment : BaseFragment() {
 
     private fun requestLocationPermission() {
         requestPermissions(
-            arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION),
-            ACCESS_COARSE_LOCATION_ID
+            arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+            ACCESS_FINE_LOCATION_ID
         )
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == ACCESS_COARSE_LOCATION_ID && grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+        if (requestCode == ACCESS_FINE_LOCATION_ID && grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             on_boarding_allow_location_button.text = getString(R.string.on_boarding_location_button_disabled)
             on_boarding_allow_location_button.isEnabled = false
             (activity as OnBoardingActivity).goToNextPage()
@@ -39,7 +39,7 @@ class OnBoardingLocationFragment : BaseFragment() {
 
     companion object {
 
-        private const val ACCESS_COARSE_LOCATION_ID = 1
+        private const val ACCESS_FINE_LOCATION_ID = 1
 
         fun newInstance(): OnBoardingLocationFragment {
             return OnBoardingLocationFragment()
