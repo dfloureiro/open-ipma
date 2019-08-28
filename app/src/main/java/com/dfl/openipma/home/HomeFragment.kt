@@ -2,18 +2,19 @@ package com.dfl.openipma.home
 
 import android.Manifest
 import android.annotation.SuppressLint
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
-import androidx.core.content.ContextCompat
-import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.dfl.domainanalytics.usecase.HandleOnScreenOpenEvents
 import com.dfl.openipma.R
 import com.dfl.openipma.ViewModelFactory
@@ -47,7 +48,8 @@ class HomeFragment : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.home_toolbar_title)
+        (activity as AppCompatActivity).supportActionBar?.title =
+            getString(R.string.home_toolbar_title)
         viewModel = ViewModelProviders.of(this, viewModeFactory).get(HomeViewModel::class.java)
         if (viewModel.homeViewState.value == null) {
             loadDataWithCurrentLocation()
@@ -58,7 +60,11 @@ class HomeFragment : BaseFragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.home_fragment, container, false)
     }
 
@@ -133,7 +139,16 @@ class HomeFragment : BaseFragment() {
     @SuppressLint("MissingPermission")
     private fun loadDataWithCurrentLocation() {
         if (hasLocationPermission()) {
-            fusedLocationProviderClient.lastLocation.addOnCompleteListener { viewModel.loadData(it.result) }
+            try {
+                fusedLocationProviderClient.lastLocation.addOnCompleteListener {
+                    viewModel.loadData(
+                        it.result
+                    )
+                }
+            } catch (e: Exception) {
+                Log.e("HomeFragment", e.message.orEmpty())
+                viewModel.loadData(null)
+            }
         } else {
             viewModel.loadData(null)
         }
