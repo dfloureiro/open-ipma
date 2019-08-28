@@ -2,6 +2,7 @@ package com.dfl.openipma.di.modules
 
 import com.dfl.domainpersistence.repository.PersistenceRepository
 import com.dfl.domainpersistence.usecase.GetWeatherNotificationPreferencesUseCase
+import com.dfl.domainpersistence.usecase.HandleFavouriteCitiesUseCase
 import com.dfl.domainpersistence.usecase.HandleFirstLaunchUseCase
 import com.dfl.domainpersistence.usecase.HandleLastKnownLocationUseCase
 import dagger.Module
@@ -31,6 +32,13 @@ object PersistenceUseCasesModule {
     @JvmStatic
     fun getWeatherNotificationPreferencesUseCase(persistenceRepository: PersistenceRepository): GetWeatherNotificationPreferencesUseCase {
         return GetWeatherNotificationPreferencesUseCase(persistenceRepository)
+    }
+
+    @Reusable
+    @Provides
+    @JvmStatic
+    fun getHandleFavouriteCitiesUseCase(persistenceRepository: PersistenceRepository): HandleFavouriteCitiesUseCase {
+        return HandleFavouriteCitiesUseCase(persistenceRepository)
     }
 
     @Named("analytics_status")

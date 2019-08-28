@@ -1,10 +1,18 @@
 package com.dfl.openipma.home
 
-import androidx.lifecycle.MutableLiveData
 import android.location.Location
+import androidx.lifecycle.MutableLiveData
 import com.dfl.domainanalytics.usecase.HandleOnSettingsChangeEvents
-import com.dfl.domainipma.model.*
-import com.dfl.domainipma.usecase.*
+import com.dfl.domainipma.model.City
+import com.dfl.domainipma.model.Day
+import com.dfl.domainipma.model.Forecast
+import com.dfl.domainipma.model.WeatherType
+import com.dfl.domainipma.model.WindSpeed
+import com.dfl.domainipma.usecase.GetCitiesUseCase
+import com.dfl.domainipma.usecase.GetClosestCityUseCase
+import com.dfl.domainipma.usecase.GetForecastsForDayUseCase
+import com.dfl.domainipma.usecase.GetWeatherTypesUseCase
+import com.dfl.domainipma.usecase.GetWindSpeedsUseCase
 import com.dfl.domainpersistence.usecase.GetWeatherNotificationPreferencesUseCase
 import com.dfl.domainpersistence.usecase.HandleLastKnownLocationUseCase
 import com.dfl.openipma.base.BaseViewModel
@@ -34,7 +42,8 @@ class HomeViewModel @Inject constructor(
                 val forecasts = loadForecastsForDay(closestCity)
                 val windSpeeds = loadWindSpeeds()
                 val weatherTypes = loadWeatherTypes()
-                val forecastUiModels = homeForecastUiModelMapper.create(forecasts, windSpeeds, weatherTypes, cities)
+                val forecastUiModels =
+                    homeForecastUiModelMapper.create(forecasts, windSpeeds, weatherTypes, cities)
                 homeViewState.value = HomeViewState(
                     privacyPolicy = getWeatherNotificationPreferencesUseCase.getPrivacyPolicyDialogShowed().not(),
                     homeForecastUiModels = forecastUiModels
@@ -45,6 +54,23 @@ class HomeViewModel @Inject constructor(
         }
     }
 
+    fun checkForFavouriteUpdates() {
+        // TODO
+        /**
+         * compare current viewModel favs with usecase favs
+         * if they are the same, no changes needed
+         * if they are different:
+         *      if it's an add we need to notify the move position from original position to the favPosition
+         *      if it's a remove we need to notify the move from the favPosition to the original
+         *
+         * the closest city is always the index 0
+         */
+        val favouriteMoves = mutableListOf<Pair<Int, Int>>()
+        val currentPosition = 0
+        val newPosition = 1
+        favouriteMoves.add(Pair(currentPosition, newPosition))
+    }
+
     fun setPrivacyPolicyPreferences(status: Boolean) {
         handleOnSettingsChangeEvents.setAnalyticsStatus(status)
         getWeatherNotificationPreferencesUseCase.setAnalyticsStatus(status)
@@ -53,7 +79,12 @@ class HomeViewModel @Inject constructor(
     }
 
     private suspend fun loadForecastsForDay(closestCity: City?): List<Forecast> {
-        return getForecastsForDayUseCase.buildUseCase(GetForecastsForDayUseCase.Params(Day.TODAY, closestCity))
+        return getForecastsForDayUseCase.buildUseCase(
+            GetForecastsForDayUseCase.Params(
+                Day.TODAY,
+                closestCity
+            )
+        )
     }
 
     private suspend fun loadWindSpeeds(): List<WindSpeed> {

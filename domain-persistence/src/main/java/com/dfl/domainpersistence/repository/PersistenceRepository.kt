@@ -13,4 +13,8 @@ interface PersistenceRepository {
     fun putInt(key: String, value: Int)
 
     fun getInt(key: String, defaultValue: Int): Int
+
+    fun putStringSet(key: String, value: Set<String>)
+
+    fun getStringSet(key: String, defaultValue: Set<String>?): MutableSet<String>?
 }

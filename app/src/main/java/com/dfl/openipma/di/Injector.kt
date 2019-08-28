@@ -1,8 +1,18 @@
 package com.dfl.openipma.di
 
 import com.dfl.openipma.IpmaApplication
+import com.dfl.openipma.city.CityForecastsActivity
 import com.dfl.openipma.city.CityForecastsFragment
-import com.dfl.openipma.di.component.*
+import com.dfl.openipma.di.component.ApplicationComponent
+import com.dfl.openipma.di.component.DaggerApplicationComponent
+import com.dfl.openipma.di.component.DaggerCityComponent
+import com.dfl.openipma.di.component.DaggerCityForecastsActivityComponent
+import com.dfl.openipma.di.component.DaggerEarthquakeComponent
+import com.dfl.openipma.di.component.DaggerHomeComponent
+import com.dfl.openipma.di.component.DaggerJobServiceComponent
+import com.dfl.openipma.di.component.DaggerOnBoardingComponent
+import com.dfl.openipma.di.component.DaggerSettingsComponent
+import com.dfl.openipma.di.component.DaggerWeatherServiceComponent
 import com.dfl.openipma.di.modules.ContextModule
 import com.dfl.openipma.di.modules.HomeModule
 import com.dfl.openipma.di.modules.SeismicModule
@@ -41,6 +51,13 @@ class Injector(ipmaApplication: IpmaApplication) {
             .applicationComponent(applicationComponent)
             .build()
             .inject(onBoardingActivity)
+    }
+
+    fun inject(cityForecastsActivity: CityForecastsActivity) {
+        DaggerCityForecastsActivityComponent.builder()
+            .applicationComponent(applicationComponent)
+            .build()
+            .inject(cityForecastsActivity)
     }
 
     fun inject(weatherNotificationService: WeatherNotificationService) {

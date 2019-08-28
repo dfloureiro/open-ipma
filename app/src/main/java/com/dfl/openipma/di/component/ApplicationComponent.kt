@@ -5,12 +5,22 @@ import android.app.job.JobScheduler
 import com.dfl.domainanalytics.usecase.HandleOnBoardingEvents
 import com.dfl.domainanalytics.usecase.HandleOnScreenOpenEvents
 import com.dfl.domainanalytics.usecase.HandleOnSettingsChangeEvents
-import com.dfl.domainipma.usecase.*
+import com.dfl.domainipma.usecase.GetCitiesUseCase
+import com.dfl.domainipma.usecase.GetForecastsForCityUseCase
+import com.dfl.domainipma.usecase.GetSeismicInfoForAreaIdUseCase
+import com.dfl.domainipma.usecase.GetWeatherTypesUseCase
+import com.dfl.domainipma.usecase.GetWindSpeedsUseCase
 import com.dfl.domainpersistence.usecase.GetWeatherNotificationPreferencesUseCase
+import com.dfl.domainpersistence.usecase.HandleFavouriteCitiesUseCase
 import com.dfl.domainpersistence.usecase.HandleFirstLaunchUseCase
 import com.dfl.domainpersistence.usecase.HandleLastKnownLocationUseCase
 import com.dfl.openipma.ViewModelFactory
-import com.dfl.openipma.di.modules.*
+import com.dfl.openipma.di.modules.AnalyticsUseCaseModule
+import com.dfl.openipma.di.modules.IpmaUseCasesModule
+import com.dfl.openipma.di.modules.LocationModule
+import com.dfl.openipma.di.modules.PersistenceUseCasesModule
+import com.dfl.openipma.di.modules.ServiceModule
+import com.dfl.openipma.di.modules.ViewModelFactoryModule
 import com.google.android.gms.location.FusedLocationProviderClient
 import dagger.Component
 import javax.inject.Singleton
@@ -34,6 +44,8 @@ interface ApplicationComponent {
     fun handleLastKnownLocationUseCase(): HandleLastKnownLocationUseCase
 
     fun getWeatherNotificationPreferencesUseCase(): GetWeatherNotificationPreferencesUseCase
+
+    fun getHandleFavouriteCitiesUseCase(): HandleFavouriteCitiesUseCase
 
     fun handleOnBoardingEvents(): HandleOnBoardingEvents
 

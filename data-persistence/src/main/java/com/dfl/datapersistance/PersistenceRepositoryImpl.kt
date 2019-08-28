@@ -3,7 +3,8 @@ package com.dfl.datapersistance
 import android.content.SharedPreferences
 import com.dfl.domainpersistence.repository.PersistenceRepository
 
-class PersistenceRepositoryImpl(private val sharedPreferences: SharedPreferences) : PersistenceRepository {
+class PersistenceRepositoryImpl(private val sharedPreferences: SharedPreferences) :
+    PersistenceRepository {
 
     override fun putBoolean(key: String, value: Boolean) {
         sharedPreferences.edit().putBoolean(key, value).apply()
@@ -27,5 +28,13 @@ class PersistenceRepositoryImpl(private val sharedPreferences: SharedPreferences
 
     override fun getInt(key: String, defaultValue: Int): Int {
         return sharedPreferences.getInt(key, defaultValue)
+    }
+
+    override fun putStringSet(key: String, value: Set<String>) {
+        sharedPreferences.edit().putStringSet(key, value).apply()
+    }
+
+    override fun getStringSet(key: String, defaultValue: Set<String>?): MutableSet<String>? {
+        return sharedPreferences.getStringSet(key, defaultValue)
     }
 }

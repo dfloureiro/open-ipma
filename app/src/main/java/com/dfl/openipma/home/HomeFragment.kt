@@ -99,6 +99,13 @@ class HomeFragment : BaseFragment() {
         error_retry_button.setOnClickListener { loadDataWithCurrentLocation() }
     }
 
+    override fun onResume() {
+        super.onResume()
+        if(homeForecastAdapter.itemCount != 0){
+            viewModel.checkForFavouriteUpdates()
+        }
+    }
+
     fun loadForecastsForCity(cityId: Int, cityName: String) {
         val intent = Intent(activity, CityForecastsActivity::class.java)
         intent.putExtra(CityForecastsActivity.CITY_ID_BUNDLE_KEY, cityId)

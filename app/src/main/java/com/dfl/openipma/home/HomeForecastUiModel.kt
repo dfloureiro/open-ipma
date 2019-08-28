@@ -11,5 +11,7 @@ data class HomeForecastUiModel(
     val weatherDescription: String,
     val weatherTypeResourceId: Int,
     val cardBackgroundColor: Int,
-    val isClosestCity: Boolean
+    val isClosestCity: Boolean,
+    val isFavourite: Boolean,
+    val originalPosition: Int
 )
