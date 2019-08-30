@@ -3,17 +3,10 @@ package com.dfl.openipma.home
 import android.location.Location
 import androidx.lifecycle.MutableLiveData
 import com.dfl.domainanalytics.usecase.HandleOnSettingsChangeEvents
-import com.dfl.domainipma.model.City
-import com.dfl.domainipma.model.Day
-import com.dfl.domainipma.model.Forecast
-import com.dfl.domainipma.model.WeatherType
-import com.dfl.domainipma.model.WindSpeed
-import com.dfl.domainipma.usecase.GetCitiesUseCase
-import com.dfl.domainipma.usecase.GetClosestCityUseCase
-import com.dfl.domainipma.usecase.GetForecastsForDayUseCase
-import com.dfl.domainipma.usecase.GetWeatherTypesUseCase
-import com.dfl.domainipma.usecase.GetWindSpeedsUseCase
+import com.dfl.domainipma.model.*
+import com.dfl.domainipma.usecase.*
 import com.dfl.domainpersistence.usecase.GetWeatherNotificationPreferencesUseCase
+import com.dfl.domainpersistence.usecase.HandleFavouriteCitiesUseCase
 import com.dfl.domainpersistence.usecase.HandleLastKnownLocationUseCase
 import com.dfl.openipma.base.BaseViewModel
 import kotlinx.coroutines.launch
@@ -28,7 +21,8 @@ class HomeViewModel @Inject constructor(
     private val handleLastKnownLocationUseCase: HandleLastKnownLocationUseCase,
     private val homeForecastUiModelMapper: HomeForecastUiModelMapper,
     private val handleOnSettingsChangeEvents: HandleOnSettingsChangeEvents,
-    private val getWeatherNotificationPreferencesUseCase: GetWeatherNotificationPreferencesUseCase
+    private val getWeatherNotificationPreferencesUseCase: GetWeatherNotificationPreferencesUseCase,
+    private val handleFavouriteCitiesUseCase: HandleFavouriteCitiesUseCase
 ) : BaseViewModel() {
 
     val homeViewState = MutableLiveData<HomeViewState>()
@@ -65,10 +59,48 @@ class HomeViewModel @Inject constructor(
          *
          * the closest city is always the index 0
          */
-        val favouriteMoves = mutableListOf<Pair<Int, Int>>()
-        val currentPosition = 0
-        val newPosition = 1
-        favouriteMoves.add(Pair(currentPosition, newPosition))
+
+        scope.launch {
+            val currentForecasts = homeViewState.value!!.homeForecastUiModels
+            val closestCity = currentForecasts.firstOrNull { it.isClosestCity }?.cityId.toString()
+            val currentFavs =
+                currentForecasts.filter { it.isFavourite }.map { it.cityId.toString() }
+            val newFavs = handleFavouriteCitiesUseCase.getFavouriteCities()
+
+            if (newFavs != null && currentFavs.containsAll(newFavs).not()) {
+
+                val listX = mutableListOf<Pair<Int, Int>>()
+
+                currentFavs
+                    .filter { newFavs.contains(it).not() && it != closestCity }
+                    .forEach { fav ->
+                        currentForecasts.find { it.cityId.toString() == fav }?.also {
+                            val currentPosition = currentForecasts.indexOf(it)
+                            val newPosition = it.originalPosition
+                            listX.add(Pair(currentPosition, newPosition))
+                        }
+                    }
+
+                val favsToAdd =
+                    newFavs.filter { currentFavs.contains(it).not() && it != closestCity }
+
+                favsToAdd.forEach { fav ->
+                    currentForecasts.find { it.cityId.toString() == fav }
+                        ?.also {
+                            val currentPosition = it.originalPosition
+                            val newPosition = favsToAdd.indexOf(fav)
+                            listX.add(Pair(currentPosition, newPosition))
+                        }
+                }
+
+                //TODO pass the listX to the recycler view to move
+            }
+
+            val favouriteMoves = mutableListOf<Pair<Int, Int>>()
+            val currentPosition = 0
+            val newPosition = 1
+            favouriteMoves.add(Pair(currentPosition, newPosition))
+        }
     }
 
     fun setPrivacyPolicyPreferences(status: Boolean) {
