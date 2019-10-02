@@ -9,7 +9,7 @@ open class BaseFragment : Fragment() {
 
     lateinit var injector: Injector
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
         val activity = activity
         when {

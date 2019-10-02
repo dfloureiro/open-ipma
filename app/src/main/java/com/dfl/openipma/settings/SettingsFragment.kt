@@ -3,6 +3,7 @@ package com.dfl.openipma.settings
 import android.content.Context
 import android.os.Bundle
 import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.SwitchPreference
 import com.dfl.domainanalytics.usecase.HandleOnScreenOpenEvents
 import com.dfl.domainanalytics.usecase.HandleOnSettingsChangeEvents
 import com.dfl.domainpersistence.ANALYTICS_STATUS_KEY
@@ -25,7 +26,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
     @Inject
     lateinit var handleOnSettingsChangeEvents: HandleOnSettingsChangeEvents
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
         val activity = activity
         when {
@@ -45,7 +46,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
         setPreferencesFromResource(R.xml.preferences, rootKey)
 
         if (lastKnownLocationUseCase.wasLastKnownTerritoryIdSet().not()) {
-            preferenceScreen.findPreference(WEATHER_NOTIFICATION_KEY).also {
+            findPreference<SwitchPreference>(WEATHER_NOTIFICATION_KEY)?.also {
                 it.isEnabled = false
                 it.summary = getString(R.string.settings_weather_notification_preference_description_disabled)
             }

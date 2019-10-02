@@ -30,7 +30,7 @@ class CityForecastsFragment : BaseFragment() {
 
     private lateinit var viewModel: CityForecastsViewModel
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
         injector.inject(this)
     }

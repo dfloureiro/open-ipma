@@ -36,7 +36,7 @@ class SeismicFragment : BaseFragment(), OnMapReadyCallback, MapFragment {
     private var map: GoogleMap? = null
     private lateinit var viewModel: SeismicViewModel
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
         injector.inject(this)
     }
