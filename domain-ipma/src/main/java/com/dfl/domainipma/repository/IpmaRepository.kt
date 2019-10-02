@@ -1,6 +1,11 @@
 package com.dfl.domainipma.repository
 
-import com.dfl.domainipma.model.*
+import com.dfl.domainipma.model.City
+import com.dfl.domainipma.model.CityForecast
+import com.dfl.domainipma.model.Forecast
+import com.dfl.domainipma.model.SeismicInfo
+import com.dfl.domainipma.model.WeatherType
+import com.dfl.domainipma.model.WindSpeed
 
 interface IpmaRepository {
 

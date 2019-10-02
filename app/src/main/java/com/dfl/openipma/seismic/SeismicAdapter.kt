@@ -1,12 +1,13 @@
 package com.dfl.openipma.seismic
 
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import com.dfl.openipma.R
 
-class SeismicAdapter(private val mapFragment: MapFragment) : RecyclerView.Adapter<SeismicViewHolder>() {
+class SeismicAdapter(private val mapFragment: MapFragment) :
+    RecyclerView.Adapter<SeismicViewHolder>() {
 
     private val earthquakes = mutableListOf<SeismicUiModel>()
 
@@ -33,7 +34,10 @@ class SeismicAdapter(private val mapFragment: MapFragment) : RecyclerView.Adapte
             p0.setMagnitud(seismicUiModel.magnitud)
             p0.setRegion(seismicUiModel.region)
             p0.setTime(seismicUiModel.time)
-            p0.setCoordinates(seismicUiModel.latitude.toString(), seismicUiModel.longitude.toString())
+            p0.setCoordinates(
+                seismicUiModel.latitude.toString(),
+                seismicUiModel.longitude.toString()
+            )
             p0.setSensed(seismicUiModel.sensed)
         }
     }

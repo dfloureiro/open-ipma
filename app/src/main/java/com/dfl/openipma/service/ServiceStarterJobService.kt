@@ -20,7 +20,9 @@ class ServiceStarterJobService : JobService() {
     override fun onStartJob(params: JobParameters): Boolean {
         val service = Intent(applicationContext, WeatherNotificationService::class.java)
         when {
-            Build.VERSION.SDK_INT >= Build.VERSION_CODES.O -> applicationContext.startForegroundService(service)
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.O -> applicationContext.startForegroundService(
+                service
+            )
             else -> applicationContext.startService(service)
         }
         jobSchedulerWrapper.scheduleAlarmWeatherService(applicationContext)

@@ -2,7 +2,7 @@ package com.dfl.openipma.di.modules
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.preference.PreferenceManager
+import androidx.preference.PreferenceManager
 import com.dfl.datapersistance.PersistenceRepositoryImpl
 import com.dfl.domainpersistence.repository.PersistenceRepository
 import dagger.Module

@@ -2,7 +2,13 @@ package com.dfl.openipma.di.modules
 
 import com.dfl.domainipma.repository.IpmaRepository
 import com.dfl.domainipma.repository.LocationRepository
-import com.dfl.domainipma.usecase.*
+import com.dfl.domainipma.usecase.GetCitiesUseCase
+import com.dfl.domainipma.usecase.GetClosestCityUseCase
+import com.dfl.domainipma.usecase.GetForecastsForCityUseCase
+import com.dfl.domainipma.usecase.GetForecastsForDayUseCase
+import com.dfl.domainipma.usecase.GetSeismicInfoForAreaIdUseCase
+import com.dfl.domainipma.usecase.GetWeatherTypesUseCase
+import com.dfl.domainipma.usecase.GetWindSpeedsUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable

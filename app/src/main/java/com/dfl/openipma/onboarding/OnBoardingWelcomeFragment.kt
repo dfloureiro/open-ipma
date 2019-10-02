@@ -9,7 +9,11 @@ import com.dfl.openipma.base.BaseFragment
 
 class OnBoardingWelcomeFragment : BaseFragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.on_boarding_welcome_fragment, container, false)
     }
 

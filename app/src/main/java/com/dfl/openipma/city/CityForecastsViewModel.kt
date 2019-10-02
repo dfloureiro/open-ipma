@@ -8,8 +8,8 @@ import com.dfl.domainipma.usecase.GetForecastsForCityUseCase
 import com.dfl.domainipma.usecase.GetWeatherTypesUseCase
 import com.dfl.domainipma.usecase.GetWindSpeedsUseCase
 import com.dfl.openipma.base.BaseViewModel
-import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlinx.coroutines.launch
 
 class CityForecastsViewModel @Inject constructor(
     private val getForecastsForCityUseCase: GetForecastsForCityUseCase,
@@ -28,13 +28,18 @@ class CityForecastsViewModel @Inject constructor(
                 val cityForecasts = loadCityForecasts(cityId)
                 val windSpeeds = loadWindSpeeds()
                 val weatherTypes = loadWeatherTypes()
-                val uiModels = cityForecastsUiModelMapper.map(cityForecasts, windSpeeds, weatherTypes)
+                val uiModels =
+                    cityForecastsUiModelMapper.map(cityForecasts, windSpeeds, weatherTypes)
                 val todayUiModel = uiModels.find { it.isToday }
                 if (todayUiModel != null) {
                     cityForecastsState.value =
                         CityForecastsState(
                             todayUiModel = todayUiModel,
-                            forecastUiModels = uiModels.toMutableList().also { it.remove(todayUiModel) }
+                            forecastUiModels = uiModels.toMutableList().also {
+                                it.remove(
+                                    todayUiModel
+                                )
+                            }
                         )
                 } else {
                     throw IllegalArgumentException("Could not find valid today's forecast for cityId $cityId")

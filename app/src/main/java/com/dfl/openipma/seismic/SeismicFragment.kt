@@ -1,14 +1,14 @@
 package com.dfl.openipma.seismic
 
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import android.content.Context
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.dfl.domainanalytics.usecase.HandleOnScreenOpenEvents
 import com.dfl.openipma.R
 import com.dfl.openipma.ViewModelFactory
@@ -20,9 +20,9 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import javax.inject.Inject
 import kotlinx.android.synthetic.main.earthquake_fragment.*
 import kotlinx.android.synthetic.main.error_layout.*
-import javax.inject.Inject
 
 class SeismicFragment : BaseFragment(), OnMapReadyCallback, MapFragment {
 
@@ -46,7 +46,8 @@ class SeismicFragment : BaseFragment(), OnMapReadyCallback, MapFragment {
         if (savedInstanceState == null) {
             handleOnScreenOpenEvents.logSeismicScreenLaunch()
         }
-        (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.seismic_toolbar_title)
+        (activity as AppCompatActivity).supportActionBar?.title =
+            getString(R.string.seismic_toolbar_title)
         viewModel = ViewModelProviders.of(this, viewModeFactory).get(SeismicViewModel::class.java)
         when {
             viewModel.seismicState.value == null -> {
@@ -55,13 +56,21 @@ class SeismicFragment : BaseFragment(), OnMapReadyCallback, MapFragment {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.earthquake_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (childFragmentManager.findFragmentById(R.id.earthquakes_map) as SupportMapFragment).also { it.getMapAsync(this) }
+        (childFragmentManager.findFragmentById(R.id.earthquakes_map) as SupportMapFragment).also {
+            it.getMapAsync(
+                this
+            )
+        }
         seismic_recycler_view.apply {
             adapter = seismicAdapter
         }
@@ -91,28 +100,36 @@ class SeismicFragment : BaseFragment(), OnMapReadyCallback, MapFragment {
 
     override fun onMapReady(googleMap: GoogleMap?) {
         map = googleMap?.also { map ->
-            viewModel.seismicState.observe(viewLifecycleOwner, Observer<SeismicViewModel.SeismicState> {
-                when {
-                    it != null -> {
-                        it.seismicUiModels.map { seismicUiModel ->
-                            LatLng(
-                                seismicUiModel.latitude,
-                                seismicUiModel.longitude
-                            )
-                        }
-                            .map { latLng ->
-                                MarkerOptions().position(latLng)
-                            }.forEach { markerOptions ->
-                                map.addMarker(markerOptions)
+            viewModel.seismicState.observe(
+                viewLifecycleOwner,
+                Observer<SeismicViewModel.SeismicState> {
+                    when {
+                        it != null -> {
+                            it.seismicUiModels.map { seismicUiModel ->
+                                LatLng(
+                                    seismicUiModel.latitude,
+                                    seismicUiModel.longitude
+                                )
                             }
+                                .map { latLng ->
+                                    MarkerOptions().position(latLng)
+                                }.forEach { markerOptions ->
+                                    map.addMarker(markerOptions)
+                                }
+                        }
                     }
-                }
-            })
+                })
 
             map.uiSettings.isZoomControlsEnabled = true
             map.setOnMarkerClickListener { marker ->
-                seismicAdapter.findItemWithCoordinates(marker.position.latitude, marker.position.longitude)?.also {
-                    (seismic_recycler_view.layoutManager as LinearLayoutManager).scrollToPositionWithOffset(it, 20)
+                seismicAdapter.findItemWithCoordinates(
+                    marker.position.latitude,
+                    marker.position.longitude
+                )?.also {
+                    (seismic_recycler_view.layoutManager as LinearLayoutManager).scrollToPositionWithOffset(
+                        it,
+                        20
+                    )
                 }
                 false
             }

@@ -17,8 +17,9 @@ class WeatherServiceNotificationContentMapper @Inject constructor() : BaseUiMode
         weatherTypes: List<WeatherType>
     ): NotificationContent {
         val cityName = cities.find { it.id == cityId }?.name ?: defaultUnknownDescription
-        val text = weatherTypes.find { it.weatherTypeId == todayForecast.weatherType }?.weatherTypeDescription
-            ?: defaultUnknownDescription
+        val text =
+            weatherTypes.find { it.weatherTypeId == todayForecast.weatherType }?.weatherTypeDescription
+                ?: defaultUnknownDescription
 
         return NotificationContent(
             cityId,

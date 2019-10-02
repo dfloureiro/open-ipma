@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/home_card_view"
-        android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_margin="8dp"
         card_view:cardCornerRadius="5dp"
         tools:backgroundTint="@color/sunny">
@@ -22,88 +21,87 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:barrierDirection="bottom"
-                app:constraint_referenced_ids="home_card_weather_description,home_card_weather_icon"
-                />
+                app:constraint_referenced_ids="home_card_weather_description,home_card_weather_icon" />
 
         <androidx.constraintlayout.widget.Barrier
                 android:id="@+id/home_city_info_barrier"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:barrierDirection="end"
-                app:constraint_referenced_ids="home_card_city_name,home_card_weather_description"/>
+                app:constraint_referenced_ids="home_card_city_name,home_card_weather_description" />
 
         <TextView
                 android:id="@+id/home_card_city_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
                 android:textColor="@android:color/white"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/home_card_weather_description"
                 app:layout_constraintLeft_toRightOf="@+id/home_card_current_location"
                 app:layout_constraintRight_toLeftOf="@+id/home_card_weather_icon"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/home_card_weather_description"
-                tools:text="Lisboa"/>
+                tools:text="Lisboa" />
 
         <ImageView
                 android:id="@+id/home_card_current_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_navigation"
                 android:contentDescription="@string/current_location_description"
+                android:src="@drawable/ic_navigation"
                 android:visibility="gone"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/home_card_city_name"
-                app:layout_constraintTop_toTopOf="@+id/home_card_city_name"
                 app:layout_constraintBottom_toBottomOf="@+id/home_card_city_name"
-                tools:visibility="visible"/>
+                app:layout_constraintEnd_toStartOf="@+id/home_card_city_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/home_card_city_name"
+                tools:visibility="visible" />
 
         <TextView
                 android:id="@+id/home_card_weather_description"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
                 android:textColor="@color/secondary_text"
+                android:textSize="16sp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@+id/home_card_weather_icon"
                 app:layout_constraintTop_toBottomOf="@+id/home_card_city_name"
-                tools:text="Sunny"/>
+                tools:text="Sunny" />
 
         <ImageView
                 android:id="@+id/home_card_weather_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:contentDescription="@string/weather_image_description"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintBottom_toBottomOf="@+id/home_card_weather_description"
                 app:layout_constraintLeft_toRightOf="@+id/home_city_info_barrier"
-                tools:src="@drawable/ic_cloudy"/>
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/ic_cloudy" />
 
         <LinearLayout
                 android:id="@+id/home_card_temp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@+id/home_card_wind"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/home_horizontal_card_center_barrier">
 
             <TextView
                     android:id="@+id/home_card_max_temp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="28sp"
                     android:textColor="@android:color/white"
-                    tools:text="42º"/>
+                    android:textSize="28sp"
+                    tools:text="42º" />
 
             <TextView
                     android:id="@+id/home_card_min_temp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="28sp"
-                    android:textColor="@color/secondary_text"
                     android:layout_marginStart="12dp"
-                    tools:text="17º"/>
+                    android:textColor="@color/secondary_text"
+                    android:textSize="28sp"
+                    tools:text="17º" />
 
         </LinearLayout>
 
@@ -111,27 +109,27 @@
                 android:id="@+id/home_card_wind"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_windy"
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
-                android:drawableStart="@drawable/ic_windy"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/home_horizontal_card_center_barrier"
                 app:layout_constraintLeft_toRightOf="@+id/home_card_temp"
                 app:layout_constraintRight_toLeftOf="@+id/home_card_precipitation"
-                tools:text="Muito Forte"/>
+                app:layout_constraintTop_toTopOf="@+id/home_horizontal_card_center_barrier"
+                tools:text="Muito Forte" />
 
         <TextView
                 android:id="@+id/home_card_precipitation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_umbrella"
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
-                android:drawableStart="@drawable/ic_umbrella"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/home_horizontal_card_center_barrier"
-                app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintLeft_toRightOf="@+id/home_card_wind"
-                tools:text="100%"/>
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/home_horizontal_card_center_barrier"
+                tools:text="100%" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

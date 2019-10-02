@@ -1,7 +1,17 @@
 package com.dfl.dataipma
 
-import com.dfl.dataipma.mapper.*
-import com.dfl.domainipma.model.*
+import com.dfl.dataipma.mapper.ForecastsCityDtoToForecastsListMapper
+import com.dfl.dataipma.mapper.ForecastsDayDtoToForecastsListMapper
+import com.dfl.dataipma.mapper.GlobalIdsDtoToCityListMapper
+import com.dfl.dataipma.mapper.SeismicInfosDtoToSeismicInfoListMapper
+import com.dfl.dataipma.mapper.WeatherTypeDtoToWeatherTypeListMapper
+import com.dfl.dataipma.mapper.WindSpeedsDtoToWindSpeedsListMapper
+import com.dfl.domainipma.model.City
+import com.dfl.domainipma.model.CityForecast
+import com.dfl.domainipma.model.Forecast
+import com.dfl.domainipma.model.SeismicInfo
+import com.dfl.domainipma.model.WeatherType
+import com.dfl.domainipma.model.WindSpeed
 import com.dfl.domainipma.repository.IpmaRepository
 
 class IpmaRepositoryImpl(

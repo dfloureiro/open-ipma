@@ -4,12 +4,12 @@ import android.content.Context
 import com.dfl.dataipma.IpmaClient
 import dagger.Module
 import dagger.Provides
+import javax.inject.Named
+import javax.inject.Singleton
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import javax.inject.Named
-import javax.inject.Singleton
 
 @Module(includes = [ContextModule::class])
 object NetworkModule {

@@ -4,7 +4,7 @@ import com.dfl.common.dateFormatLanguageCode
 import com.dfl.dataipma.model.WindSpeedDto
 import com.dfl.dataipma.model.WindSpeedsDto
 import com.dfl.domainipma.model.WindSpeed
-import java.util.*
+import java.util.Locale
 
 class WindSpeedsDtoToWindSpeedsListMapper {
 

@@ -1,9 +1,9 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply from: '../ktlint.gradle'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'io.fabric'
-apply from: '../ktlint.gradle'
 
 android {
     compileSdkVersion 29

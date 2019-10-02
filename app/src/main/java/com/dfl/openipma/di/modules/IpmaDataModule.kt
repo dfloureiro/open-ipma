@@ -4,7 +4,12 @@ import com.dfl.dataipma.DateRepositoryImpl
 import com.dfl.dataipma.IpmaClient
 import com.dfl.dataipma.IpmaRepositoryImpl
 import com.dfl.dataipma.LocationRepositoryImpl
-import com.dfl.dataipma.mapper.*
+import com.dfl.dataipma.mapper.ForecastsCityDtoToForecastsListMapper
+import com.dfl.dataipma.mapper.ForecastsDayDtoToForecastsListMapper
+import com.dfl.dataipma.mapper.GlobalIdsDtoToCityListMapper
+import com.dfl.dataipma.mapper.SeismicInfosDtoToSeismicInfoListMapper
+import com.dfl.dataipma.mapper.WeatherTypeDtoToWeatherTypeListMapper
+import com.dfl.dataipma.mapper.WindSpeedsDtoToWindSpeedsListMapper
 import com.dfl.domainipma.repository.DateRepository
 import com.dfl.domainipma.repository.IpmaRepository
 import com.dfl.domainipma.repository.LocationRepository

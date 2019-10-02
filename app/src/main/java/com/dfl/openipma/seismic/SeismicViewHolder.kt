@@ -1,11 +1,12 @@
 package com.dfl.openipma.seismic
 
-import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.dfl.openipma.R
 
-class SeismicViewHolder(private val viewHolderView: View) : RecyclerView.ViewHolder(viewHolderView) {
+class SeismicViewHolder(private val viewHolderView: View) :
+    RecyclerView.ViewHolder(viewHolderView) {
 
     fun setViewHolderOnClickListener(onClickListener: View.OnClickListener) {
         viewHolderView.setOnClickListener(onClickListener)

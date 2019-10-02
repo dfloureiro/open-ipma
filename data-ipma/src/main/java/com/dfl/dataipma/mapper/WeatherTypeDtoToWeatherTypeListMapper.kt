@@ -4,7 +4,7 @@ import com.dfl.common.dateFormatLanguageCode
 import com.dfl.dataipma.model.WeatherTypeDto
 import com.dfl.dataipma.model.WeatherTypesDto
 import com.dfl.domainipma.model.WeatherType
-import java.util.*
+import java.util.Locale
 
 class WeatherTypeDtoToWeatherTypeListMapper {
 

@@ -1,60 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorPrimary"
         tools:context=".about.AboutActivity">
 
     <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp">
+            android:layout_marginEnd="10dp"
+            android:orientation="vertical">
 
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="@android:style/TextAppearance.Material.Title"
-                android:text="@string/about_the_app_title"/>
+                android:text="@string/about_the_app_title"
+                android:textAppearance="@android:style/TextAppearance.Material.Title" />
 
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="@android:style/TextAppearance.Material.Body1"
                 android:autoLink="web"
+                android:text="@string/about_the_app_description"
                 android:textAlignment="textStart"
-                android:text="@string/about_the_app_description"/>
+                android:textAppearance="@android:style/TextAppearance.Material.Body1" />
 
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="@android:style/TextAppearance.Material.Title"
-                android:text="@string/about_contact_us_title"/>
+                android:text="@string/about_contact_us_title"
+                android:textAppearance="@android:style/TextAppearance.Material.Title" />
 
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="@android:style/TextAppearance.Material.Body1"
                 android:autoLink="web|email"
+                android:text="@string/about_contact_us_description"
                 android:textAlignment="textStart"
-                android:text="@string/about_contact_us_description"/>
+                android:textAppearance="@android:style/TextAppearance.Material.Body1" />
 
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="@android:style/TextAppearance.Material.Title"
-                android:text="@string/about_our_stack_title"/>
+                android:text="@string/about_our_stack_title"
+                android:textAppearance="@android:style/TextAppearance.Material.Title" />
 
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="@android:style/TextAppearance.Material.Body1"
                 android:autoLink="web"
+                android:text="@string/about_our_stack_description"
                 android:textAlignment="textStart"
-                android:text="@string/about_our_stack_description"/>
+                android:textAppearance="@android:style/TextAppearance.Material.Body1" />
     </LinearLayout>
 </ScrollView>

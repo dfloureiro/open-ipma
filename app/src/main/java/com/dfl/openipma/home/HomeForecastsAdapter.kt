@@ -1,12 +1,13 @@
 package com.dfl.openipma.home
 
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import com.dfl.openipma.R
 
-class HomeForecastsAdapter(private val homeFragment: HomeFragment) : RecyclerView.Adapter<HomeForecastViewHolder>() {
+class HomeForecastsAdapter(private val homeFragment: HomeFragment) :
+    RecyclerView.Adapter<HomeForecastViewHolder>() {
 
     private val forecasts = mutableListOf<HomeForecastUiModel>()
 

@@ -2,8 +2,8 @@ package com.dfl.openipma.base
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import com.dfl.openipma.R
 import com.dfl.openipma.about.AboutActivity
 import com.dfl.openipma.seismic.SeismicActivity

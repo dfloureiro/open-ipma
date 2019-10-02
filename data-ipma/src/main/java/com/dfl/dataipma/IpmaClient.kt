@@ -1,6 +1,11 @@
 package com.dfl.dataipma
 
-import com.dfl.dataipma.model.*
+import com.dfl.dataipma.model.ForecastsCityDto
+import com.dfl.dataipma.model.ForecastsDayDto
+import com.dfl.dataipma.model.GlobalIdsDto
+import com.dfl.dataipma.model.SeismicInfosDto
+import com.dfl.dataipma.model.WeatherTypesDto
+import com.dfl.dataipma.model.WindSpeedsDto
 import retrofit2.http.GET
 import retrofit2.http.Path
 

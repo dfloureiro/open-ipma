@@ -8,7 +8,10 @@ import com.dfl.domainipma.repository.IpmaRepository
 class GetForecastsForDayUseCase(private val ipmaRepository: IpmaRepository) {
 
     suspend fun buildUseCase(params: Params): List<Forecast> {
-        return moveClosestCityToFirstPosition(params.closestCity, ipmaRepository.getForecastsForDay(params.day.id))
+        return moveClosestCityToFirstPosition(
+            params.closestCity,
+            ipmaRepository.getForecastsForDay(params.day.id)
+        )
     }
 
     private fun moveClosestCityToFirstPosition(

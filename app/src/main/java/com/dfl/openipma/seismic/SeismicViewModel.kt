@@ -4,8 +4,8 @@ import androidx.lifecycle.MutableLiveData
 import com.dfl.domainipma.model.SeismicInfo
 import com.dfl.domainipma.usecase.GetSeismicInfoForAreaIdUseCase
 import com.dfl.openipma.base.BaseViewModel
-import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlinx.coroutines.launch
 
 class SeismicViewModel @Inject constructor(
     private val getSeismicInfoForAreaIdUseCase: GetSeismicInfoForAreaIdUseCase,
@@ -20,7 +20,8 @@ class SeismicViewModel @Inject constructor(
             try {
                 val seismicInfoAzores = loadSeismicInfo(azoresAreaId)
                 val seismicInfoContinentAndMadeira = loadSeismicInfo(continentAndMadeiraAreaId)
-                val uiModels = seismicUiModelMapper.map(seismicInfoAzores + seismicInfoContinentAndMadeira)
+                val uiModels =
+                    seismicUiModelMapper.map(seismicInfoAzores + seismicInfoContinentAndMadeira)
                 seismicState.value = SeismicState(seismicUiModels = uiModels)
             } catch (e: Exception) {
                 seismicState.value = SeismicState(error = true)
@@ -29,7 +30,11 @@ class SeismicViewModel @Inject constructor(
     }
 
     private suspend fun loadSeismicInfo(areaId: Int): List<SeismicInfo> {
-        return getSeismicInfoForAreaIdUseCase.buildUseCase(GetSeismicInfoForAreaIdUseCase.Params(areaId))
+        return getSeismicInfoForAreaIdUseCase.buildUseCase(
+            GetSeismicInfoForAreaIdUseCase.Params(
+                areaId
+            )
+        )
     }
 
     data class SeismicState(

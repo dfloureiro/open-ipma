@@ -8,7 +8,9 @@ import com.dfl.domainipma.model.WindSpeed
 import com.dfl.openipma.base.BaseUiModelMapper
 import dagger.Reusable
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Calendar
+import java.util.GregorianCalendar
+import java.util.Locale
 import javax.inject.Inject
 
 @Reusable
@@ -51,7 +53,7 @@ class CityForecastUiModelMapper @Inject constructor() : BaseUiModelMapper() {
 
     private fun getDayOfWeek(date: String): String {
         val forecastDate = GregorianCalendar()
-        forecastDate.time = simpleDateFormat.parse(date)
-        return forecastDate.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault())
+        simpleDateFormat.parse(date)?.also { forecastDate.time = it }
+        return forecastDate.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault()).orEmpty()
     }
 }

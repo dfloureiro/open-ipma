@@ -9,7 +9,10 @@ import com.dfl.domainanalytics.repository.AnalyticsRepository
 class HandleOnSettingsChangeEvents(private val analyticsRepository: AnalyticsRepository) {
 
     fun logOnNotificationTimeChange(time: String) {
-        analyticsRepository.logEvent(SETTINGS_NOTIFICATION_TIME_KEY, mapOf(Pair(NOTIFICATION_HOUR, time)))
+        analyticsRepository.logEvent(
+            SETTINGS_NOTIFICATION_TIME_KEY,
+            mapOf(Pair(NOTIFICATION_HOUR, time))
+        )
     }
 
     fun logOnNotificationStatusChange(isEnabled: Boolean) {

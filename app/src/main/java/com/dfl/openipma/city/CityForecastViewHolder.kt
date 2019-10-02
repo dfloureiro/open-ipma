@@ -1,14 +1,15 @@
 package com.dfl.openipma.city
 
-import androidx.core.content.ContextCompat
-import androidx.cardview.widget.CardView
-import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.RecyclerView
 import com.dfl.openipma.R
 
-class CityForecastViewHolder(private val viewHolderView: View) : RecyclerView.ViewHolder(viewHolderView) {
+class CityForecastViewHolder(private val viewHolderView: View) :
+    RecyclerView.ViewHolder(viewHolderView) {
 
     fun setDay(day: String) {
         viewHolderView.findViewById<TextView>(R.id.city_card_day_of_week).text = day
@@ -35,7 +36,8 @@ class CityForecastViewHolder(private val viewHolderView: View) : RecyclerView.Vi
     }
 
     fun setIcon(resourceId: Int) {
-        viewHolderView.findViewById<ImageView>(R.id.city_card_weather_icon).setImageResource(resourceId)
+        viewHolderView.findViewById<ImageView>(R.id.city_card_weather_icon)
+            .setImageResource(resourceId)
     }
 
     fun setBackgroundColor(colorId: Int) {

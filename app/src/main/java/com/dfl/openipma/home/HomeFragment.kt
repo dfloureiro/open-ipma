@@ -22,9 +22,9 @@ import com.dfl.openipma.base.BaseFragment
 import com.dfl.openipma.city.CityForecastsActivity
 import com.dfl.openipma.service.JobSchedulerWrapper
 import com.google.android.gms.location.FusedLocationProviderClient
+import javax.inject.Inject
 import kotlinx.android.synthetic.main.error_layout.*
 import kotlinx.android.synthetic.main.home_fragment.*
-import javax.inject.Inject
 
 class HomeFragment : BaseFragment() {
 

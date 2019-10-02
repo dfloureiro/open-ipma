@@ -36,7 +36,11 @@ class HomeForecastUiModelMapper @Inject constructor() : BaseUiModelMapper() {
                             city.name,
                             setTemperatureSuffix(forecast.minTemp),
                             setTemperatureSuffix(forecast.maxTemp),
-                            setPrecipitationSuffix(forecast.precipitation.substringBefore(precipitationDivider)),
+                            setPrecipitationSuffix(
+                                forecast.precipitation.substringBefore(
+                                    precipitationDivider
+                                )
+                            ),
                             windSpeedDescription,
                             forecast.windDirection.rotation,
                             weatherDescription,
@@ -45,7 +49,10 @@ class HomeForecastUiModelMapper @Inject constructor() : BaseUiModelMapper() {
                             forecast.isClosestCity
                         )
                     )
-                else -> Log.e("ups", "the city id ${forecast.cityId} does not have a valid forecast")
+                else -> Log.e(
+                    "ups",
+                    "the city id ${forecast.cityId} does not have a valid forecast"
+                )
             }
         }
         return forecastUiModels

@@ -36,6 +36,10 @@ abstract class ViewModelFactoryModule {
     abstract fun bindSeismicViewModel(myViewModel: SeismicViewModel): ViewModel
 }
 
-@Target(AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER, AnnotationTarget.PROPERTY_SETTER)
+@Target(
+    AnnotationTarget.FUNCTION,
+    AnnotationTarget.PROPERTY_GETTER,
+    AnnotationTarget.PROPERTY_SETTER
+)
 @MapKey
 annotation class ViewModelKey(val value: KClass<out ViewModel>)

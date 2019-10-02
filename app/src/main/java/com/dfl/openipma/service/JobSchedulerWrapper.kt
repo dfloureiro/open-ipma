@@ -7,7 +7,7 @@ import android.content.Context
 import android.os.Build
 import com.dfl.domainpersistence.usecase.GetWeatherNotificationPreferencesUseCase
 import dagger.Reusable
-import java.util.*
+import java.util.GregorianCalendar
 import javax.inject.Inject
 
 @Reusable
@@ -18,7 +18,8 @@ class JobSchedulerWrapper @Inject constructor(
 
     fun scheduleAlarmWeatherService(context: Context) {
 
-        val notificationHour = getWeatherNotificationPreferencesUseCase.getHourForWeatherNotification()
+        val notificationHour =
+            getWeatherNotificationPreferencesUseCase.getHourForWeatherNotification()
         val currentTimeInMillis = GregorianCalendar.getInstance().timeInMillis
         val timeInMillisToTriggerAlarm = GregorianCalendar.getInstance()
             .let {

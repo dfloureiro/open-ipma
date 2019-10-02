@@ -1,11 +1,19 @@
 package com.dfl.openipma.seismic
 
-import com.dfl.common.*
+import com.dfl.common.dateDivider
+import com.dfl.common.dateFormatLanguageCode
+import com.dfl.common.dateWithTimeFormat
+import com.dfl.common.hoursFormat
+import com.dfl.common.hoursSuffix
+import com.dfl.common.minutesSuffix
+import com.dfl.common.timeDivider
 import com.dfl.domainipma.model.SeismicInfo
 import com.dfl.openipma.base.BaseUiModelMapper
 import dagger.Reusable
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Calendar
+import java.util.GregorianCalendar
+import java.util.Locale
 import javax.inject.Inject
 
 @Reusable
@@ -31,20 +39,20 @@ class SeismicUiModelMapper @Inject constructor() : BaseUiModelMapper() {
 
     private fun getTimeInMillis(date: String): Long {
         val seismicTime = GregorianCalendar()
-        seismicTime.time = simpleDateFormat.parse(date)
+        simpleDateFormat.parse(date)?.also { seismicTime.time = it }
         return seismicTime.timeInMillis
     }
 
     private fun getTimeString(date: String): String {
         val seismicTime = GregorianCalendar()
-        seismicTime.time = simpleDateFormat.parse(date)
+        simpleDateFormat.parse(date)?.also { seismicTime.time = it }
         return "${seismicTime.get(Calendar.DAY_OF_MONTH)}$dateDivider" +
-                "${seismicTime.get(Calendar.MONTH)}$dateDivider" +
-                "${seismicTime.get(Calendar.YEAR)} " +
-                String.format(hoursFormat, seismicTime.get(Calendar.HOUR_OF_DAY)).dropLast(1) +
-                "$hoursSuffix$timeDivider${String.format(
-                    hoursFormat,
-                    seismicTime.get(Calendar.MINUTE)
-                ).dropLast(1)}$minutesSuffix"
+            "${seismicTime.get(Calendar.MONTH)}$dateDivider" +
+            "${seismicTime.get(Calendar.YEAR)} " +
+            String.format(hoursFormat, seismicTime.get(Calendar.HOUR_OF_DAY)).dropLast(1) +
+            "$hoursSuffix$timeDivider${String.format(
+                hoursFormat,
+                seismicTime.get(Calendar.MINUTE)
+            ).dropLast(1)}$minutesSuffix"
     }
 }

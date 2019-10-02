@@ -1,51 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                             xmlns:app="http://schemas.android.com/apk/res-auto"
-                                             xmlns:tools="http://schemas.android.com/tools"
-                                             android:layout_width="match_parent"
-                                             android:layout_height="match_parent">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <fragment
             android:id="@+id/earthquakes_map"
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintHeight_percent="0.5"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/seismic_recycler_view"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/seismic_recycler_view"/>
+            app:layout_constraintHeight_percent="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/seismic_recycler_view"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintWidth_percent="0.9"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/earthquakes_map"
-            app:layout_constraintBottom_toBottomOf="parent"
-            tools:listitem="@layout/seismic_card"/>
+            app:layout_constraintWidth_percent="0.9"
+            tools:listitem="@layout/seismic_card" />
 
     <ProgressBar
             android:id="@+id/seismic_progress_bar"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/earthquakes_map"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_height="wrap_content"/>
+            app:layout_constraintTop_toBottomOf="@+id/earthquakes_map" />
 
     <include
             android:id="@+id/seismic_error_layout"
+            layout="@layout/error_layout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:visibility="gone"
-            layout="@layout/error_layout"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/earthquakes_map"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@+id/earthquakes_map" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

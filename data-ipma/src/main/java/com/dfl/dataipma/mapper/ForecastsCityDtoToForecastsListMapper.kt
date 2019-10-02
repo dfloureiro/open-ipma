@@ -12,7 +12,8 @@ class ForecastsCityDtoToForecastsListMapper(private val dateRepository: DateRepo
 
     fun map(forecastsCityDto: ForecastsCityDto): List<CityForecast> {
         val dataUpdate = forecastsCityDto.dataUpdate
-        val forecastsSorted = forecastsCityDto.data.sortedBy { dateRepository.getTimeInMillis(it.forecastDate) }
+        val forecastsSorted =
+            forecastsCityDto.data.sortedBy { dateRepository.getTimeInMillis(it.forecastDate) }
         return forecastsCityDto.data.map { forecastDtoToForecast(dataUpdate, it, forecastsSorted) }
     }
 

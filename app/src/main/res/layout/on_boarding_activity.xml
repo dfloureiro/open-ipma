@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                 xmlns:tools="http://schemas.android.com/tools"
-                                                 android:id="@+id/main_content"
-                                                 android:layout_width="match_parent"
-                                                 android:layout_height="match_parent"
-                                                 android:fitsSystemWindows="true"
-                                                 android:background="@color/colorPrimary"
-                                                 tools:context=".onboarding.OnBoardingActivity">
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        android:fitsSystemWindows="true"
+        tools:context=".onboarding.OnBoardingActivity">
 
     <androidx.viewpager.widget.ViewPager
             android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingBottom="?attr/actionBarSize"/>
+            android:paddingBottom="?attr/actionBarSize" />
 
     <View
             android:layout_width="match_parent"
@@ -20,16 +20,16 @@
             android:layout_gravity="bottom"
             android:layout_marginBottom="?attr/actionBarSize"
             android:alpha="0.12"
-            android:background="@android:color/white"/>
+            android:background="@android:color/white" />
 
     <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:layout_gravity="bottom"
-            android:paddingEnd="@dimen/activity_horizontal_margin"
+            android:paddingStart="@dimen/activity_horizontal_margin"
             android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin"
-            android:paddingStart="@dimen/activity_horizontal_margin">
+            android:paddingEnd="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin">
 
         <com.google.android.material.button.MaterialButton
                 android:id="@+id/intro_button_skip"
@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start|center"
                 android:backgroundTint="@android:color/transparent"
-                android:text="@string/on_boarding_skip_button"/>
+                android:text="@string/on_boarding_skip_button" />
 
         <LinearLayout
                 android:layout_width="wrap_content"
@@ -51,14 +51,14 @@
                     android:layout_width="8dp"
                     android:layout_height="8dp"
                     android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                    android:background="@drawable/indicator_selected"/>
+                    android:background="@drawable/indicator_selected" />
 
             <ImageView
                     android:id="@+id/intro_indicator_1"
                     android:layout_width="8dp"
                     android:layout_height="8dp"
                     android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                    android:background="@drawable/indicator_unselected"/>
+                    android:background="@drawable/indicator_unselected" />
 
         </LinearLayout>
 
@@ -68,10 +68,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end|center"
-                android:text="@string/on_boarding_finish_button"
                 android:backgroundTint="@android:color/transparent"
+                android:text="@string/on_boarding_finish_button"
                 android:visibility="gone"
-                tools:visibility="visible"/>
+                tools:visibility="visible" />
 
         <ImageButton
                 android:id="@+id/intro_button_next"
@@ -81,7 +81,7 @@
                 android:layout_gravity="end|center"
                 android:padding="@dimen/activity_horizontal_margin"
                 android:src="@drawable/ic_arrow_right"
-                android:tint="@android:color/white"/>
+                android:tint="@android:color/white" />
 
     </FrameLayout>
 

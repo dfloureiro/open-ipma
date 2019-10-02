@@ -48,7 +48,8 @@ class SettingsFragment : PreferenceFragmentCompat() {
         if (lastKnownLocationUseCase.wasLastKnownTerritoryIdSet().not()) {
             findPreference<SwitchPreference>(WEATHER_NOTIFICATION_KEY)?.also {
                 it.isEnabled = false
-                it.summary = getString(R.string.settings_weather_notification_preference_description_disabled)
+                it.summary =
+                    getString(R.string.settings_weather_notification_preference_description_disabled)
             }
         }
 
@@ -66,7 +67,12 @@ class SettingsFragment : PreferenceFragmentCompat() {
                             sharedPreferences.getBoolean(key, true)
                         )
                     ANALYTICS_STATUS_KEY ->
-                        handleOnSettingsChangeEvents.setAnalyticsStatus(sharedPreferences.getBoolean(key, true))
+                        handleOnSettingsChangeEvents.setAnalyticsStatus(
+                            sharedPreferences.getBoolean(
+                                key,
+                                true
+                            )
+                        )
                 }
                 jobSchedulerWrapper.scheduleAlarmWeatherService(it)
             }

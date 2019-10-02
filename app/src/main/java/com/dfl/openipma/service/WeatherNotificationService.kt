@@ -1,10 +1,14 @@
 package com.dfl.openipma.service
 
-import android.app.*
+import android.app.IntentService
+import android.app.Notification
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Intent
 import android.os.Build
-import androidx.core.app.NotificationCompat
 import android.util.Log
+import androidx.core.app.NotificationCompat
 import com.dfl.domainipma.usecase.GetCitiesUseCase
 import com.dfl.domainipma.usecase.GetForecastsForCityUseCase
 import com.dfl.domainipma.usecase.GetWeatherTypesUseCase
@@ -14,11 +18,11 @@ import com.dfl.domainpersistence.usecase.HandleLastKnownLocationUseCase
 import com.dfl.openipma.IpmaApplication
 import com.dfl.openipma.R
 import com.dfl.openipma.city.CityForecastsActivity
+import javax.inject.Inject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 class WeatherNotificationService : IntentService(weatherNotificationService) {
 
@@ -61,11 +65,16 @@ class WeatherNotificationService : IntentService(weatherNotificationService) {
         if (getWeatherNotificationPreferencesUseCase.isWeatherNotificationEnabled()) {
             scope.launch {
                 try {
-                    val lastKnownLocationId = handleLastKnownLocationUseCase.getLastKnownTerritoryId()
+                    val lastKnownLocationId =
+                        handleLastKnownLocationUseCase.getLastKnownTerritoryId()
                     val cities = getCitiesUseCase.buildUseCase()
                     val weatherTypes = getWeatherTypesUseCase.buildUseCase()
                     val forecasts =
-                        getForecastsForCityUseCase.buildUseCase(GetForecastsForCityUseCase.Params(lastKnownLocationId))
+                        getForecastsForCityUseCase.buildUseCase(
+                            GetForecastsForCityUseCase.Params(
+                                lastKnownLocationId
+                            )
+                        )
                     forecasts.find { it.isToday }?.also {
                         sendNotification(
                             weatherServiceNotificationContentMapper.create(
@@ -121,7 +130,11 @@ class WeatherNotificationService : IntentService(weatherNotificationService) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val name = getString(R.string.notification_channel_name)
             val mChannel =
-                NotificationChannel(weatherNotificationChannelId, name, NotificationManager.IMPORTANCE_LOW)
+                NotificationChannel(
+                    weatherNotificationChannelId,
+                    name,
+                    NotificationManager.IMPORTANCE_LOW
+                )
             mChannel.description = getString(R.string.notification_channel_description)
             notificationManager.createNotificationChannel(mChannel)
         }

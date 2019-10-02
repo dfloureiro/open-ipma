@@ -6,7 +6,11 @@ import com.dfl.domainipma.repository.LocationRepository
 
 class LocationRepositoryImpl : LocationRepository {
 
-    override suspend fun getClosestCity(cities: List<City>, longitude: Double, latitude: Double): City {
+    override suspend fun getClosestCity(
+        cities: List<City>,
+        longitude: Double,
+        latitude: Double
+    ): City {
         var closestDistance: Float = -1F
         var closestCity: City = cities.first()
         for (city in cities) {

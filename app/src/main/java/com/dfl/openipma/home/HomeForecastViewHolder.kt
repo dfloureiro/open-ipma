@@ -1,15 +1,16 @@
 package com.dfl.openipma.home
 
-import androidx.core.content.ContextCompat
-import androidx.cardview.widget.CardView
-import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.RecyclerView
 import com.dfl.common.currentLocationIconRotation
 import com.dfl.openipma.R
 
-class HomeForecastViewHolder(private val viewHolderView: View) : RecyclerView.ViewHolder(viewHolderView) {
+class HomeForecastViewHolder(private val viewHolderView: View) :
+    RecyclerView.ViewHolder(viewHolderView) {
 
     fun setViewHolderOnClickListener(onClickListener: View.OnClickListener) {
         viewHolderView.setOnClickListener(onClickListener)
@@ -44,7 +45,8 @@ class HomeForecastViewHolder(private val viewHolderView: View) : RecyclerView.Vi
     }
 
     fun setIcon(resourceId: Int) {
-        viewHolderView.findViewById<ImageView>(R.id.home_card_weather_icon).setImageResource(resourceId)
+        viewHolderView.findViewById<ImageView>(R.id.home_card_weather_icon)
+            .setImageResource(resourceId)
     }
 
     fun setBackgroundColor(colorId: Int) {
@@ -61,6 +63,7 @@ class HomeForecastViewHolder(private val viewHolderView: View) : RecyclerView.Vi
             isCurrentLocation -> View.VISIBLE
             else -> View.GONE
         }
-        viewHolderView.findViewById<ImageView>(R.id.home_card_current_location).visibility = visibility
+        viewHolderView.findViewById<ImageView>(R.id.home_card_current_location).visibility =
+            visibility
     }
 }

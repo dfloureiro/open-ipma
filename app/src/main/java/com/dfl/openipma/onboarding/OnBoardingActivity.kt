@@ -2,19 +2,19 @@ package com.dfl.openipma.onboarding
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
-import androidx.appcompat.app.AppCompatActivity
-import android.view.View
 import com.dfl.domainanalytics.usecase.HandleOnBoardingEvents
 import com.dfl.domainpersistence.usecase.HandleFirstLaunchUseCase
 import com.dfl.openipma.IpmaApplication
 import com.dfl.openipma.R
 import com.dfl.openipma.home.HomeActivity
-import kotlinx.android.synthetic.main.on_boarding_activity.*
 import javax.inject.Inject
+import kotlinx.android.synthetic.main.on_boarding_activity.*
 
 class OnBoardingActivity : AppCompatActivity() {
 
@@ -45,7 +45,10 @@ class OnBoardingActivity : AppCompatActivity() {
 
         setContentView(R.layout.on_boarding_activity)
 
-        val sectionsPagerAdapter = SectionsPagerAdapter(supportFragmentManager)
+        val sectionsPagerAdapter = SectionsPagerAdapter(
+            supportFragmentManager,
+            FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
+        )
         container.adapter = sectionsPagerAdapter
         container.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
 
@@ -67,7 +70,12 @@ class OnBoardingActivity : AppCompatActivity() {
 
             override fun onPageScrollStateChanged(state: Int) {}
 
-            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
+            override fun onPageScrolled(
+                position: Int,
+                positionOffset: Float,
+                positionOffsetPixels: Int
+            ) {
+            }
         })
 
         val goToMainActivity: View.OnClickListener = View.OnClickListener {
@@ -98,7 +106,7 @@ class OnBoardingActivity : AppCompatActivity() {
 
     fun updateIndicators(position: Int) {
         val indicators = arrayOf(intro_indicator_0, intro_indicator_1)
-        for (indicatorPosition in 0 until indicators.size) {
+        for (indicatorPosition in indicators.indices) {
             val indicator = when (indicatorPosition) {
                 position -> R.drawable.indicator_selected
                 else -> R.drawable.indicator_unselected
@@ -107,7 +115,8 @@ class OnBoardingActivity : AppCompatActivity() {
         }
     }
 
-    inner class SectionsPagerAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager) {
+    inner class SectionsPagerAdapter(fragmentManager: FragmentManager, behavior: Int) :
+        FragmentPagerAdapter(fragmentManager, behavior) {
 
         override fun getItem(position: Int): Fragment {
             return when (position) {
