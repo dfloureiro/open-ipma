@@ -14,7 +14,7 @@
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintWidth_percent="0.9"
+            app:layout_constraintWidth_percent="@dimen/home_fragment_recycler_view_width_percent"
             app:spanCount="@integer/span_count_recycler_view_portrait"
             tools:listitem="@layout/home_forecast_card" />
 

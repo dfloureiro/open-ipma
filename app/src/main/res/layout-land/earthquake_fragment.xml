@@ -14,14 +14,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintWidth_percent="0.6" />
+            app:layout_constraintWidth_percent="@dimen/earthquake_fragment_map_size_percentage" />
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/seismic_recycler_view"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintLeft_toRightOf="@+id/earthquakes_map"
             app:layout_constraintRight_toRightOf="parent"

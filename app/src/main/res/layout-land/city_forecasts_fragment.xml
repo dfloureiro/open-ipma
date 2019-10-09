@@ -17,23 +17,22 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/city_recycler_view"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintWidth_percent="0.4"
+            app:layout_constraintWidth_percent="@dimen/city_forecast_fragment_today_width_percent"
             tools:visibility="visible" />
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/city_recycler_view"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginTop="@dimen/city_forecast_fragment_recycler_view_margin_top"
+            android:layout_marginBottom="@dimen/city_forecast_fragment_recycler_view_margin_bottom"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/city_today"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/city_today"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintWidth_percent="0.5"
+            app:layout_constraintWidth_percent="@dimen/city_forecast_fragment_recycler_view_width_percent"
             tools:listitem="@layout/city_forecast_card" />
 
     <ProgressBar

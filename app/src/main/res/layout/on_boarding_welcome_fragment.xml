@@ -13,21 +13,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.1" />
+            app:layout_constraintGuide_percent="@dimen/on_boarding_fragment_left_guideline_percent" />
 
     <androidx.constraintlayout.widget.Guideline
             android:id="@+id/on_boarding_location_right_guideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.9" />
+            app:layout_constraintGuide_percent="@dimen/on_boarding_fragment_right_guideline_percent" />
 
     <androidx.constraintlayout.widget.Guideline
             android:id="@+id/on_boarding_location_bottom_guideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.80" />
+            app:layout_constraintGuide_percent="@dimen/on_boarding_fragment_bottom_guideline_percent" />
 
     <ImageView
             android:id="@+id/on_boarding_welcome_icon"
@@ -36,8 +36,10 @@
             android:src="@drawable/ic_launcher_foreground"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
     <TextView
             android:id="@+id/on_boarding_welcome_description"
@@ -56,7 +58,7 @@
             style="@style/TextAppearance.MaterialComponents.Body1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/on_boarding_fragment_text_margin_top"
             android:gravity="center"
             android:text="@string/on_boarding_welcome_description_secondary"
             android:textColor="@android:color/white"

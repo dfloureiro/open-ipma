@@ -11,4 +11,6 @@
     <color name="rainy">#4a5175</color>
 
     <color name="secondary_text">#F5F5F5</color>
+
+    <color name="seismic_card_background">#795548</color>
 </resources>

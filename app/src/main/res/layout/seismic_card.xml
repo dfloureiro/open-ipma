@@ -7,30 +7,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:backgroundTint="#795548"
-        card_view:cardCornerRadius="5dp">
+        android:layout_margin="@dimen/forecast_card_cardview_margin"
+        android:backgroundTint="@color/seismic_card_background"
+        card_view:cardCornerRadius="@dimen/forecast_card_cardview_corner_radius">
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp">
+            android:padding="@dimen/forecast_card_layout_padding">
 
         <androidx.constraintlayout.widget.Barrier
                 android:id="@+id/seismic_card_barrier_magnitud_region"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:barrierDirection="bottom"
-                app:constraint_referenced_ids="seismic_card_magnitud,seismic_card_region"
-                tools:layout_editor_absoluteX="20dp"
-                tools:layout_editor_absoluteY="59dp" />
+                app:constraint_referenced_ids="seismic_card_magnitud,seismic_card_region" />
 
         <TextView
                 android:id="@+id/seismic_card_magnitud"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="28sp"
+                android:textSize="@dimen/temperature_text_size"
                 app:layout_constraintBottom_toTopOf="@+id/seismic_card_time"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@+id/seismic_card_region"
@@ -41,8 +38,8 @@
                 android:id="@+id/seismic_card_region"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:textSize="20sp"
+                android:layout_marginStart="@dimen/seismic_card_location_margin_start"
+                android:textSize="@dimen/primary_text_size"
                 app:layout_constraintBottom_toTopOf="@+id/seismic_card_time"
                 app:layout_constraintLeft_toRightOf="@+id/seismic_card_magnitud"
                 app:layout_constraintRight_toRightOf="parent"
@@ -53,7 +50,7 @@
                 android:id="@+id/seismic_card_time"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
+                android:textSize="@dimen/date_text_size"
                 app:layout_constraintBottom_toTopOf="@+id/seismic_card_coordinates"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -66,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/seismic_coordinates_label"
                 android:textColor="@color/secondary_text"
-                android:textSize="16sp"
+                android:textSize="@dimen/secondary_text_size"
                 app:layout_constraintBottom_toTopOf="@+id/seismic_card_felt_label"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@+id/seismic_card_coordinates"
@@ -76,8 +73,8 @@
                 android:id="@+id/seismic_card_coordinates"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:textSize="16sp"
+                android:layout_marginStart="@dimen/seismic_card_text_margin_start"
+                android:textSize="@dimen/secondary_text_size"
                 app:layout_constraintBottom_toTopOf="@+id/seismic_card_felt_label"
                 app:layout_constraintLeft_toRightOf="@+id/seismic_card_coordinates_label"
                 app:layout_constraintRight_toRightOf="parent"
@@ -90,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/seismic_felt_label"
                 android:textColor="@color/secondary_text"
-                android:textSize="16sp"
+                android:textSize="@dimen/secondary_text_size"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@+id/seismic_card_felt"
@@ -100,8 +97,8 @@
                 android:id="@+id/seismic_card_felt"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:textSize="16sp"
+                android:layout_marginStart="@dimen/seismic_card_text_margin_start"
+                android:textSize="@dimen/secondary_text_size"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@+id/seismic_card_felt_label"
                 app:layout_constraintRight_toRightOf="parent"

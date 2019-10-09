@@ -31,9 +31,9 @@
             android:id="@+id/error_retry_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/error_layout_material_button_margin_top"
             android:text="@string/error_retry_button"
-            app:cornerRadius="20dp"
+            app:cornerRadius="@dimen/material_button_corner_radius"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/error_description_text_view" />

@@ -16,7 +16,7 @@
 
     <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="@dimen/on_boarding_activity_div_height"
             android:layout_gravity="bottom"
             android:layout_marginBottom="?attr/actionBarSize"
             android:alpha="0.12"
@@ -26,10 +26,10 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:layout_gravity="bottom"
-            android:paddingStart="@dimen/activity_horizontal_margin"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingEnd="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin">
+            android:paddingStart="@dimen/on_boarding_activity_button_padding"
+            android:paddingLeft="@dimen/on_boarding_activity_button_padding"
+            android:paddingEnd="@dimen/on_boarding_activity_button_padding"
+            android:paddingRight="@dimen/on_boarding_activity_button_padding">
 
         <com.google.android.material.button.MaterialButton
                 android:id="@+id/intro_button_skip"
@@ -48,16 +48,16 @@
 
             <ImageView
                     android:id="@+id/intro_indicator_0"
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                    android:layout_width="@dimen/on_boarding_activity_indicator_size"
+                    android:layout_height="@dimen/on_boarding_activity_indicator_size"
+                    android:layout_marginEnd="@dimen/on_boarding_activity_indicator_spacing"
                     android:background="@drawable/indicator_selected" />
 
             <ImageView
                     android:id="@+id/intro_indicator_1"
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                    android:layout_width="@dimen/on_boarding_activity_indicator_size"
+                    android:layout_height="@dimen/on_boarding_activity_indicator_size"
+                    android:layout_marginEnd="@dimen/on_boarding_activity_button_padding"
                     android:background="@drawable/indicator_unselected" />
 
         </LinearLayout>
@@ -79,7 +79,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end|center"
-                android:padding="@dimen/activity_horizontal_margin"
+                android:padding="@dimen/on_boarding_activity_button_padding"
                 android:src="@drawable/ic_arrow_right"
                 android:tint="@android:color/white" />
 

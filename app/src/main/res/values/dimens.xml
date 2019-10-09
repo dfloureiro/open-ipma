@@ -1,9 +1,62 @@
 <resources>
-    <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="fab_margin">16dp</dimen>
-    <dimen name="appbar_padding_top">8dp</dimen>
+
+    <!-- recycler_view_span_counts -->
     <integer name="span_count_recycler_view_landscape">2</integer>
     <integer name="span_count_recycler_view_portrait">1</integer>
+
+    <!-- text sizes -->
+    <dimen name="temperature_text_size">28sp</dimen>
+    <dimen name="primary_text_size">20sp</dimen>
+    <dimen name="date_text_size">18sp</dimen>
+    <dimen name="secondary_text_size">16sp</dimen>
+
+    <!-- material_button -->
+    <dimen name="material_button_corner_radius">20dp</dimen>
+
+    <!-- home_fragment -->
+    <dimen name="home_fragment_recycler_view_width_percent">0.9</dimen>
+
+    <!-- forecast_card -->
+    <dimen name="forecast_card_cardview_margin">8dp</dimen>
+    <dimen name="forecast_card_cardview_corner_radius">5dp</dimen>
+    <dimen name="forecast_card_layout_padding">20dp</dimen>
+    <dimen name="forecast_card_day_of_week_margin_start">10dp</dimen>
+    <dimen name="forecast_card_max_temp_margin_end">12dp</dimen>
+    <dimen name="forecast_card_icon_margin_top">20dp</dimen>
+
+    <!-- city_forecast_fragment -->
+    <dimen name="city_forecast_fragment_today_width_percent">0.9</dimen>
+    <dimen name="city_forecast_fragment_recycler_view_width_percent">0.9</dimen>
+    <dimen name="city_forecast_fragment_recycler_view_margin_top">20dp</dimen>
+    <dimen name="city_forecast_fragment_recycler_view_margin_bottom">20dp</dimen>
+
+    <!-- home_forecast_card -->
+    <dimen name="home_forecast_card_min_temp_margin_start">12dp</dimen>
+
+    <!-- seismic_card -->
+    <dimen name="seismic_card_location_margin_start">20dp</dimen>
+    <dimen name="seismic_card_text_margin_start">10dp</dimen>
+
+    <!-- earthquake_fragment -->
+    <dimen name="earthquake_fragment_map_size_percentage">0.5</dimen>
+    <dimen name="earthquake_fragment_map_recycler_view_width_percent">0.9</dimen>
+
+    <!-- on_boarding_activity -->
+    <dimen name="on_boarding_activity_indicator_size">8dp</dimen>
+    <dimen name="on_boarding_activity_indicator_spacing">16dp</dimen>
+    <dimen name="on_boarding_activity_button_padding">16dp</dimen>
+    <dimen name="on_boarding_activity_div_height">1dp</dimen>
+
+    <!-- on_boarding_fragment -->
+    <dimen name="on_boarding_fragment_left_guideline_percent">0.1</dimen>
+    <dimen name="on_boarding_fragment_right_guideline_percent">0.9</dimen>
+    <dimen name="on_boarding_fragment_bottom_guideline_percent">0.8</dimen>
+    <dimen name="on_boarding_fragment_text_margin_top">20dp</dimen>
+
+    <!-- about_activity -->
+    <dimen name="about_activity_margin">10dp</dimen>
+
+    <!-- error_layout -->
+    <dimen name="error_layout_material_button_margin_top">20dp</dimen>
+
 </resources>

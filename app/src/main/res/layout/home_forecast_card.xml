@@ -7,14 +7,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="8dp"
-        card_view:cardCornerRadius="5dp"
+        android:layout_margin="@dimen/forecast_card_cardview_margin"
+        card_view:cardCornerRadius="@dimen/forecast_card_cardview_corner_radius"
         tools:backgroundTint="@color/sunny">
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="20dp">
+            android:padding="@dimen/forecast_card_layout_padding">
 
         <androidx.constraintlayout.widget.Barrier
                 android:id="@+id/home_horizontal_card_center_barrier"
@@ -35,7 +35,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/white"
-                android:textSize="20sp"
+                android:textSize="@dimen/primary_text_size"
                 app:layout_constraintBottom_toTopOf="@+id/home_card_weather_description"
                 app:layout_constraintLeft_toRightOf="@+id/home_card_current_location"
                 app:layout_constraintRight_toLeftOf="@+id/home_card_weather_icon"
@@ -60,7 +60,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textColor="@color/secondary_text"
-                android:textSize="16sp"
+                android:textSize="@dimen/secondary_text_size"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@+id/home_card_weather_icon"
                 app:layout_constraintTop_toBottomOf="@+id/home_card_city_name"
@@ -91,16 +91,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/white"
-                    android:textSize="28sp"
+                    android:textSize="@dimen/temperature_text_size"
                     tools:text="42º" />
 
             <TextView
                     android:id="@+id/home_card_min_temp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
+                    android:layout_marginStart="@dimen/home_forecast_card_min_temp_margin_start"
                     android:textColor="@color/secondary_text"
-                    android:textSize="28sp"
+                    android:textSize="@dimen/temperature_text_size"
                     tools:text="17º" />
 
         </LinearLayout>
@@ -111,7 +111,7 @@
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/ic_windy"
                 android:textColor="@android:color/white"
-                android:textSize="16sp"
+                android:textSize="@dimen/secondary_text_size"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@+id/home_card_temp"
                 app:layout_constraintRight_toLeftOf="@+id/home_card_precipitation"
@@ -124,7 +124,7 @@
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/ic_umbrella"
                 android:textColor="@android:color/white"
-                android:textSize="16sp"
+                android:textSize="@dimen/secondary_text_size"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@+id/home_card_wind"
                 app:layout_constraintRight_toRightOf="parent"

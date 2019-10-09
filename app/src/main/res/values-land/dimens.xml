@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- city_forecast_fragment -->
+    <dimen name="city_forecast_fragment_today_width_percent">0.4</dimen>
+    <dimen name="city_forecast_fragment_recycler_view_width_percent">0.5</dimen>
+
+    <!-- earthquake_fragment -->
+    <dimen name="earthquake_fragment_map_size_percentage">0.6</dimen>
+
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- text sizes -->
+    <dimen name="temperature_text_size">34sp</dimen>
+    <dimen name="primary_text_size">26sp</dimen>
+    <dimen name="date_text_size">24sp</dimen>
+    <dimen name="secondary_text_size">22sp</dimen>
+    <!-- forecast_card -->
+    <dimen name="forecast_card_layout_padding">20dp</dimen>
+    <dimen name="forecast_card_max_temp_margin_end">12dp</dimen>
+
+</resources>
