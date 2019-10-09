@@ -33,6 +33,7 @@
             android:id="@+id/on_boarding_welcome_icon"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:contentDescription="@string/on_boarding_weather_image_description"
             android:src="@drawable/ic_launcher_foreground"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

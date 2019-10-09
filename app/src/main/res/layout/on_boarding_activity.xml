@@ -51,14 +51,16 @@
                     android:layout_width="@dimen/on_boarding_activity_indicator_size"
                     android:layout_height="@dimen/on_boarding_activity_indicator_size"
                     android:layout_marginEnd="@dimen/on_boarding_activity_indicator_spacing"
-                    android:background="@drawable/indicator_selected" />
+                    android:background="@drawable/indicator_selected"
+                    android:contentDescription="@string/on_boarding_page_indicator_description" />
 
             <ImageView
                     android:id="@+id/intro_indicator_1"
                     android:layout_width="@dimen/on_boarding_activity_indicator_size"
                     android:layout_height="@dimen/on_boarding_activity_indicator_size"
                     android:layout_marginEnd="@dimen/on_boarding_activity_button_padding"
-                    android:background="@drawable/indicator_unselected" />
+                    android:background="@drawable/indicator_unselected"
+                    android:contentDescription="@string/on_boarding_page_indicator_description" />
 
         </LinearLayout>
 
@@ -79,6 +81,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end|center"
+                android:contentDescription="@string/on_boarding_next_button_description"
                 android:padding="@dimen/on_boarding_activity_button_padding"
                 android:src="@drawable/ic_arrow_right"
                 android:tint="@android:color/white" />
