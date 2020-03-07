@@ -10,7 +10,7 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.dfl.domainanalytics.usecase.HandleOnScreenOpenEvents
 import com.dfl.openipma.R
 import com.dfl.openipma.ViewModelFactory
@@ -43,11 +43,9 @@ class CityForecastsFragment : BaseFragment() {
                 handleOnScreenOpenEvents.logCityForecastsScreenLaunch(cityId)
             }
             viewModel =
-                ViewModelProviders.of(this, viewModeFactory).get(CityForecastsViewModel::class.java)
-            when {
-                viewModel.cityForecastsState.value == null -> {
-                    viewModel.loadData(cityId)
-                }
+                ViewModelProvider(this, viewModeFactory).get(CityForecastsViewModel::class.java)
+            if (viewModel.cityForecastsState.value == null) {
+                viewModel.loadData(cityId)
             }
         } else {
             throw IllegalArgumentException("Cannot get forecasts from null cityId")

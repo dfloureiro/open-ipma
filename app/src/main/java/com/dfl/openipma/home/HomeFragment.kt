@@ -14,7 +14,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.dfl.domainanalytics.usecase.HandleOnScreenOpenEvents
 import com.dfl.openipma.R
 import com.dfl.openipma.ViewModelFactory
@@ -50,7 +50,7 @@ class HomeFragment : BaseFragment() {
         super.onCreate(savedInstanceState)
         (activity as AppCompatActivity).supportActionBar?.title =
             getString(R.string.home_toolbar_title)
-        viewModel = ViewModelProviders.of(this, viewModeFactory).get(HomeViewModel::class.java)
+        viewModel = ViewModelProvider(this, viewModeFactory).get(HomeViewModel::class.java)
         if (viewModel.homeViewState.value == null) {
             loadDataWithCurrentLocation()
         }

@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dfl.domainanalytics.usecase.HandleOnScreenOpenEvents
 import com.dfl.openipma.R
@@ -48,11 +48,9 @@ class SeismicFragment : BaseFragment(), OnMapReadyCallback, MapFragment {
         }
         (activity as AppCompatActivity).supportActionBar?.title =
             getString(R.string.seismic_toolbar_title)
-        viewModel = ViewModelProviders.of(this, viewModeFactory).get(SeismicViewModel::class.java)
-        when {
-            viewModel.seismicState.value == null -> {
-                viewModel.loadData()
-            }
+        viewModel = ViewModelProvider(this, viewModeFactory).get(SeismicViewModel::class.java)
+        if (viewModel.seismicState.value == null) {
+            viewModel.loadData()
         }
     }
 
