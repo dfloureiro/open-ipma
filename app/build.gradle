@@ -62,7 +62,7 @@ dependencies {
         exclude group: 'com.android.support'
     }
 
-    implementation "com.google.firebase:firebase-analytics:$firebase_version"
+    implementation "com.google.firebase:firebase-analytics-ktx:$firebase_version"
 
     implementation project(path: ':domain-ipma')
     implementation project(path: ':data-ipma')
