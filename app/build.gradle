@@ -39,7 +39,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "androidx.appcompat:appcompat:$appcompat_version"
-    implementation "androidx.preference:preference:$preference_version"
+    implementation "androidx.preference:preference-ktx:$preference_version"
     implementation "androidx.cardview:cardview:$cardview_version"
     implementation "androidx.recyclerview:recyclerview:$recyclerview_version"
     implementation "androidx.constraintlayout:constraintlayout:$constraint_layout_version"
