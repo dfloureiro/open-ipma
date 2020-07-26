@@ -15,16 +15,18 @@ import com.dfl.domainanalytics.usecase.HandleOnScreenOpenEvents
 import com.dfl.openipma.R
 import com.dfl.openipma.ViewModelFactory
 import com.dfl.openipma.base.BaseFragment
-import javax.inject.Inject
 import kotlinx.android.synthetic.main.city_forecasts_fragment.*
 import kotlinx.android.synthetic.main.error_layout.*
+import javax.inject.Inject
 
 class CityForecastsFragment : BaseFragment() {
 
     @Inject
     lateinit var viewModeFactory: ViewModelFactory
+
     @Inject
     lateinit var cityForecastAdapter: CityForecastsAdapter
+
     @Inject
     lateinit var handleOnScreenOpenEvents: HandleOnScreenOpenEvents
 
@@ -40,7 +42,9 @@ class CityForecastsFragment : BaseFragment() {
         val cityId = arguments?.getInt(CityForecastsActivity.CITY_ID_BUNDLE_KEY)
         if (cityId != null) {
             if (savedInstanceState == null) {
-                handleOnScreenOpenEvents.logCityForecastsScreenLaunch(cityId)
+                val cityName =
+                    arguments?.getString(CityForecastsActivity.CITY_NAME_BUNDLE_KEY).orEmpty()
+                handleOnScreenOpenEvents.logCityForecastsScreenLaunch(cityId, cityName)
             }
             viewModel =
                 ViewModelProvider(this, viewModeFactory).get(CityForecastsViewModel::class.java)
@@ -121,10 +125,11 @@ class CityForecastsFragment : BaseFragment() {
     }
 
     companion object {
-        fun newInstance(cityId: Int): CityForecastsFragment {
+        fun newInstance(cityId: Int, cityName: String): CityForecastsFragment {
             val fragment = CityForecastsFragment()
             fragment.arguments = Bundle().also {
                 it.putInt(CityForecastsActivity.CITY_ID_BUNDLE_KEY, cityId)
+                it.putString(CityForecastsActivity.CITY_NAME_BUNDLE_KEY, cityName)
             }
             return fragment
         }

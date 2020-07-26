@@ -5,6 +5,7 @@ const val ON_BOARDING_COMPLETE_KEY = "on_boarding_complete"
 
 const val CITY_FORECASTS_OPEN_KEY = "city_forecasts_open"
 const val CITY_ID = "city_id"
+const val CITY_NAME = "city_name"
 const val HOME_OPEN_KEY = "home_open"
 const val SETTINGS_OPEN_KEY = "settings_open"
 const val SEISMIC_OPEN_KEY = "seismic_open"

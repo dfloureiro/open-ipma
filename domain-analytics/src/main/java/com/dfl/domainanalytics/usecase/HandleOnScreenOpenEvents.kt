@@ -1,18 +1,14 @@
 package com.dfl.domainanalytics.usecase
 
-import com.dfl.domainanalytics.CITY_FORECASTS_OPEN_KEY
-import com.dfl.domainanalytics.CITY_ID
-import com.dfl.domainanalytics.HOME_OPEN_KEY
-import com.dfl.domainanalytics.SEISMIC_OPEN_KEY
-import com.dfl.domainanalytics.SETTINGS_OPEN_KEY
+import com.dfl.domainanalytics.*
 import com.dfl.domainanalytics.repository.AnalyticsRepository
 
 class HandleOnScreenOpenEvents(private val analyticsRepository: AnalyticsRepository) {
 
-    fun logCityForecastsScreenLaunch(cityId: Int) {
+    fun logCityForecastsScreenLaunch(cityId: Int, cityName: String) {
         analyticsRepository.logEvent(
             CITY_FORECASTS_OPEN_KEY,
-            mapOf(Pair(CITY_ID, cityId.toString()))
+            mapOf(Pair(CITY_ID, cityId.toString()), Pair(CITY_NAME, cityName))
         )
     }
 
